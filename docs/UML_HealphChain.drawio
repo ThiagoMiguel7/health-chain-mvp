@@ -1,0 +1,1418 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36" version="29.2.9" pages="10">
+  <diagram name="Use Cases" id="vMG9jHUPwRnxfMPgiZCo">
+    <mxGraphModel dx="2172" dy="1216" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-17" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-18" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-19" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-21" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-1" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-1" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" value="Paciente" vertex="1">
+          <mxGeometry height="60" width="30" x="-405" y="-130" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-16" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-25" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-27" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0.1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-2" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" value="Profissional" vertex="1">
+          <mxGeometry height="60" width="30" x="-389" y="241" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Cadastrar paciente" vertex="1">
+          <mxGeometry height="70" width="140" x="-16" y="-205" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Cadastrar profissional" vertex="1">
+          <mxGeometry height="70" width="140" x="-24" y="403" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Gera AccountID" vertex="1">
+          <mxGeometry height="30" width="60" x="130" y="-209" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Gera AccountID" vertex="1">
+          <mxGeometry height="30" width="60" x="97" y="459" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-11" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Visualizar dados histórico médico" vertex="1">
+          <mxGeometry height="70" width="140" x="-14" y="-121" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-13" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Permitir profissional editar/criar histórico médico" vertex="1">
+          <mxGeometry height="70" width="140" x="-16" y="-32" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-20" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Revogar/pausar permissão" vertex="1">
+          <mxGeometry height="70" width="140" x="-14" y="57" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-22" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Solicitar permissão de criação/edição de histórico médico" vertex="1">
+          <mxGeometry height="70" width="140" x="-30" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-23" edge="1" parent="1" source="8IiHBoR9ACRkWR5Noj3F-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.014;entryY=0.414;entryDx=0;entryDy=0;entryPerimeter=0;fontSize=12;startSize=8;endSize=8;" target="8IiHBoR9ACRkWR5Noj3F-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-24" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Criar / editar histórico médico" vertex="1">
+          <mxGeometry height="70" width="140" x="-26" y="241" as="geometry" />
+        </mxCell>
+        <mxCell id="8IiHBoR9ACRkWR5Noj3F-26" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Consultar histórico médico do paciente" vertex="1">
+          <mxGeometry height="70" width="140" x="-26" y="157" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pK_5WpPLv8ZX6wqYzHQj" name="(D) - Diagrama de sequencia">
+    <mxGraphModel dx="1898" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ptvT_na9vXYyV8i_762G-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Permitir profissional editar/criar histórico médico, com tempo limitado.&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-484" y="-211" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-7" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="1147" width="100" x="55" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-23" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="13" x="41" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-24" edge="1" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="E4enQX-72k6gGGuoaCW6-23" value="&lt;br&gt;Associa chave pública do médico com pública do paciente&lt;div&gt;Liga contador regressivo de tempo para essa associação&lt;br&gt;Conta o tempo até zero =&amp;gt; timeout&lt;/div&gt;">
+          <mxGeometry relative="1" x="0.0165" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="79" y="370" />
+            </Array>
+            <mxPoint x="49" y="340" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-34" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="782" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-35" edge="1" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="E4enQX-72k6gGGuoaCW6-34" value="Verifica se chave pública de paciente ainda está&lt;br&gt;associada a chave pública de médico.">
+          <mxGeometry relative="1" x="0.0027" y="12" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="77" y="762" />
+              <mxPoint x="77" y="792" />
+            </Array>
+            <mxPoint x="52" y="762" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-39" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="66" width="10" x="47" y="816" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-40" edge="1" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="E4enQX-72k6gGGuoaCW6-39" value="Recupera a chave de decriptar os dados do histórico &lt;br&gt;do paciente">
+          <mxGeometry relative="1" x="0.0115" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="84" y="838" />
+            </Array>
+            <mxPoint x="54" y="808" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gNDIM6iOkVkIzVJrKNNl-1" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="627" as="geometry" />
+        </mxCell>
+        <mxCell id="gNDIM6iOkVkIzVJrKNNl-2" edge="1" parent="E4enQX-72k6gGGuoaCW6-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="gNDIM6iOkVkIzVJrKNNl-1" value="Valida assinatura =&amp;gt; valida AccountId&lt;br&gt;Registra esse evento para auditoria">
+          <mxGeometry relative="1" x="-0.0033" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="82" y="637" />
+            </Array>
+            <mxPoint x="52" y="607" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-8" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="&amp;nbsp;Paciente" vertex="1">
+          <mxGeometry height="976" width="20" x="-469" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-9" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="Médico" vertex="1">
+          <mxGeometry height="1155" width="20" x="621" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-10" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlEntity;" value="Banco de dados" vertex="1">
+          <mxGeometry height="1148" width="40" x="818" y="-168" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-11" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do médico" vertex="1">
+          <mxGeometry height="1158" width="100" x="389" y="-173" as="geometry" />
+        </mxCell>
+        <mxCell id="5PtPUJy03zLI4uINjNFT-1" parent="E4enQX-72k6gGGuoaCW6-11" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="46" y="528" as="geometry" />
+        </mxCell>
+        <mxCell id="5PtPUJy03zLI4uINjNFT-2" edge="1" parent="E4enQX-72k6gGGuoaCW6-11" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="5PtPUJy03zLI4uINjNFT-1" value="Assina o próprio AccountID com chave privada">
+          <mxGeometry relative="1" x="-0.0024" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="81" y="538" />
+            </Array>
+            <mxPoint x="51" y="508" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-47" parent="E4enQX-72k6gGGuoaCW6-11" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="46" y="1105" as="geometry" />
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-48" edge="1" parent="E4enQX-72k6gGGuoaCW6-11" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="E4enQX-72k6gGGuoaCW6-47" value="&lt;div&gt;Descriptografa dados completos do histórico&lt;br&gt;Valida dados mais recentes com a hash&amp;nbsp;&lt;/div&gt;">
+          <mxGeometry relative="1" x="0.0196" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="81" y="1115" />
+            </Array>
+            <mxPoint x="51" y="1085" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-49" edge="1" parent="E4enQX-72k6gGGuoaCW6-11" source="E4enQX-72k6gGGuoaCW6-47" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" value="Mostra os dados finalmente">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-242" y="814" as="sourcePoint" />
+            <mxPoint x="240.5" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-12" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do paciente" vertex="1">
+          <mxGeometry height="979" width="100" x="-330" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="cR3Rzm1qSlYFiwiI0AYu-2" parent="E4enQX-72k6gGGuoaCW6-12" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="48" y="875" as="geometry" />
+        </mxCell>
+        <mxCell id="cR3Rzm1qSlYFiwiI0AYu-3" edge="1" parent="E4enQX-72k6gGGuoaCW6-12" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="cR3Rzm1qSlYFiwiI0AYu-2" value="Decifra a chave simétrica com a chave privada própria">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="83" y="885" />
+            </Array>
+            <mxPoint x="53" y="855" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita chave pública">
+          <mxGeometry relative="1" width="80" x="-0.3128" y="4" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-247.5" y="-55" />
+              <mxPoint x="14.5" y="-52" />
+              <mxPoint x="293.5" y="-49" />
+            </Array>
+            <mxPoint x="-457" y="-55" as="sourcePoint" />
+            <mxPoint x="633" y="-49" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-17" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita acesso a histórico médico">
+          <mxGeometry relative="1" width="80" x="-0.3358" y="-8" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="629" y="-92" as="sourcePoint" />
+            <mxPoint x="-461" y="-92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-21" edge="1" parent="1" source="E4enQX-72k6gGGuoaCW6-9" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" target="E4enQX-72k6gGGuoaCW6-8" value="Chave pública do médico">
+          <mxGeometry relative="1" x="-0.3312" y="-3" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="46" y="-7" />
+            </Array>
+            <mxPoint x="231" y="200" as="sourcePoint" />
+            <mxPoint x="151" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-22" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Libera acesso ao histórico (chave pública do médico)">
+          <mxGeometry relative="1" width="80" x="0.7867" y="7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="-456" y="158" as="sourcePoint" />
+            <mxPoint x="-282.5" y="158" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-26" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Liberar acesso (chave pública do médico)">
+          <mxGeometry relative="1" width="80" x="0.0234" y="-5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="45" y="171" />
+            </Array>
+            <mxPoint x="-282.5" y="171" as="sourcePoint" />
+            <mxPoint x="102.5" y="171" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-29" edge="1" parent="1" source="E4enQX-72k6gGGuoaCW6-23" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Avisa sobre dados liberados com sucesso">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="149" y="319" as="sourcePoint" />
+            <mxPoint x="-282.5" y="214" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-30" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Avisa dados liberados">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-282" y="232" as="sourcePoint" />
+            <mxPoint x="-461" y="232" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-31" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Avisa que histórico está liberado e fornece chave pública do próprio paciente">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-462" y="275" as="sourcePoint" />
+            <mxPoint x="628.5" y="274" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-32" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita ver dados de histórico (chave pública do paciente)">
+          <mxGeometry relative="1" width="80" x="-0.5569" y="-6" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="628.5" y="325" as="sourcePoint" />
+            <mxPoint x="437" y="325" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-33" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita abrir histórico de paciente (chave pública do paciente , AccountID do médico assinado)">
+          <mxGeometry relative="1" width="80" x="0.494" y="-9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="396.5" y="431" />
+              <mxPoint x="282.5" y="431" />
+              <mxPoint x="142" y="431" />
+            </Array>
+            <mxPoint x="439" y="431" as="sourcePoint" />
+            <mxPoint x="105" y="431" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-45" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Busca histórico completo do paciente (PK = chave pública do paciente)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="437" y="850" as="sourcePoint" />
+            <mxPoint x="835.5" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-46" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="histórico completo criptografado">
+          <mxGeometry relative="1" x="0.0014" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="837" y="882" as="sourcePoint" />
+            <mxPoint x="438.5" y="882" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-50" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;strokeColor=light-dark(#FFFFFF,#FFFFFF);" value="&lt;span style=&quot;font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;Entrega chave de decriptar,&amp;nbsp; e hash dos dados mais recentes.&lt;/font&gt;&lt;/span&gt;">
+          <mxGeometry relative="1" x="0.4838" y="4" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="207" y="775" />
+              <mxPoint x="305" y="777" />
+            </Array>
+            <mxPoint x="108" y="775" as="sourcePoint" />
+            <mxPoint x="434.5" y="775" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-51" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita perfil do médico">
+          <mxGeometry relative="1" width="80" x="-0.0028" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-393.5" y="43" />
+            </Array>
+            <mxPoint x="-455" y="43" as="sourcePoint" />
+            <mxPoint x="-276.5" y="43" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-52" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="E4enQX-72k6gGGuoaCW6-10" value="Busca perfil do médico">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-280" y="61" as="sourcePoint" />
+            <mxPoint x="811.5" y="61" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-53" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Perfil do médico">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="841" y="93" as="sourcePoint" />
+            <mxPoint x="-284" y="89" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4enQX-72k6gGGuoaCW6-54" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Perfil do médico">
+          <mxGeometry relative="1" x="0.2067" y="-7" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-281" y="116" as="sourcePoint" />
+            <mxPoint x="-460" y="116" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JBN6zhqgDP4cxQci7quc-1" parent="1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.02;" value="Se o paciente ainda não foi em consultas médicas, esse histórico é retornado em branco." vertex="1">
+          <mxGeometry height="93" width="165" x="846" y="754" as="geometry" />
+        </mxCell>
+        <mxCell id="cR3Rzm1qSlYFiwiI0AYu-1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="solicitaChaveSimétrica( chave cifrada com chave pública do paciente)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="107.8" y="685" as="sourcePoint" />
+            <mxPoint x="-276.99999999999994" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cR3Rzm1qSlYFiwiI0AYu-4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Chave simétrica decifrada para descriptografar histórico de paciente">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-272" y="742" as="sourcePoint" />
+            <mxPoint x="104.5" y="742" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(E) - Diagrama de sequencia" id="hmUrEnR3kUSBHNcFOiTl">
+    <mxGraphModel dx="1898" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-0" />
+        <mxCell id="Qoco0XebtekA2PYRE0KU-1" parent="Qoco0XebtekA2PYRE0KU-0" />
+        <mxCell id="Qoco0XebtekA2PYRE0KU-2" parent="Qoco0XebtekA2PYRE0KU-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Permitir profissional apenas ler histórico médico&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-484" y="-211" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-3" parent="Qoco0XebtekA2PYRE0KU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="1147" width="100" x="55" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-4" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="13" x="41" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-5" edge="1" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-4" value="&lt;br&gt;Associa chave pública do médico com pública do paciente&lt;div&gt;Configura o contador do tempo em ZERO&lt;/div&gt;">
+          <mxGeometry relative="1" x="0.1285" y="6" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="79" y="370" />
+            </Array>
+            <mxPoint x="49" y="340" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-6" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="782" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-7" edge="1" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-6" value="Verifica se chave pública de paciente ainda está&lt;br&gt;associada a chave pública de médico.">
+          <mxGeometry relative="1" x="0.0027" y="12" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="77" y="762" />
+              <mxPoint x="77" y="792" />
+            </Array>
+            <mxPoint x="52" y="762" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-8" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="66" width="10" x="47" y="816" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-9" edge="1" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-8" value="Recupera a chave de decriptar os dados do histórico &lt;br&gt;do paciente">
+          <mxGeometry relative="1" x="0.0115" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="84" y="838" />
+            </Array>
+            <mxPoint x="54" y="808" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-10" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="627" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-11" edge="1" parent="Qoco0XebtekA2PYRE0KU-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-10" value="Valida assinatura =&amp;gt; valida AccountId&lt;br&gt;Registra esse evento para auditoria">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="82" y="637" />
+            </Array>
+            <mxPoint x="52" y="607" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-12" parent="Qoco0XebtekA2PYRE0KU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="&amp;nbsp;Paciente" vertex="1">
+          <mxGeometry height="976" width="20" x="-469" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-13" parent="Qoco0XebtekA2PYRE0KU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="Médico" vertex="1">
+          <mxGeometry height="1155" width="20" x="621" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-14" parent="Qoco0XebtekA2PYRE0KU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlEntity;" value="Banco de dados" vertex="1">
+          <mxGeometry height="1148" width="40" x="818" y="-168" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-15" parent="Qoco0XebtekA2PYRE0KU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do médico" vertex="1">
+          <mxGeometry height="1158" width="100" x="389" y="-173" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-16" parent="Qoco0XebtekA2PYRE0KU-15" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="46" y="528" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-17" edge="1" parent="Qoco0XebtekA2PYRE0KU-15" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-16" value="Assina o próprio AccountID com chave privada">
+          <mxGeometry relative="1" x="-0.0024" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="81" y="538" />
+            </Array>
+            <mxPoint x="51" y="508" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-18" parent="Qoco0XebtekA2PYRE0KU-15" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="46" y="1105" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-19" edge="1" parent="Qoco0XebtekA2PYRE0KU-15" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-18" value="&lt;div&gt;Descriptografa dados completos do histórico&lt;br&gt;Valida dados mais recentes com a hash&amp;nbsp;&lt;/div&gt;">
+          <mxGeometry relative="1" x="0.0196" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="81" y="1115" />
+            </Array>
+            <mxPoint x="51" y="1085" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-20" edge="1" parent="Qoco0XebtekA2PYRE0KU-15" source="Qoco0XebtekA2PYRE0KU-18" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" value="Mostra os dados finalmente">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-242" y="814" as="sourcePoint" />
+            <mxPoint x="240.5" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-21" parent="Qoco0XebtekA2PYRE0KU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do paciente" vertex="1">
+          <mxGeometry height="979" width="100" x="-330" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-22" parent="Qoco0XebtekA2PYRE0KU-21" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="48" y="875" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-23" edge="1" parent="Qoco0XebtekA2PYRE0KU-21" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-22" value="Decifra a chave simétrica com a chave privada própria">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="83" y="885" />
+            </Array>
+            <mxPoint x="53" y="855" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-24" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita chave pública">
+          <mxGeometry relative="1" width="80" x="-0.3128" y="4" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-247.5" y="-55" />
+              <mxPoint x="14.5" y="-52" />
+              <mxPoint x="293.5" y="-49" />
+            </Array>
+            <mxPoint x="-457" y="-55" as="sourcePoint" />
+            <mxPoint x="633" y="-49" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-25" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita acesso a histórico médico">
+          <mxGeometry relative="1" width="80" x="-0.3358" y="-8" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="629" y="-92" as="sourcePoint" />
+            <mxPoint x="-461" y="-92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-26" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" source="Qoco0XebtekA2PYRE0KU-13" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" target="Qoco0XebtekA2PYRE0KU-12" value="Chave pública do médico">
+          <mxGeometry relative="1" x="-0.3312" y="-3" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="46" y="-7" />
+            </Array>
+            <mxPoint x="231" y="200" as="sourcePoint" />
+            <mxPoint x="151" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-27" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Libera acesso ao histórico (chave pública do médico)">
+          <mxGeometry relative="1" width="80" x="0.7867" y="7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="-456" y="158" as="sourcePoint" />
+            <mxPoint x="-282.5" y="158" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-28" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Liberar acesso (chave pública do médico)">
+          <mxGeometry relative="1" width="80" x="0.0234" y="-5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="45" y="171" />
+            </Array>
+            <mxPoint x="-282.5" y="171" as="sourcePoint" />
+            <mxPoint x="102.5" y="171" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-29" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" source="Qoco0XebtekA2PYRE0KU-4" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Avisa sobre dados liberados com sucesso">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="149" y="319" as="sourcePoint" />
+            <mxPoint x="-282.5" y="214" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-30" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Avisa dados liberados">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-282" y="232" as="sourcePoint" />
+            <mxPoint x="-461" y="232" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-31" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Avisa que histórico está liberado e fornece chave pública do próprio paciente">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-462" y="275" as="sourcePoint" />
+            <mxPoint x="628.5" y="274" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-32" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita ver dados de histórico (chave pública do paciente)">
+          <mxGeometry relative="1" width="80" x="-0.5569" y="-6" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="628.5" y="325" as="sourcePoint" />
+            <mxPoint x="437" y="325" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-33" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita abrir histórico de paciente (chave pública do paciente , AccountID do médico assinado)">
+          <mxGeometry relative="1" width="80" x="0.494" y="-9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="396.5" y="431" />
+              <mxPoint x="282.5" y="431" />
+              <mxPoint x="142" y="431" />
+            </Array>
+            <mxPoint x="439" y="431" as="sourcePoint" />
+            <mxPoint x="105" y="431" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-34" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Busca histórico completo do paciente (PK = chave pública do paciente)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="437" y="850" as="sourcePoint" />
+            <mxPoint x="835.5" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-35" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="histórico completo criptografado">
+          <mxGeometry relative="1" x="0.0014" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="837" y="882" as="sourcePoint" />
+            <mxPoint x="438.5" y="882" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-36" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;strokeColor=light-dark(#FFFFFF,#FFFFFF);" value="&lt;span style=&quot;font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;Entrega chave de decriptar,&amp;nbsp; e hash dos dados mais recentes.&lt;/font&gt;&lt;/span&gt;">
+          <mxGeometry relative="1" x="0.4838" y="4" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="207" y="775" />
+              <mxPoint x="305" y="777" />
+            </Array>
+            <mxPoint x="108" y="775" as="sourcePoint" />
+            <mxPoint x="434.5" y="775" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-37" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita perfil do médico">
+          <mxGeometry relative="1" width="80" x="-0.0028" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-393.5" y="43" />
+            </Array>
+            <mxPoint x="-455" y="43" as="sourcePoint" />
+            <mxPoint x="-276.5" y="43" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-38" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="Qoco0XebtekA2PYRE0KU-14" value="Busca perfil do médico">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-280" y="61" as="sourcePoint" />
+            <mxPoint x="811.5" y="61" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-39" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Perfil do médico">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="841" y="93" as="sourcePoint" />
+            <mxPoint x="-284" y="89" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-40" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Perfil do médico">
+          <mxGeometry relative="1" x="0.2067" y="-7" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-281" y="116" as="sourcePoint" />
+            <mxPoint x="-460" y="116" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-41" parent="Qoco0XebtekA2PYRE0KU-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.02;" value="Se o paciente ainda não foi em consultas médicas, esse histórico é retornado em branco." vertex="1">
+          <mxGeometry height="93" width="165" x="846" y="754" as="geometry" />
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-42" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="solicitaChaveSimétrica( chave cifrada com chave pública do paciente)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="107.8" y="685" as="sourcePoint" />
+            <mxPoint x="-276.99999999999994" y="685" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qoco0XebtekA2PYRE0KU-43" edge="1" parent="Qoco0XebtekA2PYRE0KU-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Chave simétrica decifrada para descriptografar histórico de paciente">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-272" y="742" as="sourcePoint" />
+            <mxPoint x="104.5" y="742" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(C) - Diagrama de sequencia" id="aUqGl5ymF1zQGwo0gvq7">
+    <mxGraphModel dx="1898" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="46yqm1YpQ-pToA3iFamH-0" />
+        <mxCell id="46yqm1YpQ-pToA3iFamH-1" parent="46yqm1YpQ-pToA3iFamH-0" />
+        <mxCell id="46yqm1YpQ-pToA3iFamH-2" parent="46yqm1YpQ-pToA3iFamH-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Mostrar dados de histórico médico para o próprio paciente&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-484" y="-211" as="geometry" />
+        </mxCell>
+        <mxCell id="46yqm1YpQ-pToA3iFamH-3" parent="46yqm1YpQ-pToA3iFamH-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="737" width="100" x="55" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-3" parent="46yqm1YpQ-pToA3iFamH-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="48" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-4" edge="1" parent="46yqm1YpQ-pToA3iFamH-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="xJPJlOXku1ZTReyZZGjy-3" value="Recupera chave simétrica de criptografia, cifrada&lt;br&gt;com a chave pública desse paciente, se existir. Recupera&lt;br&gt;também o código hash dos dados recentes do histórico. Para &lt;br&gt;fins de auditoria, registra esse evento&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" x="-0.0024" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="83" y="390" />
+            </Array>
+            <mxPoint x="53" y="360" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hNq91jlbfr5Vdav8pIG5-5" parent="46yqm1YpQ-pToA3iFamH-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="48" y="223" as="geometry" />
+        </mxCell>
+        <mxCell id="46yqm1YpQ-pToA3iFamH-10" parent="46yqm1YpQ-pToA3iFamH-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="&amp;nbsp;Paciente" vertex="1">
+          <mxGeometry height="738" width="20" x="-469" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="46yqm1YpQ-pToA3iFamH-12" parent="46yqm1YpQ-pToA3iFamH-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlEntity;" value="Banco de dados" vertex="1">
+          <mxGeometry height="744.5" width="40" x="472" y="-171.5" as="geometry" />
+        </mxCell>
+        <mxCell id="46yqm1YpQ-pToA3iFamH-16" parent="46yqm1YpQ-pToA3iFamH-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do paciente" vertex="1">
+          <mxGeometry height="738" width="100" x="-330" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-8" parent="46yqm1YpQ-pToA3iFamH-16" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="662" as="geometry" />
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-9" edge="1" parent="46yqm1YpQ-pToA3iFamH-16" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="xJPJlOXku1ZTReyZZGjy-8" value="Descriptografa dados&lt;br&gt;Valida dados recentes (do último médico ) com o código hash">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="82" y="672" />
+            </Array>
+            <mxPoint x="52" y="642" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-10" edge="1" parent="46yqm1YpQ-pToA3iFamH-16" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Mostra histórico aberto">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="53" y="700" as="sourcePoint" />
+            <mxPoint x="-126" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ID-2qOK_e97PVlRaQdma-0" parent="46yqm1YpQ-pToA3iFamH-16" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="98" width="10" x="47" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ID-2qOK_e97PVlRaQdma-2" parent="46yqm1YpQ-pToA3iFamH-16" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="51" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="ID-2qOK_e97PVlRaQdma-3" edge="1" parent="46yqm1YpQ-pToA3iFamH-16" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="ID-2qOK_e97PVlRaQdma-2" value="Decifra a chave simétrica com a chave privada&lt;div&gt;&lt;br/&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" x="-0.0024" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="86" y="445" />
+            </Array>
+            <mxPoint x="56" y="415" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-0" edge="1" parent="46yqm1YpQ-pToA3iFamH-1" source="46yqm1YpQ-pToA3iFamH-10" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="46yqm1YpQ-pToA3iFamH-16" value="Solicita abrir histórico">
+          <mxGeometry relative="1" width="80" x="-0.0335" y="11" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-382" y="-65" />
+            </Array>
+            <mxPoint x="147" y="188" as="sourcePoint" />
+            <mxPoint x="227" y="188" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-1" edge="1" parent="46yqm1YpQ-pToA3iFamH-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicitar histórico (Assinatura do AccountID)">
+          <mxGeometry relative="1" width="80" x="-0.0494" y="8" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-198.5" y="37" />
+            </Array>
+            <mxPoint x="-274" y="37" as="sourcePoint" />
+            <mxPoint x="111" y="37" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-5" edge="1" parent="46yqm1YpQ-pToA3iFamH-1" source="xJPJlOXku1ZTReyZZGjy-3" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Retorna hash e chave simétrica cifrada de criptografia">
+          <mxGeometry relative="1" x="-0.0003" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="228" y="405" as="sourcePoint" />
+            <mxPoint x="-279.5" y="234" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hNq91jlbfr5Vdav8pIG5-0" parent="46yqm1YpQ-pToA3iFamH-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="97" width="10" x="-284" y="-43" as="geometry" />
+        </mxCell>
+        <mxCell id="hNq91jlbfr5Vdav8pIG5-1" edge="1" parent="46yqm1YpQ-pToA3iFamH-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="hNq91jlbfr5Vdav8pIG5-0" value="Assina seu AccountID com sua chave privada.">
+          <mxGeometry relative="1" x="0.3647" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-249" y="-33" />
+            </Array>
+            <mxPoint x="-279" y="-63" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hNq91jlbfr5Vdav8pIG5-2" parent="46yqm1YpQ-pToA3iFamH-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="Está usando criptografia assimétrica" vertex="1">
+          <mxGeometry height="80" width="120" x="-191" y="-123" as="geometry" />
+        </mxCell>
+        <mxCell id="hNq91jlbfr5Vdav8pIG5-6" edge="1" parent="46yqm1YpQ-pToA3iFamH-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="hNq91jlbfr5Vdav8pIG5-5" value="Verifica a assinatura com a chave pública do usuário.">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="143" y="38" />
+              <mxPoint x="143" y="65" />
+            </Array>
+            <mxPoint x="113" y="38" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hNq91jlbfr5Vdav8pIG5-7" parent="46yqm1YpQ-pToA3iFamH-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="Com o AccountID de querm chama, determina a chave pública e usa essa para validar a assinatura. Com a assinatura validada, o AccountID estará confirmado. Criptografia assimétrica para autenticação." vertex="1">
+          <mxGeometry height="125" width="262" x="167" y="-88" as="geometry" />
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-6" edge="1" parent="46yqm1YpQ-pToA3iFamH-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Lê dados do banco de dados, se existir">
+          <mxGeometry relative="1" width="80" x="-0.5288" y="8" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-279" y="355" as="sourcePoint" />
+            <mxPoint x="493.5" y="355" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xJPJlOXku1ZTReyZZGjy-7" edge="1" parent="46yqm1YpQ-pToA3iFamH-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Dados retornados">
+          <mxGeometry relative="1" x="-0.5663" y="-6" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <mxPoint x="489.5" y="387" as="sourcePoint" />
+            <mxPoint x="-283" y="387" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(F) - Diagrama de sequencia" id="AprssJb9LJ4uEziZ2xCB">
+    <mxGraphModel dx="1498" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="6owLcmQNWaLD2bkDDfSz-0" />
+        <mxCell id="6owLcmQNWaLD2bkDDfSz-1" parent="6owLcmQNWaLD2bkDDfSz-0" />
+        <mxCell id="6owLcmQNWaLD2bkDDfSz-2" parent="6owLcmQNWaLD2bkDDfSz-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Profissional cria histórico médico, com tempo limitado.&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-105" y="-230" as="geometry" />
+        </mxCell>
+        <mxCell id="6owLcmQNWaLD2bkDDfSz-3" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="635.5" width="100" x="-97" y="-173.5" as="geometry" />
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-7" parent="6owLcmQNWaLD2bkDDfSz-3" style="html=1;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="48" y="386.5" as="geometry" />
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-8" edge="1" parent="6owLcmQNWaLD2bkDDfSz-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="I18jny99pW0yikPcCcll-7" value="Verifica se ainda há tempo para salvar o novo histórico, e não há pausa&lt;br&gt;Verifica se assinatura é válida. Verifica isso com chave pública do médico&lt;br&gt;Registra esse evento para fins de auditória">
+          <mxGeometry relative="1" x="0.0155" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="83" y="396.5" />
+            </Array>
+            <mxPoint x="53" y="366.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CeyvcBepX2bN3nDBYwxK-4" edge="1" parent="6owLcmQNWaLD2bkDDfSz-3" source="I18jny99pW0yikPcCcll-7" style="edgeStyle=none;curved=0;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=5;exitPerimeter=0;fontSize=12;startSize=8;endSize=8;" target="I18jny99pW0yikPcCcll-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6owLcmQNWaLD2bkDDfSz-11" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="Médico" vertex="1">
+          <mxGeometry height="673" width="20" x="621" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="7wR9JVruGL92VB3jeAl7-1" edge="1" parent="6owLcmQNWaLD2bkDDfSz-11" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="6owLcmQNWaLD2bkDDfSz-13" value="Cria dados de histórico médico">
+          <mxGeometry relative="1" x="0.787" y="-16" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-127" y="78" />
+              <mxPoint x="-127" y="78" />
+            </Array>
+            <mxPoint x="10" y="78" as="sourcePoint" />
+            <mxPoint x="15" y="108" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6owLcmQNWaLD2bkDDfSz-12" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlEntity;" value="Dados de Histórico" vertex="1">
+          <mxGeometry height="669" width="40" x="818" y="-168" as="geometry" />
+        </mxCell>
+        <mxCell id="6owLcmQNWaLD2bkDDfSz-13" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do médico" vertex="1">
+          <mxGeometry height="675" width="100" x="389" y="-173" as="geometry" />
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-0" parent="6owLcmQNWaLD2bkDDfSz-13" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-1" edge="1" parent="6owLcmQNWaLD2bkDDfSz-13" source="6owLcmQNWaLD2bkDDfSz-13" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="I18jny99pW0yikPcCcll-0" value="Gera hash desses dados criados&lt;br&gt;Gera assinatura desse hash, com chave privada própria.">
+          <mxGeometry relative="1" x="-0.13" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="110" y="270" />
+              <mxPoint x="110" y="335" />
+            </Array>
+            <mxPoint x="54" y="153" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-9" parent="6owLcmQNWaLD2bkDDfSz-13" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="50.5" width="10" x="-443" y="483" as="geometry" />
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-10" edge="1" parent="6owLcmQNWaLD2bkDDfSz-13" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Gera nova chave simétrica de criptografia.&lt;br&gt;Cifra essa chave com a chave pública do&amp;nbsp; paciente.&lt;br&gt;Mantem essa chave cifrada no blockchain.&lt;br&gt;Mantem o hash recebido, associado à chave pública do paciente.&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" x="0.1058" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-402" y="490" />
+            </Array>
+            <mxPoint x="-432" y="460" as="sourcePoint" />
+            <mxPoint x="-427" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CeyvcBepX2bN3nDBYwxK-7" parent="6owLcmQNWaLD2bkDDfSz-13" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="-443" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="CeyvcBepX2bN3nDBYwxK-8" edge="1" parent="6owLcmQNWaLD2bkDDfSz-13" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="CeyvcBepX2bN3nDBYwxK-7" value="Cifra a chave simétrica com a chave pública do médico">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-408" y="550" />
+            </Array>
+            <mxPoint x="-438" y="520" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xJd-BfodU-Ghe2xJqFSm-0" edge="1" parent="6owLcmQNWaLD2bkDDfSz-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita salvar dados criados">
+          <mxGeometry relative="1" width="80" x="-0.1042" y="-7" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="629" y="-50" as="sourcePoint" />
+            <mxPoint x="437" y="-50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-2" edge="1" parent="6owLcmQNWaLD2bkDDfSz-1" source="I18jny99pW0yikPcCcll-0" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="SolicitaSalvar(novo hash, chave pública do paciente, Assinatura )">
+          <mxGeometry relative="1" width="80" x="0.0015" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="146" y="288" as="sourcePoint" />
+            <mxPoint x="-49.5" y="162" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WIJ0ACX14LQvA9WAbMYd-0" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0;" value="A chave pública do médico nesse registro tem finalidade apenas de rastreabilidade de profissionais que alteram esse histórico." vertex="1">
+          <mxGeometry height="159" width="161" x="841" y="231" as="geometry" />
+        </mxCell>
+        <mxCell id="LKc1GoJfOnSKQU1XHj5X-0" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=1;" value="É necessário gerar nova chave de criptografia, para que somente o médico atual do paciente consiga continuar vendo dados médicos. Ou seja, médicos anteriores não poderão mais ver esses dados." vertex="1">
+          <mxGeometry height="120" width="193" x="-245" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="CeyvcBepX2bN3nDBYwxK-3" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="Usa criptografia assimétrica aqui." vertex="1">
+          <mxGeometry height="118" width="142" x="656" y="-8" as="geometry" />
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-13" parent="6owLcmQNWaLD2bkDDfSz-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="434" y="439" as="geometry" />
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-14" edge="1" parent="6owLcmQNWaLD2bkDDfSz-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="I18jny99pW0yikPcCcll-13" value="Decifra chave simétrica com chave privada própria.&lt;br&gt;Criptografa histórico completo com nova chave de criptografia&lt;br&gt;Inclui chave pública do médico nesse dados criptografados">
+          <mxGeometry relative="1" x="-0.0597" y="15" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="469" y="449" />
+            </Array>
+            <mxPoint x="439" y="419" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-11" edge="1" parent="6owLcmQNWaLD2bkDDfSz-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Envia permissão de salvar histórico com chave de criptografia simétrica cifrada">
+          <mxGeometry relative="1" y="2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-44" y="412" as="sourcePoint" />
+            <mxPoint x="442" y="412" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="I18jny99pW0yikPcCcll-15" edge="1" parent="6owLcmQNWaLD2bkDDfSz-1" source="I18jny99pW0yikPcCcll-13" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" value="Salva histórico completo (PK = chave pública do paciente)">
+          <mxGeometry relative="1" width="80" x="-0.0013" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="145" y="416" as="sourcePoint" />
+            <mxPoint x="834.5" y="474" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Vrv7r1SRnKpLr83ZiAyL-0" parent="6owLcmQNWaLD2bkDDfSz-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0;" value="Isso gera um novo registro de histórico médico" vertex="1">
+          <mxGeometry height="80" width="120" x="841" y="396" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(G) - Diagrama de sequencia" id="AxquAHr7bqsFNEPA5Qh5">
+    <mxGraphModel dx="1498" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-0" />
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-1" parent="00XOE5f-tWUGGPdwpCw1-0" />
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-2" parent="00XOE5f-tWUGGPdwpCw1-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Profissional edita histórico médico, com tempo limitado.&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-105" y="-230" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-3" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="635.5" width="100" x="-97" y="-173.5" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-4" parent="00XOE5f-tWUGGPdwpCw1-3" style="html=1;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="48" y="386.5" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-5" edge="1" parent="00XOE5f-tWUGGPdwpCw1-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="00XOE5f-tWUGGPdwpCw1-4" value="Verifica se ainda há tempo para salvar o novo histórico, e não há pausa&lt;br&gt;Verifica se assinatura é válida. Verifica isso com chave pública do médico&lt;br&gt;Registra esse evento para fins de auditória">
+          <mxGeometry relative="1" x="0.0155" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="83" y="396.5" />
+            </Array>
+            <mxPoint x="53" y="366.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-6" edge="1" parent="00XOE5f-tWUGGPdwpCw1-3" source="00XOE5f-tWUGGPdwpCw1-4" style="edgeStyle=none;curved=0;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=5;exitPerimeter=0;fontSize=12;startSize=8;endSize=8;" target="00XOE5f-tWUGGPdwpCw1-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-7" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="Médico" vertex="1">
+          <mxGeometry height="673" width="20" x="621" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-8" edge="1" parent="00XOE5f-tWUGGPdwpCw1-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="00XOE5f-tWUGGPdwpCw1-10" value="Edita dados de histórico médico">
+          <mxGeometry relative="1" x="0.9033" y="-23" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-127" y="78" />
+              <mxPoint x="-127" y="78" />
+            </Array>
+            <mxPoint x="10" y="78" as="sourcePoint" />
+            <mxPoint x="15" y="108" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-9" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlEntity;" value="Dados de Histórico" vertex="1">
+          <mxGeometry height="669" width="40" x="818" y="-168" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-10" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do médico" vertex="1">
+          <mxGeometry height="675" width="100" x="389" y="-173" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-11" parent="00XOE5f-tWUGGPdwpCw1-10" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-12" edge="1" parent="00XOE5f-tWUGGPdwpCw1-10" source="00XOE5f-tWUGGPdwpCw1-10" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="00XOE5f-tWUGGPdwpCw1-11" value="Gera hash desses dados editados&lt;br&gt;Gera assinatura desse hash, com chave privada própria.">
+          <mxGeometry relative="1" x="-0.13" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="110" y="270" />
+              <mxPoint x="110" y="335" />
+            </Array>
+            <mxPoint x="54" y="153" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-13" parent="00XOE5f-tWUGGPdwpCw1-10" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="50.5" width="10" x="-443" y="483" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-14" edge="1" parent="00XOE5f-tWUGGPdwpCw1-10" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Gera nova chave simétrica de criptografia.&lt;br&gt;Cifra essa chave com a chave pública do&amp;nbsp; paciente.&lt;br&gt;Mantem essa chave cifrada no blockchain.&lt;br&gt;Mantem o hash recebido, associado à chave pública do paciente.&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" x="0.1058" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-402" y="490" />
+            </Array>
+            <mxPoint x="-432" y="460" as="sourcePoint" />
+            <mxPoint x="-427" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-15" parent="00XOE5f-tWUGGPdwpCw1-10" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="-443" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-16" edge="1" parent="00XOE5f-tWUGGPdwpCw1-10" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="00XOE5f-tWUGGPdwpCw1-15" value="Cifra a chave simétrica com a chave pública do médico">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-408" y="550" />
+            </Array>
+            <mxPoint x="-438" y="520" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GoOh_fGDM8PwQwadSzWT-1" parent="00XOE5f-tWUGGPdwpCw1-10" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="50" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="GoOh_fGDM8PwQwadSzWT-2" edge="1" parent="00XOE5f-tWUGGPdwpCw1-10" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="GoOh_fGDM8PwQwadSzWT-1" value="Verifica se chave pública &lt;br&gt;do médico está registrada &lt;br&gt;no histórico&amp;nbsp;&amp;nbsp;">
+          <mxGeometry relative="1" x="0.0588" y="8" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="85" y="184" />
+            </Array>
+            <mxPoint x="55" y="154" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-17" edge="1" parent="00XOE5f-tWUGGPdwpCw1-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Solicita salvar dados editados">
+          <mxGeometry relative="1" width="80" x="-0.1083" y="-7" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="629" y="-50" as="sourcePoint" />
+            <mxPoint x="437" y="-50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-18" edge="1" parent="00XOE5f-tWUGGPdwpCw1-1" source="00XOE5f-tWUGGPdwpCw1-11" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="SolicitaSalvarEdição(novo hash, chave pública do paciente, Assinatura )">
+          <mxGeometry relative="1" width="80" x="0.0015" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="146" y="288" as="sourcePoint" />
+            <mxPoint x="-49.5" y="162" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-19" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0;" value="A chave pública do médico nesse registro tem finalidade apenas de rastreabilidade de profissionais que alteram esse histórico." vertex="1">
+          <mxGeometry height="159" width="161" x="841" y="231" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-20" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=1;" value="É necessário gerar nova chave de criptografia, para que somente o médico atual do paciente consiga continuar vendo dados médicos. Ou seja, médicos anteriores não poderão mais ver esses dados." vertex="1">
+          <mxGeometry height="120" width="193" x="-245" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-21" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="Usa criptografia assimétrica aqui." vertex="1">
+          <mxGeometry height="118" width="142" x="656" y="-8" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-22" parent="00XOE5f-tWUGGPdwpCw1-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="434" y="439" as="geometry" />
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-23" edge="1" parent="00XOE5f-tWUGGPdwpCw1-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="00XOE5f-tWUGGPdwpCw1-22" value="Decifra chave simétrica com chave privada própria.&lt;br&gt;Criptografa histórico completo com nova chave de criptografia&lt;br&gt;Inclui chave pública do médico nesse dados criptografados">
+          <mxGeometry relative="1" x="-0.2233" y="7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="469" y="449" />
+            </Array>
+            <mxPoint x="439" y="419" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-24" edge="1" parent="00XOE5f-tWUGGPdwpCw1-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Envia permissão de salvar histórico com chave de criptografia simétrica cifrada">
+          <mxGeometry relative="1" y="2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-44" y="412" as="sourcePoint" />
+            <mxPoint x="442" y="412" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-25" edge="1" parent="00XOE5f-tWUGGPdwpCw1-1" source="00XOE5f-tWUGGPdwpCw1-22" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;exitX=1;exitY=1;exitDx=0;exitDy=-5;exitPerimeter=0;" value="Salva histórico completo (PK = chave pública do paciente)">
+          <mxGeometry relative="1" width="80" x="-0.0013" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="145" y="416" as="sourcePoint" />
+            <mxPoint x="834.5" y="474" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="00XOE5f-tWUGGPdwpCw1-26" parent="00XOE5f-tWUGGPdwpCw1-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0;" value="Isso não gera um novo registro de histórico médico" vertex="1">
+          <mxGeometry height="80" width="120" x="841" y="396" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(H) - Diagrama de sequencia" id="ZgB0KLnoAGHfccv8BRWE">
+    <mxGraphModel dx="1898" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="lonw0QcoGaPon839tRbG-0" />
+        <mxCell id="lonw0QcoGaPon839tRbG-1" parent="lonw0QcoGaPon839tRbG-0" />
+        <mxCell id="lonw0QcoGaPon839tRbG-2" parent="lonw0QcoGaPon839tRbG-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Revogar consenso de acesso a histórico médico&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-484" y="-211" as="geometry" />
+        </mxCell>
+        <mxCell id="lonw0QcoGaPon839tRbG-3" parent="lonw0QcoGaPon839tRbG-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="372.75" width="100" x="-60" y="-177.75" as="geometry" />
+        </mxCell>
+        <mxCell id="OekFJXh2JK59PtcSNTCB-4" parent="lonw0QcoGaPon839tRbG-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="236.75" as="geometry" />
+        </mxCell>
+        <mxCell id="OekFJXh2JK59PtcSNTCB-5" edge="1" parent="lonw0QcoGaPon839tRbG-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="OekFJXh2JK59PtcSNTCB-4" value="Valida a assinatura com a chave pública do paciente.">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="82" y="246.75" />
+            </Array>
+            <mxPoint x="52" y="216.75" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lonw0QcoGaPon839tRbG-8" parent="lonw0QcoGaPon839tRbG-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="&amp;nbsp;Paciente" vertex="1">
+          <mxGeometry height="263" width="20" x="-469" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="lonw0QcoGaPon839tRbG-17" parent="lonw0QcoGaPon839tRbG-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do paciente" vertex="1">
+          <mxGeometry height="276" width="100" x="-330" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="4ky4xcrPUoBNfPfgr0ZC-0" edge="1" parent="lonw0QcoGaPon839tRbG-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Revogar consenso">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-461" y="-76" as="sourcePoint" />
+            <mxPoint x="-282" y="-76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4ky4xcrPUoBNfPfgr0ZC-1" edge="1" parent="lonw0QcoGaPon839tRbG-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="lonw0QcoGaPon839tRbG-3" value="Revogar consenso (Assinatura do Paciente)">
+          <mxGeometry relative="1" width="80" x="0.039" y="6" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-280" y="36" as="sourcePoint" />
+            <mxPoint x="-47" y="36" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OekFJXh2JK59PtcSNTCB-0" parent="lonw0QcoGaPon839tRbG-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="-285" y="-55" as="geometry" />
+        </mxCell>
+        <mxCell id="OekFJXh2JK59PtcSNTCB-1" edge="1" parent="lonw0QcoGaPon839tRbG-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="OekFJXh2JK59PtcSNTCB-0" value="Cria assinatura do próprio &lt;br&gt;AccountID com sua própria &lt;br&gt;chave privada">
+          <mxGeometry relative="1" x="0.2" y="3" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-250" y="-45" />
+            </Array>
+            <mxPoint x="-280" y="-75" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OekFJXh2JK59PtcSNTCB-3" parent="lonw0QcoGaPon839tRbG-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="Isso é autenticação com criptografia assimétrica" vertex="1">
+          <mxGeometry height="80" width="120" x="-223" y="-154" as="geometry" />
+        </mxCell>
+        <mxCell id="4ky4xcrPUoBNfPfgr0ZC-2" parent="lonw0QcoGaPon839tRbG-1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="-15" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="4ky4xcrPUoBNfPfgr0ZC-3" edge="1" parent="lonw0QcoGaPon839tRbG-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="4ky4xcrPUoBNfPfgr0ZC-2" value="Destrói associação entre chave pública de paciente&amp;nbsp; e chave&lt;br&gt;publica de médico&lt;br&gt;Destrói contador regressivo de tempo.&lt;div&gt;Registra evento para fins de auditória&lt;/div&gt;">
+          <mxGeometry relative="1" x="0.0353" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="20" y="140" />
+            </Array>
+            <mxPoint x="-10" y="110" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(I) - Diagrama de sequencia" id="bhwfoXrA5c__sZbTMP9Q">
+    <mxGraphModel dx="1898" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-0" />
+        <mxCell id="_enMUCJsDLeDguIVMp5z-1" parent="_enMUCJsDLeDguIVMp5z-0" />
+        <mxCell id="_enMUCJsDLeDguIVMp5z-2" parent="_enMUCJsDLeDguIVMp5z-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Pausar consenso de acesso a histórico médico&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-484" y="-211" as="geometry" />
+        </mxCell>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-3" parent="_enMUCJsDLeDguIVMp5z-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="733" width="100" x="-80" y="-173" as="geometry" />
+        </mxCell>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-4" parent="_enMUCJsDLeDguIVMp5z-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="47" y="369" as="geometry" />
+        </mxCell>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-5" edge="1" parent="_enMUCJsDLeDguIVMp5z-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="_enMUCJsDLeDguIVMp5z-4" value="Pausa contador regressivo de tempo, da associação&lt;br&gt;entre chave pública de paciente e publica de médico&lt;br&gt;Marca o flag de Pausa com true.&lt;br&gt;Registrar evento para fins de auditoria&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" x="-0.1068" y="8" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="82" y="379" />
+            </Array>
+            <mxPoint x="52" y="349" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HMLdekn3ItOzPDwxiQcl-3" parent="_enMUCJsDLeDguIVMp5z-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="45" y="653" as="geometry" />
+        </mxCell>
+        <mxCell id="HMLdekn3ItOzPDwxiQcl-4" edge="1" parent="_enMUCJsDLeDguIVMp5z-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="HMLdekn3ItOzPDwxiQcl-3" value="Reativar contagem regressiva de tempo, do ponto que parou,&lt;br&gt;da associação entre chave privada de médico e pública de paciente.&lt;br&gt;Marca o flag de pausa com false.">
+          <mxGeometry relative="1" x="0.0118" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="80" y="663" />
+            </Array>
+            <mxPoint x="50" y="633" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qKuc4IY0rLewSvzmYCYk-1" parent="_enMUCJsDLeDguIVMp5z-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="26" width="10" x="45" y="311" as="geometry" />
+        </mxCell>
+        <mxCell id="WEs6uC0I5xRy0N4y_32b-2" parent="_enMUCJsDLeDguIVMp5z-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="26" width="10" x="47" y="592" as="geometry" />
+        </mxCell>
+        <mxCell id="WEs6uC0I5xRy0N4y_32b-3" edge="1" parent="_enMUCJsDLeDguIVMp5z-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Valida a assinatura com a chave pública do paciente.">
+          <mxGeometry relative="1" x="0.008" y="7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="81" y="602" />
+            </Array>
+            <mxPoint x="51" y="572" as="sourcePoint" />
+            <mxPoint x="56" y="602.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-6" parent="_enMUCJsDLeDguIVMp5z-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="&amp;nbsp;Paciente" vertex="1">
+          <mxGeometry height="490" width="20" x="-469" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-7" parent="_enMUCJsDLeDguIVMp5z-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do paciente" vertex="1">
+          <mxGeometry height="655" width="100" x="-330" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="F6TVtssnYjdr8JSjcfU2-1" parent="_enMUCJsDLeDguIVMp5z-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="42" width="10" x="45" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="WEs6uC0I5xRy0N4y_32b-1" parent="_enMUCJsDLeDguIVMp5z-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="42" width="10" x="45" y="448" as="geometry" />
+        </mxCell>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-8" edge="1" parent="_enMUCJsDLeDguIVMp5z-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Pausar consenso">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-461" y="-76" as="sourcePoint" />
+            <mxPoint x="-282" y="-76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_enMUCJsDLeDguIVMp5z-9" edge="1" parent="_enMUCJsDLeDguIVMp5z-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="pausar consenso (Assinatura do paciente)">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-282" y="113" as="sourcePoint" />
+            <mxPoint x="-30.5" y="113" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HMLdekn3ItOzPDwxiQcl-0" edge="1" parent="_enMUCJsDLeDguIVMp5z-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Reativar consenso">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-461" y="254" as="sourcePoint" />
+            <mxPoint x="-282.5" y="254" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HMLdekn3ItOzPDwxiQcl-1" edge="1" parent="_enMUCJsDLeDguIVMp5z-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Reativar consenso (Assinatura do&amp;nbsp; paciente)">
+          <mxGeometry relative="1" width="80" x="0.0236" y="11" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-277" y="377" as="sourcePoint" />
+            <mxPoint x="-27" y="377" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F6TVtssnYjdr8JSjcfU2-0" edge="1" parent="_enMUCJsDLeDguIVMp5z-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Cria assinatura do próprio &lt;br&gt;AccountID com sua própria &lt;br&gt;chave privada">
+          <mxGeometry relative="1" x="0.2" y="3" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-249" y="-32" />
+            </Array>
+            <mxPoint x="-279" y="-62" as="sourcePoint" />
+            <mxPoint x="-274" y="-32" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kXHFH7brCf_EBJljp8G0-0" parent="_enMUCJsDLeDguIVMp5z-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="Isso é autenticação com criptografia assimétrica" vertex="1">
+          <mxGeometry height="80" width="120" x="-215" y="-140" as="geometry" />
+        </mxCell>
+        <mxCell id="qKuc4IY0rLewSvzmYCYk-0" edge="1" parent="_enMUCJsDLeDguIVMp5z-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Valida a assinatura com a chave pública do paciente.">
+          <mxGeometry relative="1" x="0.008" y="7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-1" y="148" />
+            </Array>
+            <mxPoint x="-31" y="118" as="sourcePoint" />
+            <mxPoint x="-26" y="148.25" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WEs6uC0I5xRy0N4y_32b-0" edge="1" parent="_enMUCJsDLeDguIVMp5z-1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Cria assinatura do próprio &lt;br&gt;AccountID com sua própria &lt;br&gt;chave privada">
+          <mxGeometry relative="1" x="0.2" y="3" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-252" y="296" />
+            </Array>
+            <mxPoint x="-282" y="266" as="sourcePoint" />
+            <mxPoint x="-277" y="296" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(A) - Diagrama de sequencia" id="17GiWnC3UN3RTcSjqKul">
+    <mxGraphModel dx="1898" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-0" />
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-1" parent="-fsmnZQL-Xbglr4XlmHC-0" />
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-2" parent="-fsmnZQL-Xbglr4XlmHC-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Cadastrar paciente&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-488" y="-222" as="geometry" />
+        </mxCell>
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-3" parent="-fsmnZQL-Xbglr4XlmHC-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="493" width="100" x="183" y="-163" as="geometry" />
+        </mxCell>
+        <mxCell id="AWjx8j6_NKl7i35Dh6VK-1" parent="-fsmnZQL-Xbglr4XlmHC-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="94" width="10" x="50" y="249" as="geometry" />
+        </mxCell>
+        <mxCell id="AWjx8j6_NKl7i35Dh6VK-2" edge="1" parent="-fsmnZQL-Xbglr4XlmHC-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="AWjx8j6_NKl7i35Dh6VK-1" value="Associa chave pública com AccountID">
+          <mxGeometry relative="1" x="-0.0024" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="85" y="259" />
+            </Array>
+            <mxPoint x="55" y="229" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-8" parent="-fsmnZQL-Xbglr4XlmHC-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="&amp;nbsp;Paciente" vertex="1">
+          <mxGeometry height="502" width="20" x="-469" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-9" parent="-fsmnZQL-Xbglr4XlmHC-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do paciente" vertex="1">
+          <mxGeometry height="507" width="100" x="-330" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="DcaIK2US8e0RZRUcmwTG-0" parent="-fsmnZQL-Xbglr4XlmHC-9" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="49" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="DcaIK2US8e0RZRUcmwTG-1" edge="1" parent="-fsmnZQL-Xbglr4XlmHC-9" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="DcaIK2US8e0RZRUcmwTG-0" value="Gera a chave privada do usuário.&lt;br&gt;Gera a chave pública derivada da privada, para&lt;br&gt;criptografia assimétrica">
+          <mxGeometry relative="1" x="0.3402" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="84" y="122" />
+            </Array>
+            <mxPoint x="54" y="92" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-10" edge="1" parent="-fsmnZQL-Xbglr4XlmHC-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Criar cadastro próprio">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-461" y="-76" as="sourcePoint" />
+            <mxPoint x="-282" y="-76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-fsmnZQL-Xbglr4XlmHC-11" edge="1" parent="-fsmnZQL-Xbglr4XlmHC-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Criar cadastro (chave pública)">
+          <mxGeometry relative="1" width="80" x="0.02" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-282" y="65" as="sourcePoint" />
+            <mxPoint x="232.5" y="65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-6MwrlV3IzxY4TijJxsY-0" parent="-fsmnZQL-Xbglr4XlmHC-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlEntity;" value="Banco de dados" vertex="1">
+          <mxGeometry height="532" width="40" x="634" y="-192" as="geometry" />
+        </mxCell>
+        <mxCell id="6KqriodOS8KsCd5cdUks-0" edge="1" parent="-fsmnZQL-Xbglr4XlmHC-1" source="-fsmnZQL-Xbglr4XlmHC-9" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" value="Cria histórico em blank, associado à chave pública do paciente">
+          <mxGeometry relative="1" x="-0.1258" y="17" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="247" y="240" as="sourcePoint" />
+            <mxPoint x="656.5" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YXgueTmbul-mnXTSF4ga-0" edge="1" parent="-fsmnZQL-Xbglr4XlmHC-1" source="-fsmnZQL-Xbglr4XlmHC-8" style="endArrow=block;startArrow=block;endFill=1;startFill=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" target="-fsmnZQL-Xbglr4XlmHC-9" value="Certifica os dados fornecidos, via SMS ou MFA">
+          <mxGeometry relative="1" width="160" x="-0.5716" y="12" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-372" y="28" />
+            </Array>
+            <mxPoint x="-281" y="123" as="sourcePoint" />
+            <mxPoint x="232.5" y="123" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DcaIK2US8e0RZRUcmwTG-2" parent="-fsmnZQL-Xbglr4XlmHC-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="A chave privada&amp;nbsp;&lt;br&gt;NUNCA sai do dispositivo do paciente" vertex="1">
+          <mxGeometry height="102" width="215" x="-174" y="-172" as="geometry" />
+        </mxCell>
+        <mxCell id="DcaIK2US8e0RZRUcmwTG-3" edge="1" parent="-fsmnZQL-Xbglr4XlmHC-1" source="AWjx8j6_NKl7i35Dh6VK-1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Cadastro realizadoi !">
+          <mxGeometry relative="1" x="0.0643" y="-2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-200" y="164" as="sourcePoint" />
+            <mxPoint x="-280" y="164" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DcaIK2US8e0RZRUcmwTG-5" parent="-fsmnZQL-Xbglr4XlmHC-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Se o paciente perder a chave privada ele perderá o seu histórico médico. Isso é uma decisão de projeto. Artifícios para evitar esse problema podem ser requisitos futuros para esse projeto." vertex="1">
+          <mxGeometry height="30" width="637" x="-269" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="DcaIK2US8e0RZRUcmwTG-6" parent="-fsmnZQL-Xbglr4XlmHC-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.54;" value="Chave pública é PK." vertex="1">
+          <mxGeometry height="80" width="120" x="427" y="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="(B) - Diagrama de sequencia" id="ynMi107HyW8tX0VZzWNr">
+    <mxGraphModel dx="1898" dy="1053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-0" />
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-1" parent="B2QsMAFe-kPuwe-N2OIU-0" />
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-2" parent="B2QsMAFe-kPuwe-N2OIU-1" style="text;html=1;whiteSpace=wrap;strokeColor=#006EAF;fillColor=light-dark(#FFFFFF,#EDFF4C);align=center;verticalAlign=middle;rounded=0;fontColor=#ffffff;" value="&lt;b&gt;Cadastrar Médico&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="498" x="-488" y="-222" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-3" parent="B2QsMAFe-kPuwe-N2OIU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Polkadot SDK (substrate)" vertex="1">
+          <mxGeometry height="493" width="100" x="183" y="-163" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-4" parent="B2QsMAFe-kPuwe-N2OIU-3" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="94" width="10" x="50" y="249" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-5" edge="1" parent="B2QsMAFe-kPuwe-N2OIU-3" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="B2QsMAFe-kPuwe-N2OIU-4" value="Associa chave pública com AccountID">
+          <mxGeometry relative="1" x="-0.0024" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="85" y="259" />
+            </Array>
+            <mxPoint x="55" y="229" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-6" parent="B2QsMAFe-kPuwe-N2OIU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="&amp;nbsp;Paciente" vertex="1">
+          <mxGeometry height="502" width="20" x="-469" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-7" parent="B2QsMAFe-kPuwe-N2OIU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Front-end do paciente" vertex="1">
+          <mxGeometry height="507" width="100" x="-330" y="-166" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-8" parent="B2QsMAFe-kPuwe-N2OIU-7" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="" vertex="1">
+          <mxGeometry height="40" width="10" x="49" y="112" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-9" edge="1" parent="B2QsMAFe-kPuwe-N2OIU-7" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" target="B2QsMAFe-kPuwe-N2OIU-8" value="Gera a chave privada do usuário.&lt;br&gt;Gera a chave pública derivada da privada, para&lt;br&gt;criptografia assimétrica">
+          <mxGeometry relative="1" x="0.3402" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="84" y="122" />
+            </Array>
+            <mxPoint x="54" y="92" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-10" edge="1" parent="B2QsMAFe-kPuwe-N2OIU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Criar cadastro próprio">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-461" y="-76" as="sourcePoint" />
+            <mxPoint x="-282" y="-76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-11" edge="1" parent="B2QsMAFe-kPuwe-N2OIU-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;fontSize=12;startSize=8;endSize=8;" value="Criar cadastro (chave pública)">
+          <mxGeometry relative="1" width="80" x="0.02" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-282" y="65" as="sourcePoint" />
+            <mxPoint x="232.5" y="65" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-12" parent="B2QsMAFe-kPuwe-N2OIU-1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlEntity;" value="Banco de dados" vertex="1">
+          <mxGeometry height="532" width="40" x="634" y="-192" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-13" edge="1" parent="B2QsMAFe-kPuwe-N2OIU-1" source="B2QsMAFe-kPuwe-N2OIU-7" style="endArrow=classic;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" value="Cria registro do perfil do médico">
+          <mxGeometry relative="1" x="-0.1258" y="17" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="247" y="240" as="sourcePoint" />
+            <mxPoint x="656.5" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-14" edge="1" parent="B2QsMAFe-kPuwe-N2OIU-1" source="B2QsMAFe-kPuwe-N2OIU-6" style="endArrow=block;startArrow=block;endFill=1;startFill=1;html=1;rounded=0;fontSize=12;startSize=8;endSize=8;curved=1;" target="B2QsMAFe-kPuwe-N2OIU-7" value="Certifica os dados fornecidos, via SMS ou MFA">
+          <mxGeometry relative="1" width="160" x="-0.5716" y="12" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-372" y="28" />
+            </Array>
+            <mxPoint x="-281" y="123" as="sourcePoint" />
+            <mxPoint x="232.5" y="123" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-15" parent="B2QsMAFe-kPuwe-N2OIU-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;" value="A chave privada&amp;nbsp;&lt;br&gt;NUNCA sai do dispositivo do médico" vertex="1">
+          <mxGeometry height="102" width="215" x="-174" y="-172" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-16" edge="1" parent="B2QsMAFe-kPuwe-N2OIU-1" source="B2QsMAFe-kPuwe-N2OIU-4" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;fontSize=12;" value="Cadastro realizadoi !">
+          <mxGeometry relative="1" x="0.0643" y="-2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-200" y="164" as="sourcePoint" />
+            <mxPoint x="-280" y="164" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-17" parent="B2QsMAFe-kPuwe-N2OIU-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Se o médico perder a chave privada ele terá que se recadastrar no sistema." vertex="1">
+          <mxGeometry height="30" width="637" x="-269" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="B2QsMAFe-kPuwe-N2OIU-18" parent="B2QsMAFe-kPuwe-N2OIU-1" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;position2=0.17;" value="Chave pública é PK." vertex="1">
+          <mxGeometry height="80" width="120" x="298" y="129" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
