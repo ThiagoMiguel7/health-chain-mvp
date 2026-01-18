@@ -1,9 +1,6 @@
 use crate as pallet_medical_history;
 
-use frame_support::{
-    derive_impl,
-    traits::ConstU64,
-};
+use frame_support::{derive_impl, traits::ConstU64};
 use pallet_medical_permissions::MedicalPermissionsVerifier;
 use sp_runtime::BuildStorage;
 

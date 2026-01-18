@@ -15,17 +15,14 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 use frame_support::{
-    construct_runtime,
-    derive_impl,
+    construct_runtime, derive_impl,
     traits::{ConstBool, ConstU128, ConstU32, ConstU64, ConstU8, Get},
     weights::IdentityFee,
 };
 use sp_runtime::{
-    generic,
-    impl_opaque_keys,
+    generic, impl_opaque_keys,
     traits::{BlakeTwo256, IdentifyAccount, Verify},
-    MultiAddress,
-    MultiSignature,
+    MultiAddress, MultiSignature,
 };
 use sp_version::RuntimeVersion;
 
@@ -210,8 +207,7 @@ impl pallet_balances::Config for Runtime {
 
 impl pallet_transaction_payment::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
-    type OnChargeTransaction =
-        pallet_transaction_payment::FungibleAdapter<Balances, ()>;
+    type OnChargeTransaction = pallet_transaction_payment::FungibleAdapter<Balances, ()>;
     type OperationalFeeMultiplier = ConstU8<5>;
     type WeightToFee = IdentityFee<Balance>;
     type LengthToFee = IdentityFee<Balance>;
@@ -276,10 +272,7 @@ pub mod genesis_config_presets {
             _ => return None,
         };
 
-        Some(
-            serde_json::to_vec(&patch)
-                .expect("genesis preset patch serialization must succeed"),
-        )
+        Some(serde_json::to_vec(&patch).expect("genesis preset patch serialization must succeed"))
     }
 }
 

@@ -38,8 +38,7 @@ pub mod pallet {
     #[pallet::config]
     pub trait Config: frame_system::Config + pallet_timestamp::Config {
         /// The overarching runtime event type.
-        type RuntimeEvent: From<Event<Self>>
-            + IsType<<Self as frame_system::Config>::RuntimeEvent>;
+        type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
 
         /// Weight information for extrinsics.
         type WeightInfo: WeightInfo;
@@ -113,15 +112,11 @@ pub mod pallet {
         /// - [`Error::RecordNotFound`] if the record does not exist.
         #[pallet::call_index(0)]
         #[pallet::weight(<T as Config>::WeightInfo::read_own_data())]
-        pub fn read_own_data(
-            origin: OriginFor<T>,
-            file_hash: FileHash,
-        ) -> DispatchResult {
+        pub fn read_own_data(origin: OriginFor<T>, file_hash: FileHash) -> DispatchResult {
             let patient = ensure_signed(origin)?;
 
-            let record =
-                T::HistoryProvider::get_patient_record(&patient, &file_hash)
-                    .ok_or(Error::<T>::RecordNotFound)?;
+            let record = T::HistoryProvider::get_patient_record(&patient, &file_hash)
+                .ok_or(Error::<T>::RecordNotFound)?;
 
             Self::deposit_event(Event::OwnDataAccessed {
                 patient,
@@ -161,9 +156,8 @@ pub mod pallet {
                 return Err(Error::<T>::AccessDenied.into());
             }
 
-            let record =
-                T::HistoryProvider::get_patient_record(&patient_id, &file_hash)
-                    .ok_or(Error::<T>::RecordNotFound)?;
+            let record = T::HistoryProvider::get_patient_record(&patient_id, &file_hash)
+                .ok_or(Error::<T>::RecordNotFound)?;
 
             Self::deposit_event(Event::PatientDataAccessed {
                 doctor,

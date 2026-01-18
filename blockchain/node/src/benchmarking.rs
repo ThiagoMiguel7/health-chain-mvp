@@ -5,8 +5,7 @@
 use crate::service::FullClient;
 
 use healthchain_runtime::{
-    AccountId, BalancesCall, SystemCall, Runtime, RuntimeCall, UncheckedExtrinsic,
-    VERSION,
+    AccountId, BalancesCall, Runtime, RuntimeCall, SystemCall, UncheckedExtrinsic, VERSION,
 };
 use sc_cli::Result;
 use sc_client_api::UsageProvider;
@@ -64,12 +63,12 @@ pub struct TransferKeepAliveBuilder {
 
 impl TransferKeepAliveBuilder {
     /// Creates a new [`TransferKeepAliveBuilder`].
-    pub fn new(
-        client: Arc<FullClient>,
-        dest: AccountId,
-        value: u128,
-    ) -> Self {
-        Self { client, dest, value }
+    pub fn new(client: Arc<FullClient>, dest: AccountId, value: u128) -> Self {
+        Self {
+            client,
+            dest,
+            value,
+        }
     }
 }
 
@@ -110,7 +109,7 @@ pub fn create_benchmark_extrinsic(
     nonce: u32,
 ) -> Result<UncheckedExtrinsic> {
     let genesis_hash = client.usage_info().chain.genesis_hash;
-    
+
     // CORREÇÃO AQUI: Acessamos best_hash e best_number diretamente
     let best_hash = client.usage_info().chain.best_hash;
     let best_block = client.usage_info().chain.best_number;
@@ -144,11 +143,11 @@ pub fn create_benchmark_extrinsic(
             VERSION.transaction_version,
             genesis_hash,
             best_hash, // CheckEra
-            (), // CheckNonce
-            (), // CheckWeight
-            (), // ChargeTransactionPayment
-            None, // CheckMetadataHash
-            (), // WeightReclaim
+            (),        // CheckNonce
+            (),        // CheckWeight
+            (),        // ChargeTransactionPayment
+            None,      // CheckMetadataHash
+            (),        // WeightReclaim
         ),
     );
     let signature = raw_payload.using_encoded(|e| sender.sign(e));

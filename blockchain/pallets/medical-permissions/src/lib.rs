@@ -35,8 +35,7 @@ pub mod pallet {
         /// ⚠️ Note: This associated type is deprecated in newer
         /// Polkadot SDK versions, but kept here intentionally
         /// to preserve the current logic and structure.
-        type RuntimeEvent: From<Event<Self>>
-            + IsType<<Self as frame_system::Config>::RuntimeEvent>;
+        type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
 
         /// Weight information for extrinsics.
         type WeightInfo: WeightInfo;
@@ -118,16 +117,10 @@ pub mod pallet {
         /// - [`Error::SelfPermissionNotAllowed`] if `patient == doctor`
         #[pallet::call_index(0)]
         #[pallet::weight(10_000)]
-        pub fn grant_access(
-            origin: OriginFor<T>,
-            doctor: T::AccountId,
-        ) -> DispatchResult {
+        pub fn grant_access(origin: OriginFor<T>, doctor: T::AccountId) -> DispatchResult {
             let patient = ensure_signed(origin)?;
 
-            ensure!(
-                patient != doctor,
-                Error::<T>::SelfPermissionNotAllowed
-            );
+            ensure!(patient != doctor, Error::<T>::SelfPermissionNotAllowed);
 
             Permissions::<T>::insert(&patient, &doctor, true);
 
@@ -149,10 +142,7 @@ pub mod pallet {
         /// - [`Event::AccessRevoked`]
         #[pallet::call_index(1)]
         #[pallet::weight(10_000)]
-        pub fn revoke_access(
-            origin: OriginFor<T>,
-            doctor: T::AccountId,
-        ) -> DispatchResult {
+        pub fn revoke_access(origin: OriginFor<T>, doctor: T::AccountId) -> DispatchResult {
             let patient = ensure_signed(origin)?;
 
             Permissions::<T>::remove(&patient, &doctor);
@@ -178,9 +168,7 @@ pub trait MedicalPermissionsVerifier<AccountId> {
     fn has_access(patient: &AccountId, doctor: &AccountId) -> bool;
 }
 
-impl<T: pallet::Config> MedicalPermissionsVerifier<T::AccountId>
-    for pallet::Pallet<T>
-{
+impl<T: pallet::Config> MedicalPermissionsVerifier<T::AccountId> for pallet::Pallet<T> {
     fn has_access(patient: &T::AccountId, doctor: &T::AccountId) -> bool {
         // A patient always has access to their own data.
         if patient == doctor {
