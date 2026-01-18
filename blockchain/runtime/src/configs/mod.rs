@@ -166,6 +166,5 @@ impl pallet_sudo::Config for Runtime {
 
 /// Configure the pallet-template in pallets/template.
 impl pallet_medical_history::Config for Runtime {
-	type RuntimeEvent = RuntimeEvent;
 	type WeightInfo = pallet_medical_history::weights::SubstrateWeight<Runtime>;
 }
