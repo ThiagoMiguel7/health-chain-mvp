@@ -1,5 +1,15 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
+//! Medical History pallet (HealthChain).
+//!
+//! Stores immutable references (hashes) to medical files and indexes them by
+//! patient and doctor.
+//!
+//! ## Cross-pallet access
+//! This pallet exposes [`MedicalHistoryAccessor`] so other pallets (e.g. a
+//! reader pallet) can fetch a patient-scoped record without depending on
+//! internal storage layout.
+
 pub use pallet::*;
 
 #[cfg(test)]
@@ -14,13 +24,28 @@ mod benchmarking;
 pub mod weights;
 pub use weights::*;
 
-use pallet_medical_permissions::MedicalPermissionsVerifier;
-// CORREÇÃO: Adicionado o import necessário para a trait pública
 use frame_support::BoundedVec;
+use pallet_medical_permissions::MedicalPermissionsVerifier;
 
-// --- INTERFACE PÚBLICA PARA O LEITOR (ISSUE #11) ---
+/// Public interface used by external pallets (e.g. `medical-history-reader`)
+/// to query a patient's record.
+///
+/// This trait intentionally hides the pallet's internal storage details.
+///
+/// # Type parameters
+/// - `AccountId`: Runtime account identifier type.
+/// - `Moment`: Timestamp moment type.
+///
+/// # Notes
+/// The `file_hash` type is fixed to a bounded vector of length 64 bytes.
 pub trait MedicalHistoryAccessor<AccountId, Moment> {
-    fn get_patient_record(patient: &AccountId, file_hash: &BoundedVec<u8, frame_support::traits::ConstU32<64>>) -> Option<MedicalRecord<AccountId, Moment>>;
+    /// Fetches a medical record belonging to `patient` with the given `file_hash`.
+    ///
+    /// Returns `Some(record)` if the record exists for that patient, otherwise `None`.
+    fn get_patient_record(
+        patient: &AccountId,
+        file_hash: &BoundedVec<u8, frame_support::traits::ConstU32<64>>,
+    ) -> Option<MedicalRecord<AccountId, Moment>>;
 }
 
 #[frame_support::pallet]
@@ -29,30 +54,50 @@ pub mod pallet {
     use frame_support::pallet_prelude::*;
     use frame_system::pallet_prelude::*;
 
+    /// Hash of a medical file (fixed-length 64 bytes).
     pub type FileHash = BoundedVec<u8, ConstU32<64>>;
 
     #[pallet::pallet]
     pub struct Pallet<T>(_);
 
+    /// Pallet configuration.
     #[pallet::config]
     pub trait Config: frame_system::Config + pallet_timestamp::Config {
+        /// Weight information for extrinsics.
         type WeightInfo: WeightInfo;
+
+        /// Permissions verifier used to authorize doctors.
         type Permissions: MedicalPermissionsVerifier<Self::AccountId>;
     }
 
+    /// Represents a medical record reference stored on-chain.
+    ///
+    /// This struct stores metadata about a medical file hash:
+    /// - who created it (`created_by`)
+    /// - when it was created (`created_at`)
+    /// - the file hash itself (`file_hash`)
     #[derive(Encode, Decode, Clone, PartialEq, Eq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
     pub struct MedicalRecord<AccountId, Moment> {
+        /// The account that created the record (doctor).
         pub created_by: AccountId,
+        /// Timestamp when the record was created.
         pub created_at: Moment,
+        /// File hash reference.
         pub file_hash: FileHash,
     }
 
+    /// Global index: `file_hash -> record`.
     #[pallet::storage]
     #[pallet::getter(fn records)]
-    pub type Records<T: Config> =
-        StorageMap<_, Blake2_128Concat, FileHash, MedicalRecord<T::AccountId, T::Moment>, OptionQuery>;
+    pub type Records<T: Config> = StorageMap<
+        _,
+        Blake2_128Concat,
+        FileHash,
+        MedicalRecord<T::AccountId, T::Moment>,
+        OptionQuery,
+    >;
 
-    // Indexador Médico -> Arquivos
+    /// Doctor index: `(doctor, file_hash) -> (patient, created_at)`.
     #[pallet::storage]
     #[pallet::getter(fn doctor_records)]
     pub type DoctorRecords<T: Config> = StorageDoubleMap<
@@ -65,40 +110,68 @@ pub mod pallet {
         OptionQuery,
     >;
 
-    // NOVO (ISSUE #11): Indexador Paciente -> Arquivos
-    // Permite que o paciente encontre seus próprios dados rapidamente.
+    /// Patient index: `(patient, file_hash) -> record`.
+    ///
+    /// Enables patient-scoped lookup for reader pallets and patient self-access.
     #[pallet::storage]
     #[pallet::getter(fn patient_records)]
     pub type PatientRecords<T: Config> = StorageDoubleMap<
         _,
         Blake2_128Concat,
-        T::AccountId, // Paciente
+        T::AccountId,
         Blake2_128Concat,
-        FileHash,     // Hash do Arquivo
-        MedicalRecord<T::AccountId, T::Moment>, // Cópia do Registro
+        FileHash,
+        MedicalRecord<T::AccountId, T::Moment>,
         OptionQuery,
     >;
 
     #[pallet::event]
     #[pallet::generate_deposit(pub(super) fn deposit_event)]
     pub enum Event<T: Config> {
+        /// A new record was created and indexed.
         RecordCreated {
+            /// The patient that owns the record.
             patient: T::AccountId,
+            /// The doctor that created the record.
             doctor: T::AccountId,
+            /// The file hash reference.
             hash: FileHash,
         },
     }
 
     #[pallet::error]
     pub enum Error<T> {
+        /// A record with the same hash already exists in the global index.
         RecordAlreadyExists,
+        /// Record does not exist.
         RecordNotFound,
+        /// Caller is not authorized.
         NotAuthorized,
+        /// Doctor does not have permission to write for this patient.
         NoPermission,
     }
 
     #[pallet::call]
     impl<T: Config> Pallet<T> {
+        /// Creates a new medical record reference and indexes it.
+        ///
+        /// # Parameters
+        /// - `origin`: Must be signed (doctor).
+        /// - `patient`: Patient account that owns the record.
+        /// - `file_hash`: 64-byte file hash reference.
+        ///
+        /// # Authorization
+        /// Requires `T::Permissions::has_access(patient, doctor) == true`.
+        ///
+        /// # Storage
+        /// - Writes: [`Records`], [`DoctorRecords`], [`PatientRecords`]
+        ///
+        /// # Emits
+        /// - [`Event::RecordCreated`]
+        ///
+        /// # Errors
+        /// - [`Error::NoPermission`]: if the doctor lacks permission.
+        /// - [`Error::RecordAlreadyExists`]: if `file_hash` already exists in [`Records`].
         #[pallet::call_index(0)]
         #[pallet::weight(10_000 + T::DbWeight::get().writes(3).ref_time())]
         pub fn create_record(
@@ -125,13 +198,13 @@ pub mod pallet {
                 file_hash: file_hash.clone(),
             };
 
-            // 1. Grava no índice global
+            // 1) Global index
             Records::<T>::insert(&file_hash, record.clone());
-            
-            // 2. Grava no índice do médico
+
+            // 2) Doctor index
             DoctorRecords::<T>::insert(&doctor, &file_hash, (patient.clone(), now));
 
-            // 3. NOVO: Grava no índice do paciente (Para ele poder ler depois)
+            // 3) Patient index
             PatientRecords::<T>::insert(&patient, &file_hash, record);
 
             Self::deposit_event(Event::RecordCreated {
@@ -144,11 +217,13 @@ pub mod pallet {
         }
     }
 
-    // Implementação da Interface para o Leitor usar
+    /// Implementation of the public accessor interface used by reader pallets.
     impl<T: Config> MedicalHistoryAccessor<T::AccountId, T::Moment> for Pallet<T> {
-        fn get_patient_record(patient: &T::AccountId, file_hash: &FileHash) -> Option<MedicalRecord<T::AccountId, T::Moment>> {
-            // Busca direto no índice do paciente. 
-            // Se existir aqui, significa que o registro é DELE.
+        fn get_patient_record(
+            patient: &T::AccountId,
+            file_hash: &FileHash,
+        ) -> Option<MedicalRecord<T::AccountId, T::Moment>> {
+            // Patient-scoped lookup: if it exists here, it's owned by `patient`.
             PatientRecords::<T>::get(patient, file_hash)
         }
     }

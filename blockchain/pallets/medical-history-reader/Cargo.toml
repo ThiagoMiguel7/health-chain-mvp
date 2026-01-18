@@ -15,16 +15,16 @@ workspace = true
 targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
-codec = { features = ["derive"], workspace = true }
-scale-info = { features = ["derive"], workspace = true }
+codec = { workspace = true, features = ["derive"] }
+scale-info = { workspace = true, features = ["derive"] }
 frame-support = { workspace = true }
 frame-system = { workspace = true }
 
-# Dependências da HealthChain
+# HealthChain dependencies
 pallet-medical-history = { path = "../medical-history", default-features = false }
 pallet-medical-permissions = { path = "../medical-permissions", default-features = false }
 
-# CORREÇÃO: Adicionando o Timestamp que faltava
+# Timestamp is required because this pallet depends on `pallet_timestamp::Config`.
 pallet-timestamp = { workspace = true }
 
 [dev-dependencies]
@@ -34,18 +34,20 @@ sp-runtime = { workspace = true }
 
 [features]
 default = ["std"]
+
 std = [
-	"codec/std",
-	"frame-support/std",
-	"frame-system/std",
-	"scale-info/std",
+    "codec/std",
+    "frame-support/std",
+    "frame-system/std",
+    "scale-info/std",
     "pallet-medical-history/std",
     "pallet-medical-permissions/std",
-    "pallet-timestamp/std", # Adicionado aqui também
+    "pallet-timestamp/std",
 ]
+
 try-runtime = [
-	"frame-support/try-runtime",
-	"frame-system/try-runtime",
+    "frame-support/try-runtime",
+    "frame-system/try-runtime",
     "pallet-medical-history/try-runtime",
     "pallet-medical-permissions/try-runtime",
     "pallet-timestamp/try-runtime",

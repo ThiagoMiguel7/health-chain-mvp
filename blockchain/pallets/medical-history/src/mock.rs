@@ -2,34 +2,39 @@ use crate as pallet_medical_history;
 
 use frame_support::{
     derive_impl,
-    traits::{ConstU64},
+    traits::ConstU64,
 };
-use sp_runtime::BuildStorage;
-
-// Importamos a trait para criar o Mock
 use pallet_medical_permissions::MedicalPermissionsVerifier;
+use sp_runtime::BuildStorage;
 
 type Block = frame_system::mocking::MockBlock<Test>;
 
-// -------------------------------------------------------------------------
-// MOCK DE PERMISSÕES
-// -------------------------------------------------------------------------
-// Criamos uma estrutura falsa que diz "Sim" ou "Não" para testes.
+// -----------------------------------------------------------------------------
+// Mock Permissions
+// -----------------------------------------------------------------------------
+
+/// Mock implementation of [`MedicalPermissionsVerifier`] used by unit tests.
+///
+/// # Behavior
+/// - Grants access **only** to the doctor with ID `10`.
+/// - Any other doctor ID is denied.
+///
+/// # Notes
+/// The `patient` parameter is ignored because this mock focuses solely on
+/// exercising authorization branches in the pallet.
 pub struct MockPermissions;
 
 impl MedicalPermissionsVerifier<u64> for MockPermissions {
     fn has_access(_patient: &u64, doctor: &u64) -> bool {
-        // REGRA DO MOCK:
-        // Apenas o médico com ID 10 tem permissão.
-        // Qualquer outro ID (ex: 99) será negado.
-        if *doctor == 10 {
-            return true;
-        }
-        false
+        *doctor == 10
     }
 }
 
-/// Test runtime configuration.
+// -----------------------------------------------------------------------------
+// Test runtime
+// -----------------------------------------------------------------------------
+
+/// Mock runtime for pallet unit tests.
 #[frame_support::runtime]
 mod runtime {
     #[runtime::runtime]
@@ -71,11 +76,19 @@ impl pallet_timestamp::Config for Test {
 
 impl pallet_medical_history::Config for Test {
     type WeightInfo = ();
-    // Conectamos o nosso Mock aqui
+    /// Mocked permissions verifier used by `create_record`.
     type Permissions = MockPermissions;
 }
 
-/// Build genesis storage according to the mock runtime.
+// -----------------------------------------------------------------------------
+// Externalities builder
+// -----------------------------------------------------------------------------
+
+/// Builds the genesis storage and returns [`sp_io::TestExternalities`]
+/// configured for pallet tests.
+///
+/// # Side effects
+/// Sets the initial block number to `1` so events work as expected.
 pub fn new_test_ext() -> sp_io::TestExternalities {
     let storage = frame_system::GenesisConfig::<Test>::default()
         .build_storage()
@@ -85,5 +98,6 @@ pub fn new_test_ext() -> sp_io::TestExternalities {
     ext.execute_with(|| {
         frame_system::Pallet::<Test>::set_block_number(1);
     });
+
     ext
 }

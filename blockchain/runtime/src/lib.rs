@@ -1,32 +1,38 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
+//! # HealthChain Runtime
+//!
+//! Substrate runtime configuration for the HealthChain MVP.
+//!
+//! This file wires together FRAME pallets, defines core runtime types, and
+//! provides pallet `Config` implementations plus genesis presets.
+
 #[cfg(feature = "std")]
 include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 
 extern crate alloc;
 
 use alloc::vec::Vec;
+
+use frame_support::{
+    construct_runtime,
+    derive_impl,
+    traits::{ConstBool, ConstU128, ConstU32, ConstU64, ConstU8, Get},
+    weights::IdentityFee,
+};
 use sp_runtime::{
     generic,
     impl_opaque_keys,
     traits::{BlakeTwo256, IdentifyAccount, Verify},
-    MultiAddress, MultiSignature,
+    MultiAddress,
+    MultiSignature,
 };
 use sp_version::RuntimeVersion;
-use frame_support::{
-    construct_runtime, derive_impl, parameter_types,
-    traits::{ConstU32, ConstU64, ConstU128, ConstBool, ConstU8, VariantCountOf, Get},
-    weights::{
-        constants::{RocksDbWeight, WEIGHT_REF_TIME_PER_SECOND},
-        IdentityFee, Weight,
-    },
-};
 
-// Imports dos Pallets
+// Re-exports commonly used by downstream crates / RPC layers.
 pub use frame_system::Call as SystemCall;
 pub use pallet_balances::Call as BalancesCall;
 pub use pallet_timestamp::Call as TimestampCall;
-use pallet_transaction_payment::{ConstFeeMultiplier, CurrencyAdapter, Multiplier};
 
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
@@ -34,9 +40,10 @@ pub use sp_runtime::BuildStorage;
 /// Opaque types used by the CLI to interact with the runtime.
 pub mod opaque {
     use super::*;
-    use sp_runtime::traits::{Hash as HashT};
+    use sp_runtime::traits::Hash as HashT;
 
     pub use sp_runtime::OpaqueExtrinsic as UncheckedExtrinsic;
+
     pub type Header = generic::Header<BlockNumber, BlakeTwo256>;
     pub type Block = generic::Block<Header, UncheckedExtrinsic>;
     pub type BlockId = generic::BlockId<Block>;
@@ -44,6 +51,7 @@ pub mod opaque {
 }
 
 impl_opaque_keys! {
+    /// Session keys used by the consensus engine.
     pub struct SessionKeys {
         pub aura: Aura,
         pub grandpa: Grandpa,
@@ -63,33 +71,29 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 };
 
 pub struct Version;
+
 impl Get<RuntimeVersion> for Version {
     fn get() -> RuntimeVersion {
         VERSION
     }
 }
 
-/// Constants
+// ----------------------------------------------------------------------------
+// Constants
+// ----------------------------------------------------------------------------
+
 pub const MILLI_SECS_PER_BLOCK: u64 = 6_000;
 pub const SLOT_DURATION: u64 = MILLI_SECS_PER_BLOCK;
-pub const MINUTES: BlockNumber = 60_000 / (MILLI_SECS_PER_BLOCK as BlockNumber);
-pub const HOURS: BlockNumber = MINUTES * 60;
-pub const DAYS: BlockNumber = HOURS * 24;
 
 pub const UNIT: Balance = 1_000_000_000_000;
 pub const MILLI_UNIT: Balance = 1_000_000_000;
 pub const MICRO_UNIT: Balance = 1_000_000;
 pub const EXISTENTIAL_DEPOSIT: Balance = MILLI_UNIT;
 
-#[cfg(feature = "std")]
-pub fn native_version() -> sp_version::NativeVersion {
-    sp_version::NativeVersion {
-        runtime_version: VERSION,
-        can_author_with: Default::default(),
-    }
-}
+// ----------------------------------------------------------------------------
+// Primitive Types
+// ----------------------------------------------------------------------------
 
-// Tipos Primitivos
 pub type Signature = MultiSignature;
 pub type AccountId = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId;
 pub type Balance = u128;
@@ -103,8 +107,9 @@ pub type SignedBlock = generic::SignedBlock<Block>;
 pub type BlockId = generic::BlockId<Block>;
 
 // ----------------------------------------------------------------------------
-// Construção da Runtime
+// Runtime Construction
 // ----------------------------------------------------------------------------
+
 construct_runtime!(
     pub enum Runtime {
         System: frame_system,
@@ -114,11 +119,11 @@ construct_runtime!(
         Balances: pallet_balances,
         TransactionPayment: pallet_transaction_payment,
         Sudo: pallet_sudo,
-        
-        // --- Pallets da HealthChain ---
+
+        // --- HealthChain pallets ---
         MedicalHistory: pallet_medical_history,
         MedicalPermissions: pallet_medical_permissions,
-        MedicalHistoryReader: pallet_medical_history_reader, // Issue #10 e #11
+        MedicalHistoryReader: pallet_medical_history_reader,
     }
 );
 
@@ -136,8 +141,11 @@ pub type TxExtension = (
     frame_system::WeightReclaim<Runtime>,
 );
 
-pub type UncheckedExtrinsic = generic::UncheckedExtrinsic<Address, RuntimeCall, Signature, TxExtension>;
+pub type UncheckedExtrinsic =
+    generic::UncheckedExtrinsic<Address, RuntimeCall, Signature, TxExtension>;
+
 pub type SignedPayload = generic::SignedPayload<RuntimeCall, TxExtension>;
+
 pub type Executive = frame_executive::Executive<
     Runtime,
     Block,
@@ -147,10 +155,9 @@ pub type Executive = frame_executive::Executive<
 >;
 
 // ----------------------------------------------------------------------------
-// Configurações dos Pallets
+// Pallet Configs
 // ----------------------------------------------------------------------------
 
-// 1. System
 #[derive_impl(frame_system::config_preludes::SolochainDefaultConfig)]
 impl frame_system::Config for Runtime {
     type Block = Block;
@@ -159,7 +166,6 @@ impl frame_system::Config for Runtime {
     type Version = Version;
 }
 
-// 2. Aura
 impl pallet_aura::Config for Runtime {
     type AuthorityId = sp_consensus_aura::sr25519::AuthorityId;
     type DisabledValidators = ();
@@ -168,7 +174,6 @@ impl pallet_aura::Config for Runtime {
     type SlotDuration = pallet_aura::MinimumPeriodTimesTwo<Runtime>;
 }
 
-// 3. Grandpa
 impl pallet_grandpa::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
@@ -179,7 +184,6 @@ impl pallet_grandpa::Config for Runtime {
     type EquivocationReportSystem = ();
 }
 
-// 4. Timestamp
 impl pallet_timestamp::Config for Runtime {
     type Moment = u64;
     type OnTimestampSet = Aura;
@@ -187,7 +191,6 @@ impl pallet_timestamp::Config for Runtime {
     type WeightInfo = ();
 }
 
-// 5. Balances
 impl pallet_balances::Config for Runtime {
     type MaxLocks = ConstU32<50>;
     type MaxReserves = ();
@@ -205,10 +208,10 @@ impl pallet_balances::Config for Runtime {
     type DoneSlashHandler = ();
 }
 
-// 6. Transaction Payment
 impl pallet_transaction_payment::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
-    type OnChargeTransaction = pallet_transaction_payment::FungibleAdapter<Balances, ()>;
+    type OnChargeTransaction =
+        pallet_transaction_payment::FungibleAdapter<Balances, ()>;
     type OperationalFeeMultiplier = ConstU8<5>;
     type WeightToFee = IdentityFee<Balance>;
     type LengthToFee = IdentityFee<Balance>;
@@ -216,7 +219,6 @@ impl pallet_transaction_payment::Config for Runtime {
     type WeightInfo = ();
 }
 
-// 7. Sudo
 impl pallet_sudo::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type RuntimeCall = RuntimeCall;
@@ -224,67 +226,60 @@ impl pallet_sudo::Config for Runtime {
 }
 
 // ----------------------------------------------------------------------------
-// Configurações da HealthChain
+// HealthChain Pallets
 // ----------------------------------------------------------------------------
 
-// 8. Medical History
 impl pallet_medical_history::Config for Runtime {
     type WeightInfo = ();
-    // History usa Permissions para validar escrita
-    type Permissions = MedicalPermissions; 
+    type Permissions = MedicalPermissions;
 }
 
-// 9. Medical Permissions
 impl pallet_medical_permissions::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
 }
 
-// 10. Medical History Reader
 impl pallet_medical_history_reader::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
     type HistoryProvider = MedicalHistory;
-    
-    // ADICIONE ISTO (Issue #12):
     type Permissions = MedicalPermissions;
 }
 
 // ----------------------------------------------------------------------------
-// Configuração Genesis
+// Genesis Presets
 // ----------------------------------------------------------------------------
 
 pub mod genesis_config_presets {
     use super::*;
+    use alloc::{string::String, vec, vec::Vec};
     use sp_genesis_builder::PresetId;
     use sp_keyring::Sr25519Keyring;
-    use alloc::{vec, vec::Vec, string::String};
 
     pub fn preset_names() -> Vec<String> {
-        vec![
-            String::from("dev"),
-            String::from("local"),
-        ]
+        vec![String::from("dev"), String::from("local")]
     }
 
     pub fn get_preset(id: &PresetId) -> Option<Vec<u8>> {
         let patch = match id.as_ref() {
-            sp_genesis_builder::DEV_RUNTIME_PRESET => {
-                serde_json::json!({
-                    "balances": {
-                        "balances": vec![
-                            (Sr25519Keyring::Alice.to_account_id(), 1u64 << 60),
-                            (Sr25519Keyring::Bob.to_account_id(), 1u64 << 60),
-                        ],
-                    },
-                    "sudo": { "key": Sr25519Keyring::Alice.to_account_id() },
-                    "aura": { "authorities": vec![Sr25519Keyring::Alice.public()] },
-                    "grandpa": { "authorities": vec![(Sr25519Keyring::Alice.public(), 1)] },
-                })
-            },
+            sp_genesis_builder::DEV_RUNTIME_PRESET => serde_json::json!({
+                "balances": {
+                    "balances": vec![
+                        (Sr25519Keyring::Alice.to_account_id(), 1u64 << 60),
+                        (Sr25519Keyring::Bob.to_account_id(), 1u64 << 60),
+                    ],
+                },
+                "sudo": { "key": Sr25519Keyring::Alice.to_account_id() },
+                "aura": { "authorities": vec![Sr25519Keyring::Alice.public()] },
+                "grandpa": { "authorities": vec![(Sr25519Keyring::Alice.public(), 1)] },
+            }),
             _ => return None,
         };
-        Some(serde_json::to_vec(&patch).unwrap())
+
+        Some(
+            serde_json::to_vec(&patch)
+                .expect("genesis preset patch serialization must succeed"),
+        )
     }
 }
 
