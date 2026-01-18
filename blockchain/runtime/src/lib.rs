@@ -9,7 +9,7 @@ use alloc::vec::Vec;
 use sp_runtime::{
     generic,
     impl_opaque_keys,
-    traits::{BlakeTwo256, IdentifyAccount, Verify},
+    traits::{BlakeTwo256, IdentifyAccount, Verify, One, OpaqueKeys},
     MultiAddress, MultiSignature,
 };
 use sp_version::RuntimeVersion;
@@ -22,13 +22,16 @@ use frame_support::{
     },
 };
 
+// Imports dos Pallets (Necessário para a macro construct_runtime)
 pub use frame_system::Call as SystemCall;
 pub use pallet_balances::Call as BalancesCall;
 pub use pallet_timestamp::Call as TimestampCall;
+use pallet_transaction_payment::{ConstFeeMultiplier, CurrencyAdapter, Multiplier};
+
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
 
-/// Opaque types used by the CLI.
+/// Opaque types used by the CLI to interact with the runtime.
 pub mod opaque {
     use super::*;
     use sp_runtime::traits::{Hash as HashT};
@@ -59,6 +62,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
     system_version: 1,
 };
 
+/// Wrapper para a versão (Necessário para Config)
 pub struct Version;
 impl Get<RuntimeVersion> for Version {
     fn get() -> RuntimeVersion {
@@ -86,7 +90,9 @@ pub fn native_version() -> sp_version::NativeVersion {
     }
 }
 
-// Types
+// ----------------------------------------------------------------------------
+// Tipos Primitivos
+// ----------------------------------------------------------------------------
 pub type Signature = MultiSignature;
 pub type AccountId = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId;
 pub type Balance = u128;
@@ -99,10 +105,9 @@ pub type Block = generic::Block<Header, UncheckedExtrinsic>;
 pub type SignedBlock = generic::SignedBlock<Block>;
 pub type BlockId = generic::BlockId<Block>;
 
-// ============================================================================
-//                  CONSTRUCT RUNTIME
-// ============================================================================
-
+// ----------------------------------------------------------------------------
+// Construção da Runtime (O Coração da Blockchain)
+// ----------------------------------------------------------------------------
 construct_runtime!(
     pub enum Runtime {
         System: frame_system,
@@ -113,12 +118,13 @@ construct_runtime!(
         TransactionPayment: pallet_transaction_payment,
         Sudo: pallet_sudo,
         
-        // HealthChain Pallets
+        // --- Pallets da HealthChain ---
         MedicalHistory: pallet_medical_history,
         MedicalPermissions: pallet_medical_permissions,
     }
 );
 
+// Definição das Extensões de Transação
 pub type TxExtension = (
     frame_system::AuthorizeCall<Runtime>,
     frame_system::CheckNonZeroSender<Runtime>,
@@ -143,9 +149,9 @@ pub type Executive = frame_executive::Executive<
     AllPalletsWithSystem,
 >;
 
-// ============================================================================
-//                  CONFIGURAÇÕES DOS PALLETS
-// ============================================================================
+// ----------------------------------------------------------------------------
+// Configurações dos Pallets
+// ----------------------------------------------------------------------------
 
 // 1. System
 #[derive_impl(frame_system::config_preludes::SolochainDefaultConfig)]
@@ -220,23 +226,28 @@ impl pallet_sudo::Config for Runtime {
     type WeightInfo = ();
 }
 
-// 8. Medical History (HealthChain)
+// ----------------------------------------------------------------------------
+// Configurações da HealthChain
+// ----------------------------------------------------------------------------
+
+// 8. Medical History
+// Aqui conectamos o MedicalHistory ao MedicalPermissions
 impl pallet_medical_history::Config for Runtime {
     type WeightInfo = ();
-    // CORREÇÃO CRÍTICA PARA ISSUE #09:
-    // Conecta o verificador de permissões ao pallet de permissões real
+    // AQUI ESTÁ A CORREÇÃO DA ISSUE #09:
+    // O pallet History usa o pallet Permissions para validar acessos
     type Permissions = MedicalPermissions; 
 }
 
-// 9. Medical Permissions (HealthChain)
+// 9. Medical Permissions
 impl pallet_medical_permissions::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
 }
 
-// ============================================================================
-//                  GENESIS CONFIG
-// ============================================================================
+// ----------------------------------------------------------------------------
+// Configuração Genesis
+// ----------------------------------------------------------------------------
 
 pub mod genesis_config_presets {
     use super::*;

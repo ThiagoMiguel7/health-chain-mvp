@@ -23,6 +23,7 @@ serde_json = { features = ["alloc"], workspace = true, default-features = false 
 # Pallets da HealthChain
 pallet-medical-history = { default-features = false, path = "../pallets/medical-history" }
 pallet-medical-permissions = { default-features = false, path = "../pallets/medical-permissions" }
+pallet-medical-history-reader = { default-features = false, path = "../pallets/medical-history-reader" }
 
 # frame
 frame-executive = { workspace = true }
@@ -83,7 +84,8 @@ std = [
 	"pallet-grandpa/std",
 	"pallet-sudo/std",
 	"pallet-medical-history/std",
-	"pallet-medical-permissions/std", # <--- Adicionei a vírgula aqui
+	"pallet-medical-permissions/std", 
+	"pallet-medical-history-reader/std",
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",

@@ -18,8 +18,11 @@ workspace = true
 [dependencies]
 codec = { package = "parity-scale-codec", version = "3.6.1", default-features = false, features = ["derive"] }
 scale-info = { version = "2.10.0", default-features = false, features = ["derive"] }
-pallet-timestamp = { workspace = true }
+
+
+# HealthChain Deps
 pallet-medical-permissions = { path = "../medical-permissions", default-features = false }
+pallet-timestamp = { workspace = true }
 
 # frame deps
 frame-benchmarking = { optional = true, workspace = true }
@@ -42,7 +45,8 @@ std = [
 	"sp-core/std",
 	"sp-io/std",
 	"sp-runtime/std",
-	"pallet-timestamp/std",							
+	"pallet-timestamp/std",
+    "pallet-medical-permissions/std", # Adicionado para garantir compilação normal
 ]
 runtime-benchmarks = [
 	"frame-benchmarking/runtime-benchmarks",
@@ -54,4 +58,6 @@ try-runtime = [
 	"frame-support/try-runtime",
 	"frame-system/try-runtime",
 	"sp-runtime/try-runtime",
+    "pallet-timestamp/try-runtime",           # Propagação do try-runtime
+    "pallet-medical-permissions/try-runtime", # Propagação do try-runtime
 ]

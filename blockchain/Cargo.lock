@@ -3762,6 +3762,7 @@ dependencies = [
  "pallet-balances",
  "pallet-grandpa",
  "pallet-medical-history",
+ "pallet-medical-history-reader",
  "pallet-medical-permissions",
  "pallet-sudo",
  "pallet-timestamp",
@@ -6367,6 +6368,21 @@ dependencies = [
  "frame-system",
  "pallet-medical-permissions",
  "pallet-timestamp",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-medical-history-reader"
+version = "0.1.0"
+dependencies = [
+ "frame-support",
+ "frame-system",
+ "pallet-medical-history",
+ "pallet-medical-permissions",
  "parity-scale-codec",
  "scale-info",
  "sp-core",
