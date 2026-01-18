@@ -169,3 +169,10 @@ impl pallet_template::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type WeightInfo = pallet_template::weights::SubstrateWeight<Runtime>;
 }
+
+/// Configure the pallet-history in pallets/history.
+/// This is where you would add any specific configuration for the pallet-history.
+impl pallet_history::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type WeightInfo = pallet_history::weights::SubstrateWeight<Runtime>;
+}
