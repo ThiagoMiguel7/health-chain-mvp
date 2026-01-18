@@ -1,5 +1,5 @@
 [package]
-name = "pallet-template"
+name = "pallet-medical-history"
 version = "0.0.0"
 authors.workspace = true
 edition.workspace = true
