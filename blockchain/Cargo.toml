@@ -9,6 +9,7 @@ repository = "https://github.com/paritytech/polkadot-sdk-solochain-template.git"
 members = [
 	"node",
 	"pallets/medical-history",
+	"pallets/medical-permissions",
 	"runtime",
 ]
 resolver = "2"

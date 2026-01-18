@@ -3762,6 +3762,7 @@ dependencies = [
  "pallet-balances",
  "pallet-grandpa",
  "pallet-medical-history",
+ "pallet-medical-permissions",
  "pallet-sudo",
  "pallet-timestamp",
  "pallet-transaction-payment",
@@ -6365,6 +6366,20 @@ dependencies = [
  "frame-support",
  "frame-system",
  "pallet-timestamp",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+]
+
+[[package]]
+name = "pallet-medical-permissions"
+version = "0.0.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
  "parity-scale-codec",
  "scale-info",
  "sp-core",
