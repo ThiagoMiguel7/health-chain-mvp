@@ -14,8 +14,14 @@ mod benchmarking;
 pub mod weights;
 pub use weights::*;
 
-// Importamos a interface do pallet de permissões para poder usá-la
 use pallet_medical_permissions::MedicalPermissionsVerifier;
+// CORREÇÃO: Adicionado o import necessário para a trait pública
+use frame_support::BoundedVec;
+
+// --- INTERFACE PÚBLICA PARA O LEITOR (ISSUE #11) ---
+pub trait MedicalHistoryAccessor<AccountId, Moment> {
+    fn get_patient_record(patient: &AccountId, file_hash: &BoundedVec<u8, frame_support::traits::ConstU32<64>>) -> Option<MedicalRecord<AccountId, Moment>>;
+}
 
 #[frame_support::pallet]
 pub mod pallet {
@@ -23,27 +29,16 @@ pub mod pallet {
     use frame_support::pallet_prelude::*;
     use frame_system::pallet_prelude::*;
 
-    /// Bounded file hash (e.g., an IPFS CID) stored as bytes.
-    /// Maximum length: 64 bytes.
     pub type FileHash = BoundedVec<u8, ConstU32<64>>;
 
     #[pallet::pallet]
     pub struct Pallet<T>(_);
 
-    /// Pallet configuration trait.
     #[pallet::config]
     pub trait Config: frame_system::Config + pallet_timestamp::Config {
-        /// Weight information for extrinsics.
         type WeightInfo: WeightInfo;
-
-        /// Interface para verificar se um médico tem permissão de acesso aos dados do paciente.
-        /// Isso conecta este pallet ao pallet-medical-permissions.
         type Permissions: MedicalPermissionsVerifier<Self::AccountId>;
     }
-
-    // ---------------------------------------------------------------------
-    // Data structures
-    // ---------------------------------------------------------------------
 
     #[derive(Encode, Decode, Clone, PartialEq, Eq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
     pub struct MedicalRecord<AccountId, Moment> {
@@ -52,15 +47,12 @@ pub mod pallet {
         pub file_hash: FileHash,
     }
 
-    // ---------------------------------------------------------------------
-    // Storage
-    // ---------------------------------------------------------------------
-
     #[pallet::storage]
     #[pallet::getter(fn records)]
     pub type Records<T: Config> =
         StorageMap<_, Blake2_128Concat, FileHash, MedicalRecord<T::AccountId, T::Moment>, OptionQuery>;
 
+    // Indexador Médico -> Arquivos
     #[pallet::storage]
     #[pallet::getter(fn doctor_records)]
     pub type DoctorRecords<T: Config> = StorageDoubleMap<
@@ -73,14 +65,23 @@ pub mod pallet {
         OptionQuery,
     >;
 
-    // ---------------------------------------------------------------------
-    // Events
-    // ---------------------------------------------------------------------
+    // NOVO (ISSUE #11): Indexador Paciente -> Arquivos
+    // Permite que o paciente encontre seus próprios dados rapidamente.
+    #[pallet::storage]
+    #[pallet::getter(fn patient_records)]
+    pub type PatientRecords<T: Config> = StorageDoubleMap<
+        _,
+        Blake2_128Concat,
+        T::AccountId, // Paciente
+        Blake2_128Concat,
+        FileHash,     // Hash do Arquivo
+        MedicalRecord<T::AccountId, T::Moment>, // Cópia do Registro
+        OptionQuery,
+    >;
 
     #[pallet::event]
     #[pallet::generate_deposit(pub(super) fn deposit_event)]
     pub enum Event<T: Config> {
-        /// A record was created successfully.
         RecordCreated {
             patient: T::AccountId,
             doctor: T::AccountId,
@@ -88,31 +89,18 @@ pub mod pallet {
         },
     }
 
-    // ---------------------------------------------------------------------
-    // Errors
-    // ---------------------------------------------------------------------
-
     #[pallet::error]
     pub enum Error<T> {
-        /// A record with the given hash already exists.
         RecordAlreadyExists,
-        /// The requested record does not exist.
         RecordNotFound,
-        /// The caller is not authorized to perform the requested action.
         NotAuthorized,
-        /// The doctor does not have permission to add records for this patient.
         NoPermission,
     }
 
-    // ---------------------------------------------------------------------
-    // Calls (extrinsics)
-    // ---------------------------------------------------------------------
-
     #[pallet::call]
     impl<T: Config> Pallet<T> {
-        /// Create a new medical record (doctor -> patient).
         #[pallet::call_index(0)]
-        #[pallet::weight(10_000 + T::DbWeight::get().writes(2).ref_time())]
+        #[pallet::weight(10_000 + T::DbWeight::get().writes(3).ref_time())]
         pub fn create_record(
             origin: OriginFor<T>,
             patient: T::AccountId,
@@ -120,19 +108,15 @@ pub mod pallet {
         ) -> DispatchResult {
             let doctor = ensure_signed(origin)?;
 
-            // 1. Validação de Regra de Negócio (Issue #09)
-            // Verifica no pallet de permissões se 'doctor' tem acesso a 'patient'.
             if !T::Permissions::has_access(&patient, &doctor) {
                 return Err(Error::<T>::NoPermission.into());
             }
 
-            // 2. Validação de Unicidade
             ensure!(
                 !Records::<T>::contains_key(&file_hash),
                 Error::<T>::RecordAlreadyExists
             );
 
-            // 3. Lógica de Negócio
             let now = pallet_timestamp::Now::<T>::get();
 
             let record = MedicalRecord {
@@ -141,11 +125,15 @@ pub mod pallet {
                 file_hash: file_hash.clone(),
             };
 
-            // 4. Persistência
-            Records::<T>::insert(&file_hash, record);
+            // 1. Grava no índice global
+            Records::<T>::insert(&file_hash, record.clone());
+            
+            // 2. Grava no índice do médico
             DoctorRecords::<T>::insert(&doctor, &file_hash, (patient.clone(), now));
 
-            // 5. Evento
+            // 3. NOVO: Grava no índice do paciente (Para ele poder ler depois)
+            PatientRecords::<T>::insert(&patient, &file_hash, record);
+
             Self::deposit_event(Event::RecordCreated {
                 patient,
                 doctor,
@@ -153,6 +141,15 @@ pub mod pallet {
             });
 
             Ok(())
+        }
+    }
+
+    // Implementação da Interface para o Leitor usar
+    impl<T: Config> MedicalHistoryAccessor<T::AccountId, T::Moment> for Pallet<T> {
+        fn get_patient_record(patient: &T::AccountId, file_hash: &FileHash) -> Option<MedicalRecord<T::AccountId, T::Moment>> {
+            // Busca direto no índice do paciente. 
+            // Se existir aqui, significa que o registro é DELE.
+            PatientRecords::<T>::get(patient, file_hash)
         }
     }
 }

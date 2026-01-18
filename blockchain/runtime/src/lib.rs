@@ -9,7 +9,7 @@ use alloc::vec::Vec;
 use sp_runtime::{
     generic,
     impl_opaque_keys,
-    traits::{BlakeTwo256, IdentifyAccount, Verify, One, OpaqueKeys},
+    traits::{BlakeTwo256, IdentifyAccount, Verify},
     MultiAddress, MultiSignature,
 };
 use sp_version::RuntimeVersion;
@@ -22,7 +22,7 @@ use frame_support::{
     },
 };
 
-// Imports dos Pallets (Necessário para a macro construct_runtime)
+// Imports dos Pallets
 pub use frame_system::Call as SystemCall;
 pub use pallet_balances::Call as BalancesCall;
 pub use pallet_timestamp::Call as TimestampCall;
@@ -62,7 +62,6 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
     system_version: 1,
 };
 
-/// Wrapper para a versão (Necessário para Config)
 pub struct Version;
 impl Get<RuntimeVersion> for Version {
     fn get() -> RuntimeVersion {
@@ -90,9 +89,7 @@ pub fn native_version() -> sp_version::NativeVersion {
     }
 }
 
-// ----------------------------------------------------------------------------
 // Tipos Primitivos
-// ----------------------------------------------------------------------------
 pub type Signature = MultiSignature;
 pub type AccountId = <<Signature as Verify>::Signer as IdentifyAccount>::AccountId;
 pub type Balance = u128;
@@ -106,7 +103,7 @@ pub type SignedBlock = generic::SignedBlock<Block>;
 pub type BlockId = generic::BlockId<Block>;
 
 // ----------------------------------------------------------------------------
-// Construção da Runtime (O Coração da Blockchain)
+// Construção da Runtime
 // ----------------------------------------------------------------------------
 construct_runtime!(
     pub enum Runtime {
@@ -121,10 +118,10 @@ construct_runtime!(
         // --- Pallets da HealthChain ---
         MedicalHistory: pallet_medical_history,
         MedicalPermissions: pallet_medical_permissions,
+        MedicalHistoryReader: pallet_medical_history_reader, // Issue #10 e #11
     }
 );
 
-// Definição das Extensões de Transação
 pub type TxExtension = (
     frame_system::AuthorizeCall<Runtime>,
     frame_system::CheckNonZeroSender<Runtime>,
@@ -231,11 +228,9 @@ impl pallet_sudo::Config for Runtime {
 // ----------------------------------------------------------------------------
 
 // 8. Medical History
-// Aqui conectamos o MedicalHistory ao MedicalPermissions
 impl pallet_medical_history::Config for Runtime {
     type WeightInfo = ();
-    // AQUI ESTÁ A CORREÇÃO DA ISSUE #09:
-    // O pallet History usa o pallet Permissions para validar acessos
+    // History usa Permissions para validar escrita
     type Permissions = MedicalPermissions; 
 }
 
@@ -243,6 +238,14 @@ impl pallet_medical_history::Config for Runtime {
 impl pallet_medical_permissions::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
+}
+
+// 10. Medical History Reader (Novo!)
+impl pallet_medical_history_reader::Config for Runtime {
+    type RuntimeEvent = RuntimeEvent;
+    type WeightInfo = ();
+    // Leitor usa History para buscar dados
+    type HistoryProvider = MedicalHistory;
 }
 
 // ----------------------------------------------------------------------------

@@ -6383,6 +6383,7 @@ dependencies = [
  "frame-system",
  "pallet-medical-history",
  "pallet-medical-permissions",
+ "pallet-timestamp",
  "parity-scale-codec",
  "scale-info",
  "sp-core",

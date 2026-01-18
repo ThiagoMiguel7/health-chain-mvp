@@ -20,9 +20,12 @@ scale-info = { features = ["derive"], workspace = true }
 frame-support = { workspace = true }
 frame-system = { workspace = true }
 
-# Dependências da HealthChain (para ler os dados e permissões)
+# Dependências da HealthChain
 pallet-medical-history = { path = "../medical-history", default-features = false }
 pallet-medical-permissions = { path = "../medical-permissions", default-features = false }
+
+# CORREÇÃO: Adicionando o Timestamp que faltava
+pallet-timestamp = { workspace = true }
 
 [dev-dependencies]
 sp-core = { workspace = true }
@@ -38,10 +41,12 @@ std = [
 	"scale-info/std",
     "pallet-medical-history/std",
     "pallet-medical-permissions/std",
+    "pallet-timestamp/std", # Adicionado aqui também
 ]
 try-runtime = [
 	"frame-support/try-runtime",
 	"frame-system/try-runtime",
     "pallet-medical-history/try-runtime",
     "pallet-medical-permissions/try-runtime",
+    "pallet-timestamp/try-runtime",
 ]
