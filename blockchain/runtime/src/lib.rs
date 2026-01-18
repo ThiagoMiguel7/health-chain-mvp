@@ -9,14 +9,17 @@ use alloc::vec::Vec;
 use sp_runtime::{
     generic,
     impl_opaque_keys,
-    traits::{BlakeTwo256, IdentifyAccount, Verify}, 
+    traits::{BlakeTwo256, IdentifyAccount, Verify},
     MultiAddress, MultiSignature,
 };
 use sp_version::RuntimeVersion;
 use frame_support::{
-    construct_runtime, derive_impl,
-    traits::{ConstU32, ConstU64, ConstU128, ConstBool, ConstU8, Get},
-    weights::IdentityFee,
+    construct_runtime, derive_impl, parameter_types,
+    traits::{ConstU32, ConstU64, ConstU128, ConstBool, ConstU8, VariantCountOf, Get},
+    weights::{
+        constants::{RocksDbWeight, WEIGHT_REF_TIME_PER_SECOND},
+        IdentityFee, Weight,
+    },
 };
 
 pub use frame_system::Call as SystemCall;
@@ -97,10 +100,8 @@ pub type SignedBlock = generic::SignedBlock<Block>;
 pub type BlockId = generic::BlockId<Block>;
 
 // ============================================================================
-//                  CONSTRUCT RUNTIME (Nível Superior)
+//                  CONSTRUCT RUNTIME
 // ============================================================================
-// Removemos o #[frame_support::runtime] e usamos a macro clássica construct_runtime!
-// Isso expõe Runtime, RuntimeEvent, RuntimeCall globalmente.
 
 construct_runtime!(
     pub enum Runtime {
@@ -219,11 +220,15 @@ impl pallet_sudo::Config for Runtime {
     type WeightInfo = ();
 }
 
-// 8. HealthChain Pallets
+// 8. Medical History (HealthChain)
 impl pallet_medical_history::Config for Runtime {
     type WeightInfo = ();
+    // CORREÇÃO CRÍTICA PARA ISSUE #09:
+    // Conecta o verificador de permissões ao pallet de permissões real
+    type Permissions = MedicalPermissions; 
 }
 
+// 9. Medical Permissions (HealthChain)
 impl pallet_medical_permissions::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();

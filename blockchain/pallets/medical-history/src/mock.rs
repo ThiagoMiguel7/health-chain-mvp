@@ -6,12 +6,30 @@ use frame_support::{
 };
 use sp_runtime::BuildStorage;
 
+// Importamos a trait para criar o Mock
+use pallet_medical_permissions::MedicalPermissionsVerifier;
+
 type Block = frame_system::mocking::MockBlock<Test>;
 
+// -------------------------------------------------------------------------
+// MOCK DE PERMISSÕES
+// -------------------------------------------------------------------------
+// Criamos uma estrutura falsa que diz "Sim" ou "Não" para testes.
+pub struct MockPermissions;
+
+impl MedicalPermissionsVerifier<u64> for MockPermissions {
+    fn has_access(_patient: &u64, doctor: &u64) -> bool {
+        // REGRA DO MOCK:
+        // Apenas o médico com ID 10 tem permissão.
+        // Qualquer outro ID (ex: 99) será negado.
+        if *doctor == 10 {
+            return true;
+        }
+        false
+    }
+}
+
 /// Test runtime configuration.
-///
-/// This mock runtime wires `frame_system`, `pallet_timestamp`, and the
-/// `pallet_medical_history` pallet to enable unit testing.
 #[frame_support::runtime]
 mod runtime {
     #[runtime::runtime]
@@ -53,12 +71,11 @@ impl pallet_timestamp::Config for Test {
 
 impl pallet_medical_history::Config for Test {
     type WeightInfo = ();
+    // Conectamos o nosso Mock aqui
+    type Permissions = MockPermissions;
 }
 
-/// Build genesis storage according to the mock runtime and return a test
-/// externalities environment.
-///
-/// The block number is set to `1` so that events can be deposited reliably.
+/// Build genesis storage according to the mock runtime.
 pub fn new_test_ext() -> sp_io::TestExternalities {
     let storage = frame_system::GenesisConfig::<Test>::default()
         .build_storage()

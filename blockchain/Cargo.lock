@@ -6365,6 +6365,7 @@ dependencies = [
  "frame-benchmarking",
  "frame-support",
  "frame-system",
+ "pallet-medical-permissions",
  "pallet-timestamp",
  "parity-scale-codec",
  "scale-info",

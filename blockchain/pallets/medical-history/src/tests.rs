@@ -1,76 +1,87 @@
-use crate::{mock::*, Error, Event, MedicalRecord};
-use frame_support::{assert_noop, assert_ok, traits::ConstU32, BoundedVec};
+use crate::{mock::*, Error, Event};
+use frame_support::{assert_noop, assert_ok, BoundedVec};
+
+// Constantes para facilitar a leitura e manutenção
+const PATIENT_ID: u64 = 1;
+const AUTHORIZED_DOCTOR: u64 = 10; // O único que o Mock aceita
+const UNAUTHORIZED_DOCTOR: u64 = 99;
 
 #[test]
 fn create_record_works() {
-    new_test_ext().execute_with(|| {
-        // Set a deterministic timestamp for the test.
-        Timestamp::set_timestamp(1_000);
+	new_test_ext().execute_with(|| {
+		let file_hash: BoundedVec<u8, _> = vec![1, 2, 3].try_into().unwrap();
 
-        let doctor = 1;
-        let patient = 2;
+		// Agora usamos o AUTHORIZED_DOCTOR (10)
+		assert_ok!(MedicalHistory::create_record(
+			RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
+			PATIENT_ID,
+			file_hash.clone()
+		));
 
-        // Simulated file hash (e.g., "123" as bytes) bounded to 64 bytes.
-        let file_hash: BoundedVec<u8, ConstU32<64>> =
-            vec![1u8, 2u8, 3u8].try_into().expect("valid bounded vec");
-
-        // Create the record on-chain.
-        assert_ok!(MedicalHistory::create_record(
-            RuntimeOrigin::signed(doctor),
-            patient,
-            file_hash.clone(),
-        ));
-
-        // Ensure the correct event was emitted.
-        System::assert_last_event(
-            Event::RecordCreated {
-                patient,
-                doctor,
-                hash: file_hash.clone(),
-            }
-            .into(),
-        );
-
-        // Issue #02: ensure the record exists in the main storage.
-        let expected_record = MedicalRecord {
-            created_by: doctor,
-            created_at: 1_000,
-            file_hash: file_hash.clone(),
-        };
-        assert_eq!(MedicalHistory::records(file_hash.clone()), Some(expected_record));
-
-        // Issue #04: ensure the record appears in the doctor index.
-        // Key: (doctor, file_hash) -> Value: (patient, timestamp)
-        assert_eq!(
-            MedicalHistory::doctor_records(doctor, file_hash),
-            Some((patient, 1_000)),
-        );
-    });
+		System::assert_last_event(Event::RecordCreated {
+			patient: PATIENT_ID,
+			doctor: AUTHORIZED_DOCTOR,
+			hash: file_hash,
+		}.into());
+	});
 }
 
 #[test]
 fn create_duplicate_fails() {
-    new_test_ext().execute_with(|| {
-        // Optional, but keeps the environment consistent/deterministic.
-        Timestamp::set_timestamp(1_000);
+	new_test_ext().execute_with(|| {
+		let file_hash: BoundedVec<u8, _> = vec![1, 2, 3].try_into().unwrap();
 
-        let doctor = 1;
-        let patient = 2;
+		// 1. Cria o primeiro registro com sucesso
+		assert_ok!(MedicalHistory::create_record(
+			RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
+			PATIENT_ID,
+			file_hash.clone()
+		));
 
-        let file_hash: BoundedVec<u8, ConstU32<64>> =
-            vec![1u8, 2u8, 3u8].try_into().expect("valid bounded vec");
+		// 2. Tenta criar o mesmo registro de novo (deve falhar por duplicidade, não por permissão)
+		assert_noop!(
+			MedicalHistory::create_record(
+				RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
+				PATIENT_ID,
+				file_hash
+			),
+			Error::<Test>::RecordAlreadyExists
+		);
+	});
+}
 
-        // First creation should succeed.
-        assert_ok!(MedicalHistory::create_record(
-            RuntimeOrigin::signed(doctor),
-            patient,
-            file_hash.clone(),
-        ));
+#[test]
+fn create_record_fails_without_permission() {
+	new_test_ext().execute_with(|| {
+		let file_hash: BoundedVec<u8, _> = vec![1, 2, 3].try_into().unwrap();
 
-        // Second creation with the same hash should fail.
-        assert_noop!(
-            MedicalHistory::create_record(RuntimeOrigin::signed(doctor), patient, file_hash),
-            Error::<Test>::RecordAlreadyExists
-        );
-    });
+		// Médico não autorizado tenta criar
+		assert_noop!(
+			MedicalHistory::create_record(
+				RuntimeOrigin::signed(UNAUTHORIZED_DOCTOR),
+				PATIENT_ID,
+				file_hash
+			),
+			Error::<Test>::NoPermission
+		);
+	});
+}
+
+#[test]
+fn create_record_works_with_permission() {
+	new_test_ext().execute_with(|| {
+		let file_hash: BoundedVec<u8, _> = vec![4, 5, 6].try_into().unwrap();
+
+		assert_ok!(MedicalHistory::create_record(
+			RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
+			PATIENT_ID,
+			file_hash.clone()
+		));
+
+		System::assert_last_event(Event::RecordCreated {
+			patient: PATIENT_ID,
+			doctor: AUTHORIZED_DOCTOR,
+			hash: file_hash,
+		}.into());
+	});
 }

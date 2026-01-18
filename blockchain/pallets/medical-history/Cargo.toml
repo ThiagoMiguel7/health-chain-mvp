@@ -19,6 +19,7 @@ workspace = true
 codec = { package = "parity-scale-codec", version = "3.6.1", default-features = false, features = ["derive"] }
 scale-info = { version = "2.10.0", default-features = false, features = ["derive"] }
 pallet-timestamp = { workspace = true }
+pallet-medical-permissions = { path = "../medical-permissions", default-features = false }
 
 # frame deps
 frame-benchmarking = { optional = true, workspace = true }
