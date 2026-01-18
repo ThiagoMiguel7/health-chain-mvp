@@ -1,87 +1,65 @@
 use crate::{mock::*, Error, Event};
 use frame_support::{assert_noop, assert_ok, BoundedVec};
 
-// Constantes para facilitar a leitura e manutenção
-const PATIENT_ID: u64 = 1;
-const AUTHORIZED_DOCTOR: u64 = 10; // O único que o Mock aceita
-const UNAUTHORIZED_DOCTOR: u64 = 99;
-
 #[test]
-fn create_record_works() {
+fn read_own_data_works() {
 	new_test_ext().execute_with(|| {
-		let file_hash: BoundedVec<u8, _> = vec![1, 2, 3].try_into().unwrap();
+		// CORREÇÃO: Avança para o bloco 1 para registrar eventos
+		System::set_block_number(1);
 
-		// Agora usamos o AUTHORIZED_DOCTOR (10)
-		assert_ok!(MedicalHistory::create_record(
-			RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
-			PATIENT_ID,
+		// DADOS:
+		let patient_id = 1; // O dono do dado no Mock
+		let file_hash: BoundedVec<u8, _> = vec![1; 64].try_into().unwrap(); // O hash que existe no Mock
+
+		// AÇÃO: Paciente 1 tenta ler seu próprio arquivo
+		assert_ok!(MedicalHistoryReader::read_own_data(
+			RuntimeOrigin::signed(patient_id),
 			file_hash.clone()
 		));
 
-		System::assert_last_event(Event::RecordCreated {
-			patient: PATIENT_ID,
-			doctor: AUTHORIZED_DOCTOR,
-			hash: file_hash,
+		// VERIFICAÇÃO: Evento emitido
+		System::assert_last_event(Event::OwnDataAccessed { 
+			patient: patient_id, 
+			file_hash 
 		}.into());
 	});
 }
 
 #[test]
-fn create_duplicate_fails() {
+fn read_own_data_fails_for_wrong_patient() {
 	new_test_ext().execute_with(|| {
-		let file_hash: BoundedVec<u8, _> = vec![1, 2, 3].try_into().unwrap();
+		System::set_block_number(1);
+		
+		// DADOS:
+		let hacker_id = 99; // Paciente diferente
+		let file_hash: BoundedVec<u8, _> = vec![1; 64].try_into().unwrap(); // Arquivo do paciente 1
 
-		// 1. Cria o primeiro registro com sucesso
-		assert_ok!(MedicalHistory::create_record(
-			RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
-			PATIENT_ID,
-			file_hash.clone()
-		));
-
-		// 2. Tenta criar o mesmo registro de novo (deve falhar por duplicidade, não por permissão)
+		// AÇÃO: Outra pessoa tenta ler o arquivo do paciente 1
+		// O Mock vai retornar None, pois o Mock só retorna se patient == 1
 		assert_noop!(
-			MedicalHistory::create_record(
-				RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
-				PATIENT_ID,
+			MedicalHistoryReader::read_own_data(
+				RuntimeOrigin::signed(hacker_id),
 				file_hash
 			),
-			Error::<Test>::RecordAlreadyExists
+			Error::<Test>::RecordNotFound 
 		);
 	});
 }
 
 #[test]
-fn create_record_fails_without_permission() {
+fn read_own_data_fails_for_non_existent_file() {
 	new_test_ext().execute_with(|| {
-		let file_hash: BoundedVec<u8, _> = vec![1, 2, 3].try_into().unwrap();
+		System::set_block_number(1);
 
-		// Médico não autorizado tenta criar
+		let patient_id = 1;
+		let wrong_hash: BoundedVec<u8, _> = vec![2; 64].try_into().unwrap(); // Hash que não existe
+
 		assert_noop!(
-			MedicalHistory::create_record(
-				RuntimeOrigin::signed(UNAUTHORIZED_DOCTOR),
-				PATIENT_ID,
-				file_hash
+			MedicalHistoryReader::read_own_data(
+				RuntimeOrigin::signed(patient_id),
+				wrong_hash
 			),
-			Error::<Test>::NoPermission
+			Error::<Test>::RecordNotFound
 		);
-	});
-}
-
-#[test]
-fn create_record_works_with_permission() {
-	new_test_ext().execute_with(|| {
-		let file_hash: BoundedVec<u8, _> = vec![4, 5, 6].try_into().unwrap();
-
-		assert_ok!(MedicalHistory::create_record(
-			RuntimeOrigin::signed(AUTHORIZED_DOCTOR),
-			PATIENT_ID,
-			file_hash.clone()
-		));
-
-		System::assert_last_event(Event::RecordCreated {
-			patient: PATIENT_ID,
-			doctor: AUTHORIZED_DOCTOR,
-			hash: file_hash,
-		}.into());
 	});
 }

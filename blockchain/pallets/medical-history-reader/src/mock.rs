@@ -1,35 +1,42 @@
-use crate as pallet_medical_history;
-
+use crate as pallet_medical_history_reader;
 use frame_support::{
     derive_impl,
-    traits::{ConstU64},
+    traits::{ConstU64, ConstU32},
+    BoundedVec,
 };
 use sp_runtime::BuildStorage;
-
-// Importamos a trait para criar o Mock
-use pallet_medical_permissions::MedicalPermissionsVerifier;
+use pallet_medical_history::{MedicalHistoryAccessor, MedicalRecord};
 
 type Block = frame_system::mocking::MockBlock<Test>;
 
 // -------------------------------------------------------------------------
-// MOCK DE PERMISSÕES
+// MOCK DO HISTÓRICO (O provedor de dados)
 // -------------------------------------------------------------------------
-// Criamos uma estrutura falsa que diz "Sim" ou "Não" para testes.
-pub struct MockPermissions;
+pub struct MockHistoryAccessor;
 
-impl MedicalPermissionsVerifier<u64> for MockPermissions {
-    fn has_access(_patient: &u64, doctor: &u64) -> bool {
-        // REGRA DO MOCK:
-        // Apenas o médico com ID 10 tem permissão.
-        // Qualquer outro ID (ex: 99) será negado.
-        if *doctor == 10 {
-            return true;
+impl MedicalHistoryAccessor<u64, u64> for MockHistoryAccessor {
+    fn get_patient_record(patient: &u64, file_hash: &BoundedVec<u8, ConstU32<64>>) -> Option<MedicalRecord<u64, u64>> {
+        // SIMULAÇÃO:
+        // Vamos fingir que existe um arquivo com hash [1, 1, 1...] pertencente ao Paciente 1.
+        let target_hash: BoundedVec<u8, ConstU32<64>> = vec![1; 64].try_into().unwrap();
+        
+        // Se o hash for igual E o paciente for o dono (1), retorna o registro.
+        if *file_hash == target_hash && *patient == 1 {
+            return Some(MedicalRecord {
+                created_by: 10, // Médico criador
+                created_at: 100,
+                file_hash: target_hash,
+            });
         }
-        false
+        
+        // Caso contrário, retorna Nada (simulando que não encontrou ou não pertence ao paciente)
+        None
     }
 }
 
-/// Test runtime configuration.
+// -------------------------------------------------------------------------
+// CONFIGURAÇÃO DO RUNTIME DE TESTE
+// -------------------------------------------------------------------------
 #[frame_support::runtime]
 mod runtime {
     #[runtime::runtime]
@@ -54,7 +61,7 @@ mod runtime {
     pub type Timestamp = pallet_timestamp::Pallet<Test>;
 
     #[runtime::pallet_index(2)]
-    pub type MedicalHistory = pallet_medical_history::Pallet<Test>;
+    pub type MedicalHistoryReader = pallet_medical_history_reader::Pallet<Test>;
 }
 
 #[derive_impl(frame_system::config_preludes::TestDefaultConfig)]
@@ -69,21 +76,16 @@ impl pallet_timestamp::Config for Test {
     type WeightInfo = ();
 }
 
-impl pallet_medical_history::Config for Test {
+impl pallet_medical_history_reader::Config for Test {
+    type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
-    // Conectamos o nosso Mock aqui
-    type Permissions = MockPermissions;
+    // Conectamos o nosso Mock aqui:
+    type HistoryProvider = MockHistoryAccessor;
 }
 
-/// Build genesis storage according to the mock runtime.
 pub fn new_test_ext() -> sp_io::TestExternalities {
-    let storage = frame_system::GenesisConfig::<Test>::default()
+    frame_system::GenesisConfig::<Test>::default()
         .build_storage()
-        .expect("genesis storage should build");
-
-    let mut ext = sp_io::TestExternalities::new(storage);
-    ext.execute_with(|| {
-        frame_system::Pallet::<Test>::set_block_number(1);
-    });
-    ext
+        .expect("genesis storage should build")
+        .into()
 }

@@ -2,13 +2,19 @@
 
 pub use pallet::*;
 
+// --- CORREÇÃO: Módulos de Teste ---
+#[cfg(test)]
+mod mock;
+
+#[cfg(test)]
+mod tests;
+// ----------------------------------
+
 #[frame_support::pallet]
 pub mod pallet {
     use frame_support::pallet_prelude::*;
     use frame_system::pallet_prelude::*;
     
-    // Importamos os tipos e a Trait do Histórico
-    // Removi 'MedicalRecord' daqui pois não estamos usando diretamente ainda, evitando o warning
     use pallet_medical_history::{MedicalHistoryAccessor, FileHash};
 
     #[pallet::pallet]
@@ -49,7 +55,6 @@ pub mod pallet {
         
         /// ISSUE #11: Ler o próprio histórico.
         #[pallet::call_index(0)]
-        // CORREÇÃO AQUI: Usamos <T as Config> para desambiguar do Timestamp
         #[pallet::weight(<T as Config>::WeightInfo::read_own_data())]
         pub fn read_own_data(
             origin: OriginFor<T>,
