@@ -6,36 +6,49 @@ use frame_support::{
 };
 use sp_runtime::BuildStorage;
 use pallet_medical_history::{MedicalHistoryAccessor, MedicalRecord};
+// NOVO: Importamos a interface
+use pallet_medical_permissions::MedicalPermissionsVerifier;
 
 type Block = frame_system::mocking::MockBlock<Test>;
 
 // -------------------------------------------------------------------------
-// MOCK DO HISTÓRICO (O provedor de dados)
+// MOCK DO HISTÓRICO
 // -------------------------------------------------------------------------
 pub struct MockHistoryAccessor;
 
 impl MedicalHistoryAccessor<u64, u64> for MockHistoryAccessor {
     fn get_patient_record(patient: &u64, file_hash: &BoundedVec<u8, ConstU32<64>>) -> Option<MedicalRecord<u64, u64>> {
-        // SIMULAÇÃO:
-        // Vamos fingir que existe um arquivo com hash [1, 1, 1...] pertencente ao Paciente 1.
         let target_hash: BoundedVec<u8, ConstU32<64>> = vec![1; 64].try_into().unwrap();
         
-        // Se o hash for igual E o paciente for o dono (1), retorna o registro.
         if *file_hash == target_hash && *patient == 1 {
             return Some(MedicalRecord {
-                created_by: 10, // Médico criador
+                created_by: 10,
                 created_at: 100,
                 file_hash: target_hash,
             });
         }
-        
-        // Caso contrário, retorna Nada (simulando que não encontrou ou não pertence ao paciente)
         None
     }
 }
 
 // -------------------------------------------------------------------------
-// CONFIGURAÇÃO DO RUNTIME DE TESTE
+// MOCK DE PERMISSÕES (NOVO - Issue #12)
+// -------------------------------------------------------------------------
+pub struct MockPermissions;
+
+impl MedicalPermissionsVerifier<u64> for MockPermissions {
+    fn has_access(patient: &u64, doctor: &u64) -> bool {
+        // REGRA DO TESTE:
+        // Médico 10 tem permissão para ler o Paciente 1.
+        if *patient == 1 && *doctor == 10 {
+            return true;
+        }
+        false
+    }
+}
+
+// -------------------------------------------------------------------------
+// RUNTIME
 // -------------------------------------------------------------------------
 #[frame_support::runtime]
 mod runtime {
@@ -79,8 +92,9 @@ impl pallet_timestamp::Config for Test {
 impl pallet_medical_history_reader::Config for Test {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
-    // Conectamos o nosso Mock aqui:
     type HistoryProvider = MockHistoryAccessor;
+    // CONEXÃO (Issue #12):
+    type Permissions = MockPermissions;
 }
 
 pub fn new_test_ext() -> sp_io::TestExternalities {

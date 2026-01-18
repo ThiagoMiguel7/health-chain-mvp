@@ -240,12 +240,14 @@ impl pallet_medical_permissions::Config for Runtime {
     type WeightInfo = ();
 }
 
-// 10. Medical History Reader (Novo!)
+// 10. Medical History Reader
 impl pallet_medical_history_reader::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
     type WeightInfo = ();
-    // Leitor usa History para buscar dados
     type HistoryProvider = MedicalHistory;
+    
+    // ADICIONE ISTO (Issue #12):
+    type Permissions = MedicalPermissions;
 }
 
 // ----------------------------------------------------------------------------
