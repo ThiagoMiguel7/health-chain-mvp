@@ -20,9 +20,9 @@ pub mod pallet {
     use frame_support::pallet_prelude::*;
     use frame_system::pallet_prelude::*;
 
-    /// Type alias for the bounded IPFS CID/file hash stored as bytes.
+    /// Bounded file hash (e.g., an IPFS CID) stored as bytes.
     ///
-    /// The maximum length is 64 bytes.
+    /// Maximum length: 64 bytes.
     pub type FileHash = BoundedVec<u8, ConstU32<64>>;
 
     #[pallet::pallet]
@@ -30,8 +30,7 @@ pub mod pallet {
 
     /// Pallet configuration trait.
     ///
-    /// This pallet depends on `frame_system` and `pallet_timestamp` to obtain the
-    /// current block timestamp (`Moment`).
+    /// This pallet depends on `pallet_timestamp` to read the current block time.
     #[pallet::config]
     pub trait Config: frame_system::Config + pallet_timestamp::Config {
         /// Weight information for extrinsics.
@@ -39,10 +38,10 @@ pub mod pallet {
     }
 
     // ---------------------------------------------------------------------
-    // Data Structures
+    // Data structures
     // ---------------------------------------------------------------------
 
-    /// Metadata for a medical record/exam linked to an external file (e.g., IPFS CID).
+    /// Metadata for a medical record/exam linked to an external file.
     #[derive(Encode, Decode, Clone, PartialEq, Eq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
     pub struct MedicalRecord<AccountId, Moment> {
         /// Account that created the record (typically the doctor).
@@ -57,17 +56,39 @@ pub mod pallet {
     // Storage
     // ---------------------------------------------------------------------
 
-    /// Main store mapping a unique file hash to its record metadata.
+    /// Main store: `file_hash -> MedicalRecord`.
     #[pallet::storage]
     #[pallet::getter(fn records)]
     pub type Records<T: Config> =
         StorageMap<_, Blake2_128Concat, FileHash, MedicalRecord<T::AccountId, T::Moment>, OptionQuery>;
 
-    /// Permission store: (patient, doctor) -> has_access.
+    /// Doctor index: `(doctor, file_hash) -> (patient, timestamp)`.
+    ///
+    /// This enables queries like: "Which records were created by doctor X?"
+    #[pallet::storage]
+    #[pallet::getter(fn doctor_records)]
+    pub type DoctorRecords<T: Config> = StorageDoubleMap<
+        _,
+        Blake2_128Concat,
+        T::AccountId,
+        Blake2_128Concat,
+        FileHash,
+        (T::AccountId, T::Moment),
+        OptionQuery,
+    >;
+
+    /// Access permissions: `(patient, doctor) -> has_access`.
     #[pallet::storage]
     #[pallet::getter(fn permissions)]
-    pub type Permissions<T: Config> =
-        StorageDoubleMap<_, Blake2_128Concat, T::AccountId, Blake2_128Concat, T::AccountId, bool, ValueQuery>;
+    pub type Permissions<T: Config> = StorageDoubleMap<
+        _,
+        Blake2_128Concat,
+        T::AccountId,
+        Blake2_128Concat,
+        T::AccountId,
+        bool,
+        ValueQuery,
+    >;
 
     // ---------------------------------------------------------------------
     // Events
@@ -76,7 +97,7 @@ pub mod pallet {
     #[pallet::event]
     #[pallet::generate_deposit(pub(super) fn deposit_event)]
     pub enum Event<T: Config> {
-        /// A medical record was created successfully.
+        /// A record was created successfully.
         ///
         /// Fields: `{ patient, doctor, hash }`.
         RecordCreated {
@@ -104,31 +125,33 @@ pub mod pallet {
     }
 
     // ---------------------------------------------------------------------
-    // Extrinsics
+    // Calls (extrinsics)
     // ---------------------------------------------------------------------
 
     #[pallet::call]
     impl<T: Config> Pallet<T> {
         /// Create a new medical record (doctor -> patient).
         ///
-        /// The record is identified by a unique `file_hash` (e.g., an IPFS CID).
-        /// This extrinsic stores only metadata on-chain.
+        /// This extrinsic stores metadata on-chain and updates a doctor-facing index.
         ///
         /// # Parameters
-        /// - `origin`: The dispatch origin. Must be a signed account (doctor).
+        /// - `origin`: Must be a signed account (doctor).
         /// - `patient`: The patient account that owns the record.
-        /// - `file_hash`: A bounded file hash (max 64 bytes) identifying the record content.
+        /// - `file_hash`: Unique bounded hash (max 64 bytes) identifying the external file.
+        ///
+        /// # Storage
+        /// - Writes: [`Records`], [`DoctorRecords`]
         ///
         /// # Emits
         /// - [`Event::RecordCreated`]
         ///
         /// # Errors
-        /// - [`Error::RecordAlreadyExists`]: If `file_hash` already exists in storage.
+        /// - [`Error::RecordAlreadyExists`]: If `file_hash` is already present in [`Records`].
         ///
         /// # Weight
-        /// This extrinsic uses a fixed base weight plus one database write.
+        /// Fixed base weight plus **two database writes**.
         #[pallet::call_index(0)]
-        #[pallet::weight(10_000 + T::DbWeight::get().writes(1).ref_time())]
+        #[pallet::weight(10_000 + T::DbWeight::get().writes(2).ref_time())]
         pub fn create_record(
             origin: OriginFor<T>,
             patient: T::AccountId,
@@ -141,16 +164,17 @@ pub mod pallet {
                 Error::<T>::RecordAlreadyExists
             );
 
-            // NOTE: Permission enforcement can be added here:
-            // ensure!(Permissions::<T>::get(&patient, &doctor), Error::<T>::NotAuthorized);
+            let now = pallet_timestamp::Now::<T>::get();
 
             let record = MedicalRecord {
                 created_by: doctor.clone(),
-                created_at: pallet_timestamp::Now::<T>::get(),
+                created_at: now,
                 file_hash: file_hash.clone(),
             };
 
             Records::<T>::insert(&file_hash, record);
+
+            DoctorRecords::<T>::insert(&doctor, &file_hash, (patient.clone(), now));
 
             Self::deposit_event(Event::RecordCreated {
                 patient,
