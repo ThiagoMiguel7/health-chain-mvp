@@ -168,3 +168,10 @@ impl pallet_sudo::Config for Runtime {
 impl pallet_medical_history::Config for Runtime {
 	type WeightInfo = pallet_medical_history::weights::SubstrateWeight<Runtime>;
 }
+
+/// Configure the pallet-history in pallets/history.
+/// This is where you would add any specific configuration for the pallet-history.
+impl pallet_history::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type WeightInfo = pallet_history::weights::SubstrateWeight<Runtime>;
+}

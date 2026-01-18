@@ -19,6 +19,7 @@ resolver = "2"
 pallet-template = { path = "./pallets/template", default-features = false }
 healthchain-node = { path = "./node", default-features = false }
 healthchain-runtime = { path = "./runtime", default-features = false }
+pallet-history = { path = "./pallets/history", default-features = false }
 
 # third-party
 clap = { version = "4.5.13" }
@@ -91,33 +92,40 @@ substrate-wasm-builder = { git = "https://github.com/paritytech/polkadot-sdk", r
 [workspace.lints.rust]
 suspicious_double_ref_op = { level = "allow", priority = 2 }
 # `substrate_runtime` is a common `cfg` condition name used in the repo.
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(build_opt_level, values("3"))', 'cfg(build_profile, values("debug", "release"))', 'cfg(enable_alloc_error_handler)', 'cfg(fuzzing)', 'cfg(ignore_flaky_test)', 'cfg(substrate_runtime)'] }
+unexpected_cfgs = { level = "warn", check-cfg = [
+	'cfg(build_opt_level, values("3"))',
+	'cfg(build_profile, values("debug", "release"))',
+	'cfg(enable_alloc_error_handler)',
+	'cfg(fuzzing)',
+	'cfg(ignore_flaky_test)',
+	'cfg(substrate_runtime)',
+] }
 
 [workspace.lints.clippy]
 all = { level = "allow", priority = 0 }
-bind_instead_of_map = { level = "allow", priority = 2 } # stylistic
-borrowed-box = { level = "allow", priority = 2 } # Reasonable to fix this one
+bind_instead_of_map = { level = "allow", priority = 2 }              # stylistic
+borrowed-box = { level = "allow", priority = 2 }                     # Reasonable to fix this one
 complexity = { level = "warn", priority = 1 }
 correctness = { level = "warn", priority = 1 }
 default_constructed_unit_structs = { level = "allow", priority = 2 } # stylistic
-derivable_impls = { level = "allow", priority = 2 } # false positives
-eq_op = { level = "allow", priority = 2 } # In tests we test equality.
-erasing_op = { level = "allow", priority = 2 } # E.g. 0 * DOLLARS
-extra-unused-type-parameters = { level = "allow", priority = 2 } # stylistic
-identity-op = { level = "allow", priority = 2 } # One case where we do 0 +
+derivable_impls = { level = "allow", priority = 2 }                  # false positives
+eq_op = { level = "allow", priority = 2 }                            # In tests we test equality.
+erasing_op = { level = "allow", priority = 2 }                       # E.g. 0 * DOLLARS
+extra-unused-type-parameters = { level = "allow", priority = 2 }     # stylistic
+identity-op = { level = "allow", priority = 2 }                      # One case where we do 0 +
 if-same-then-else = { level = "allow", priority = 2 }
-needless-lifetimes = { level = "allow", priority = 2 } # generated code
-needless_option_as_deref = { level = "allow", priority = 2 } # false positives
-nonminimal-bool = { level = "allow", priority = 2 } # maybe
-option-map-unit-fn = { level = "allow", priority = 2 } # stylistic
-stable_sort_primitive = { level = "allow", priority = 2 } # prefer stable sort
-too-many-arguments = { level = "allow", priority = 2 } # (Turning this on would lead to)
-type_complexity = { level = "allow", priority = 2 } # raison d'etre
-unit_arg = { level = "allow", priority = 2 } # stylistic
-unnecessary_cast = { level = "allow", priority = 2 } # Types may change
-useless_conversion = { level = "allow", priority = 2 } # Types may change
-while_immutable_condition = { level = "allow", priority = 2 } # false positives
-zero-prefixed-literal = { level = "allow", priority = 2 } # 00_1000_000
+needless-lifetimes = { level = "allow", priority = 2 }               # generated code
+needless_option_as_deref = { level = "allow", priority = 2 }         # false positives
+nonminimal-bool = { level = "allow", priority = 2 }                  # maybe
+option-map-unit-fn = { level = "allow", priority = 2 }               # stylistic
+stable_sort_primitive = { level = "allow", priority = 2 }            # prefer stable sort
+too-many-arguments = { level = "allow", priority = 2 }               # (Turning this on would lead to)
+type_complexity = { level = "allow", priority = 2 }                  # raison d'etre
+unit_arg = { level = "allow", priority = 2 }                         # stylistic
+unnecessary_cast = { level = "allow", priority = 2 }                 # Types may change
+useless_conversion = { level = "allow", priority = 2 }               # Types may change
+while_immutable_condition = { level = "allow", priority = 2 }        # false positives
+zero-prefixed-literal = { level = "allow", priority = 2 }            # 00_1000_000
 
 ############
 # profiles #
@@ -174,7 +182,7 @@ parking_lot_core = { opt-level = 3 }
 percent-encoding = { opt-level = 3 }
 polkavm-linker = { opt-level = 3 }
 primitive-types = { opt-level = 3 }
-reed-solomon-novelpoly = { opt-level = 3 }
+# reed-solomon-novelpoly = { opt-level = 3 } Eliminando isso, para evitar warnings de build.
 ring = { opt-level = 3 }
 rustls = { opt-level = 3 }
 sha2 = { opt-level = 3 }
