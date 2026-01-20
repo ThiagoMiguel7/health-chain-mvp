@@ -110,7 +110,6 @@ pub fn create_benchmark_extrinsic(
 ) -> Result<UncheckedExtrinsic> {
     let genesis_hash = client.usage_info().chain.genesis_hash;
 
-    // CORREÇÃO AQUI: Acessamos best_hash e best_number diretamente
     let best_hash = client.usage_info().chain.best_hash;
     let best_block = client.usage_info().chain.best_number;
 

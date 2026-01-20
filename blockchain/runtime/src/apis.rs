@@ -41,10 +41,27 @@ use sp_runtime::{
 use sp_version::RuntimeVersion;
 
 // Local module imports
+// ATENÇÃO: Adicionei AllPalletsWithSystem aqui
 use super::{
-    AccountId, Aura, Balance, Block, Executive, Grandpa, InherentDataExt, Nonce, Runtime,
-    RuntimeCall, RuntimeGenesisConfig, SessionKeys, System, TransactionPayment, VERSION,
+    AccountId, AllPalletsWithSystem, Aura, Balance, Balances, Block, Executive, Grandpa, 
+    InherentDataExt, MedicalHistory, Nonce, Runtime, RuntimeCall, RuntimeGenesisConfig, 
+    SessionKeys, Sudo, System, Timestamp, TransactionPayment, VERSION,
 };
+
+// ==========================================================================
+// DEFINIÇÃO DOS BENCHMARKS
+// Colocada no escopo raiz do arquivo para gerar os macros corretamente
+// ==========================================================================
+#[cfg(feature = "runtime-benchmarks")]
+frame_benchmarking::define_benchmarks! {
+    [frame_benchmarking, frame_benchmarking::baseline::Pallet::<Runtime>]
+    [frame_system, frame_system_benchmarking::Pallet::<Runtime>]
+    [pallet_balances, Balances]
+    [pallet_timestamp, Timestamp]
+    [pallet_sudo, Sudo]
+    // Nosso Pallet Customizado:
+    [pallet_medical_history, MedicalHistory]
+}
 
 impl_runtime_apis! {
     impl sp_api::Core<Block> for Runtime {
@@ -228,12 +245,14 @@ impl_runtime_apis! {
         ) {
             use frame_benchmarking::{baseline, BenchmarkList};
             use frame_support::traits::StorageInfoTrait;
+
+            // Uso do frame_system_benchmarking apenas se necessário dentro da macro
             use frame_system_benchmarking::Pallet as SystemBench;
-            use frame_system_benchmarking::extensions::Pallet as SystemExtensionsBench;
             use baseline::Pallet as BaselineBench;
-            use super::*;
 
             let mut list = Vec::<BenchmarkList>::new();
+            
+            // Agora a macro está no escopo correto
             list_benchmarks!(list, extra);
 
             let storage_info = AllPalletsWithSystem::storage_info();
@@ -247,10 +266,9 @@ impl_runtime_apis! {
         ) -> Result<Vec<frame_benchmarking::BenchmarkBatch>, alloc::string::String> {
             use frame_benchmarking::{baseline, BenchmarkBatch};
             use sp_storage::TrackedStorageKey;
+
             use frame_system_benchmarking::Pallet as SystemBench;
-            use frame_system_benchmarking::extensions::Pallet as SystemExtensionsBench;
             use baseline::Pallet as BaselineBench;
-            use super::*;
 
             impl frame_system_benchmarking::Config for Runtime {}
             impl baseline::Config for Runtime {}
@@ -260,6 +278,8 @@ impl_runtime_apis! {
 
             let mut batches = Vec::<BenchmarkBatch>::new();
             let params = (&config, &whitelist);
+            
+            // Agora a macro está no escopo correto
             add_benchmarks!(params, batches);
 
             Ok(batches)

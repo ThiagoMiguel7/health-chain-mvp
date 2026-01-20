@@ -1,35 +1,31 @@
-//! Benchmarking setup for pallet-template
-
+#![cfg(feature = "runtime-benchmarks")]
 use super::*;
 
 #[allow(unused)]
-use crate::Pallet as Template;
+use crate::Pallet as MedicalHistory;
 use frame_benchmarking::v2::*;
 use frame_system::RawOrigin;
+use frame_support::BoundedVec;
+
+// CORREÇÃO: Importamos a macro 'vec' do scale_info para funcionar no ambiente no_std
+use scale_info::prelude::vec;
 
 #[benchmarks]
 mod benchmarks {
     use super::*;
 
     #[benchmark]
-    fn do_something() {
-        let value = 100u32;
+    fn create_record() {
+        // 1. Setup: Define quem chama (médico) e o paciente
         let caller: T::AccountId = whitelisted_caller();
-        #[extrinsic_call]
-        do_something(RawOrigin::Signed(caller), value);
+        let patient: T::AccountId = account("patient", 0, 0);
+        
+        // 2. Setup: Cria um hash dummy de 64 bytes
+        let file_hash: FileHash = BoundedVec::try_from(vec![1u8; 64]).unwrap();
 
-        assert_eq!(Something::<T>::get(), Some(value));
+        #[extrinsic_call]
+        create_record(RawOrigin::Signed(caller), patient, file_hash);
     }
 
-    #[benchmark]
-    fn cause_error() {
-        Something::<T>::put(100u32);
-        let caller: T::AccountId = whitelisted_caller();
-        #[extrinsic_call]
-        cause_error(RawOrigin::Signed(caller));
-
-        assert_eq!(Something::<T>::get(), Some(101u32));
-    }
-
-    impl_benchmark_test_suite!(Template, crate::mock::new_test_ext(), crate::mock::Test);
+    impl_benchmark_test_suite!(MedicalHistory, crate::mock::new_test_ext(), crate::mock::Test);
 }

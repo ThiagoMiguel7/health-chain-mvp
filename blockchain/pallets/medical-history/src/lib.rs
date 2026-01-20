@@ -24,7 +24,10 @@ mod benchmarking;
 pub mod weights;
 pub use weights::*;
 
-use frame_support::BoundedVec;
+// NOVO: Importa o módulo de tipos separado
+pub mod types;
+pub use types::*;
+
 use pallet_medical_permissions::MedicalPermissionsVerifier;
 
 /// Public interface used by external pallets (e.g. `medical-history-reader`)
@@ -37,14 +40,14 @@ use pallet_medical_permissions::MedicalPermissionsVerifier;
 /// - `Moment`: Timestamp moment type.
 ///
 /// # Notes
-/// The `file_hash` type is fixed to a bounded vector of length 64 bytes.
+/// The `file_hash` type is fixed to a bounded vector of length 64 bytes (FileHash).
 pub trait MedicalHistoryAccessor<AccountId, Moment> {
     /// Fetches a medical record belonging to `patient` with the given `file_hash`.
     ///
     /// Returns `Some(record)` if the record exists for that patient, otherwise `None`.
     fn get_patient_record(
         patient: &AccountId,
-        file_hash: &BoundedVec<u8, frame_support::traits::ConstU32<64>>,
+        file_hash: &FileHash,
     ) -> Option<MedicalRecord<AccountId, Moment>>;
 }
 
@@ -54,8 +57,7 @@ pub mod pallet {
     use frame_support::pallet_prelude::*;
     use frame_system::pallet_prelude::*;
 
-    /// Hash of a medical file (fixed-length 64 bytes).
-    pub type FileHash = BoundedVec<u8, ConstU32<64>>;
+    // NOTA: FileHash e MedicalRecord agora vêm de `use super::*;` (types.rs)
 
     #[pallet::pallet]
     pub struct Pallet<T>(_);
@@ -68,22 +70,6 @@ pub mod pallet {
 
         /// Permissions verifier used to authorize doctors.
         type Permissions: MedicalPermissionsVerifier<Self::AccountId>;
-    }
-
-    /// Represents a medical record reference stored on-chain.
-    ///
-    /// This struct stores metadata about a medical file hash:
-    /// - who created it (`created_by`)
-    /// - when it was created (`created_at`)
-    /// - the file hash itself (`file_hash`)
-    #[derive(Encode, Decode, Clone, PartialEq, Eq, RuntimeDebug, TypeInfo, MaxEncodedLen)]
-    pub struct MedicalRecord<AccountId, Moment> {
-        /// The account that created the record (doctor).
-        pub created_by: AccountId,
-        /// Timestamp when the record was created.
-        pub created_at: Moment,
-        /// File hash reference.
-        pub file_hash: FileHash,
     }
 
     /// Global index: `file_hash -> record`.

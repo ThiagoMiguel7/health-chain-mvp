@@ -23,65 +23,42 @@
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]
 #![allow(unused_imports)]
-#![allow(missing_docs)]
-#![allow(dead_code)]
 
 use frame_support::{traits::Get, weights::{Weight, constants::RocksDbWeight}};
 use core::marker::PhantomData;
 
-/// Weight functions needed for `pallet_template`.
+/// Weight functions needed for pallet_medical_history_reader.
 pub trait WeightInfo {
-	fn do_something() -> Weight;
-	fn cause_error() -> Weight;
+    fn read_own_data() -> Weight;
+    fn read_patient_data() -> Weight;
 }
 
-/// Weights for `pallet_template` using the Substrate node and recommended hardware.
+/// Weights for pallet_medical_history_reader using the Substrate node and recommended hardware.
 pub struct SubstrateWeight<T>(PhantomData<T>);
+
 impl<T: frame_system::Config> WeightInfo for SubstrateWeight<T> {
-	/// Storage: `Template::Something` (r:0 w:1)
-	/// Proof: `Template::Something` (`max_values`: Some(1), `max_size`: Some(4), added: 499, mode: `MaxEncodedLen`)
-	fn do_something() -> Weight {
-		// Proof Size summary in bytes:
-		//  Measured:  `0`
-		//  Estimated: `0`
-		// Minimum execution time: 5_000_000 picoseconds.
-		Weight::from_parts(5_000_000, 0)
-			.saturating_add(T::DbWeight::get().writes(1_u64))
-	}
-	/// Storage: `Template::Something` (r:1 w:1)
-	/// Proof: `Template::Something` (`max_values`: Some(1), `max_size`: Some(4), added: 499, mode: `MaxEncodedLen`)
-	fn cause_error() -> Weight {
-		// Proof Size summary in bytes:
-		//  Measured:  `32`
-		//  Estimated: `1489`
-		// Minimum execution time: 5_000_000 picoseconds.
-		Weight::from_parts(6_000_000, 1489)
-			.saturating_add(T::DbWeight::get().reads(1_u64))
-			.saturating_add(T::DbWeight::get().writes(1_u64))
-	}
+    fn read_own_data() -> Weight {
+        // Custo fixo baixo (10_000) + 1 Leitura no Banco de Dados (reads(1))
+        Weight::from_parts(10_000, 0)
+            .saturating_add(T::DbWeight::get().reads(1_u64))
+    }
+
+    fn read_patient_data() -> Weight {
+        // Custo fixo baixo (10_000) + 1 Leitura no Banco de Dados (reads(1))
+        Weight::from_parts(10_000, 0)
+            .saturating_add(T::DbWeight::get().reads(1_u64))
+    }
 }
 
 // For backwards compatibility and tests.
 impl WeightInfo for () {
-	/// Storage: `Template::Something` (r:0 w:1)
-	/// Proof: `Template::Something` (`max_values`: Some(1), `max_size`: Some(4), added: 499, mode: `MaxEncodedLen`)
-	fn do_something() -> Weight {
-		// Proof Size summary in bytes:
-		//  Measured:  `0`
-		//  Estimated: `0`
-		// Minimum execution time: 5_000_000 picoseconds.
-		Weight::from_parts(5_000_000, 0)
-			.saturating_add(RocksDbWeight::get().writes(1_u64))
-	}
-	/// Storage: `Template::Something` (r:1 w:1)
-	/// Proof: `Template::Something` (`max_values`: Some(1), `max_size`: Some(4), added: 499, mode: `MaxEncodedLen`)
-	fn cause_error() -> Weight {
-		// Proof Size summary in bytes:
-		//  Measured:  `32`
-		//  Estimated: `1489`
-		// Minimum execution time: 5_000_000 picoseconds.
-		Weight::from_parts(6_000_000, 1489)
-			.saturating_add(RocksDbWeight::get().reads(1_u64))
-			.saturating_add(RocksDbWeight::get().writes(1_u64))
-	}
+    fn read_own_data() -> Weight {
+        Weight::from_parts(10_000, 0)
+            .saturating_add(RocksDbWeight::get().reads(1_u64))
+    }
+
+    fn read_patient_data() -> Weight {
+        Weight::from_parts(10_000, 0)
+            .saturating_add(RocksDbWeight::get().reads(1_u64))
+    }
 }

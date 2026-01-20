@@ -19,6 +19,10 @@ mod mock;
 #[cfg(test)]
 mod tests;
 
+// MÓDULO DE PESOS: Importa o arquivo weights.rs que acabamos de corrigir
+pub mod weights;
+pub use weights::*;
+
 #[frame_support::pallet]
 pub mod pallet {
     use frame_support::pallet_prelude::*;
@@ -29,6 +33,9 @@ pub mod pallet {
 
     /// Interface to verify patient ↔ doctor permissions.
     use pallet_medical_permissions::MedicalPermissionsVerifier;
+
+    // Importa o WeightInfo que veio do 'super' (do arquivo weights.rs)
+    use super::WeightInfo;
 
     /// The pallet type.
     #[pallet::pallet]
@@ -50,23 +57,8 @@ pub mod pallet {
         type Permissions: MedicalPermissionsVerifier<Self::AccountId>;
     }
 
-    /// Weight functions for this pallet.
-    ///
-    /// These are intentionally minimal and default to zero,
-    /// since this pallet performs only reads.
-    pub trait WeightInfo {
-        /// Weight for reading one's own data.
-        fn read_own_data() -> Weight {
-            Weight::zero()
-        }
-
-        /// Weight for reading a patient's data as a doctor.
-        fn read_patient_data() -> Weight {
-            Weight::zero()
-        }
-    }
-
-    impl WeightInfo for () {}
+    // REMOVIDO: trait WeightInfo inline e impl for () 
+    // (Agora eles vêm do arquivo weights.rs automaticamente)
 
     /// Events emitted by the Medical History Reader pallet.
     #[pallet::event]

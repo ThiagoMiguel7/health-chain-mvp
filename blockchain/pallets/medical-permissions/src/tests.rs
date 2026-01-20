@@ -74,3 +74,53 @@ fn cannot_grant_access_to_self() {
         );
     });
 }
+
+/// Ensures permissions are **origin-scoped** and fully isolated.
+///
+/// # Scenario
+/// - One account grants access to a second account.
+/// - A different account attempts to revoke that access.
+///
+/// # Expected behavior
+/// Revocation is applied **only** to the caller’s permission mapping:
+/// - The original grant remains unchanged.
+/// - The caller’s own permission mapping is updated.
+///
+/// # Security rationale
+/// A third party must not be able to revoke permissions granted by another origin.
+#[test]
+fn doctor_cannot_change_patient_permission() {
+    new_test_ext().execute_with(|| {
+
+        System::set_block_number(1);
+
+        let patient_account: u64 = 1;
+        let doctor_account: u64 = 2;
+        let unrelated_account: u64 = 3;
+
+        // Initial permission grant
+        assert_ok!(MedicalPermissions::grant_access(
+            RuntimeOrigin::signed(patient_account),
+            doctor_account,
+        ));
+
+        // Unrelated account attempts to revoke access
+        assert_ok!(MedicalPermissions::revoke_access(
+            RuntimeOrigin::signed(unrelated_account),
+            doctor_account,
+        ));
+
+        // Original permission must remain intact
+        assert!(
+            MedicalPermissions::permissions(patient_account, doctor_account),
+            "Permission granted by the original origin must remain unchanged"
+        );
+
+        // Revocation must apply only to the caller's mapping
+        assert!(
+            !MedicalPermissions::permissions(unrelated_account, doctor_account),
+            "Revocation must be scoped to the caller only"
+        );
+    });
+}
+
