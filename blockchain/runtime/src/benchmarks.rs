@@ -30,6 +30,5 @@ frame_benchmarking::define_benchmarks!(
 	[pallet_balances, Balances]
 	[pallet_timestamp, Timestamp]
 	[pallet_sudo, Sudo]
-	[pallet_template, Template]
-	// [pallet_history, History] Adicionar benchmarks quando o pallet começar a ter lógica executável
+	[pallet_medical_history, MedicalHistory]
 );
