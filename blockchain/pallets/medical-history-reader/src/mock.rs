@@ -33,13 +33,10 @@ type Block = frame_system::mocking::MockBlock<Test>;
 pub struct MockHistoryAccessor;
 
 impl MedicalHistoryAccessor<u64, u64> for MockHistoryAccessor {
-    fn get_patient_record(
-        patient: &u64,
-        file_hash: &BoundedVec<u8, ConstU32<64>>,
-    ) -> Option<MedicalRecord<u64, u64>> {
+    fn get_patient_record(patient: &u64) -> Option<MedicalRecord<u64, u64>> {
         let target_hash: BoundedVec<u8, ConstU32<64>> = vec![1; 64].try_into().unwrap();
 
-        if *patient == 1 && *file_hash == target_hash {
+        if *patient == 1 {
             return Some(MedicalRecord {
                 created_by: 10,
                 created_at: 100,

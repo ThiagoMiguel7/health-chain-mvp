@@ -21,10 +21,9 @@ fn read_own_data_works() {
         let patient_id = 1;
         let file_hash: BoundedVec<u8, _> = vec![1; 64].try_into().unwrap();
 
-        assert_ok!(MedicalHistoryReader::read_own_data(
-            RuntimeOrigin::signed(patient_id),
-            file_hash.clone(),
-        ));
+        assert_ok!(MedicalHistoryReader::read_own_data(RuntimeOrigin::signed(
+            patient_id
+        )));
 
         System::assert_last_event(
             Event::OwnDataAccessed {
@@ -43,10 +42,8 @@ fn read_own_data_fails_for_wrong_patient() {
         System::set_block_number(1);
 
         let hacker_id = 99;
-        let file_hash: BoundedVec<u8, _> = vec![1; 64].try_into().unwrap();
-
         assert_noop!(
-            MedicalHistoryReader::read_own_data(RuntimeOrigin::signed(hacker_id), file_hash),
+            MedicalHistoryReader::read_own_data(RuntimeOrigin::signed(hacker_id)),
             Error::<Test>::RecordNotFound
         );
     });
@@ -68,8 +65,7 @@ fn read_patient_data_works_with_permission() {
 
         assert_ok!(MedicalHistoryReader::read_patient_data(
             RuntimeOrigin::signed(doctor_id),
-            patient_id,
-            file_hash.clone(),
+            patient_id
         ));
 
         System::assert_last_event(
@@ -91,13 +87,11 @@ fn read_patient_data_fails_without_permission() {
 
         let doctor_hacker = 99; // Not authorized
         let patient_id = 1;
-        let file_hash: BoundedVec<u8, _> = vec![1; 64].try_into().unwrap();
 
         assert_noop!(
             MedicalHistoryReader::read_patient_data(
                 RuntimeOrigin::signed(doctor_hacker),
-                patient_id,
-                file_hash
+                patient_id
             ),
             Error::<Test>::AccessDenied
         );
