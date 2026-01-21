@@ -42,13 +42,11 @@ use pallet_medical_permissions::MedicalPermissionsVerifier;
 /// # Notes
 /// The `file_hash` type is fixed to a bounded vector of length 64 bytes (FileHash).
 pub trait MedicalHistoryAccessor<AccountId, Moment> {
-    /// Fetches a medical record belonging to `patient` with the given `file_hash`.
+    /// Fetches the current medical record belonging to `patient`.
     ///
-    /// Returns `Some(record)` if the record exists for that patient, otherwise `None`.
-    fn get_patient_record(
-        patient: &AccountId,
-        file_hash: &FileHash,
-    ) -> Option<MedicalRecord<AccountId, Moment>>;
+    /// Returns `Some(record)` if the patient has an active record,
+    /// otherwise `None`.
+    fn get_patient_record(patient: &AccountId) -> Option<MedicalRecord<AccountId, Moment>>;
 }
 
 #[frame_support::pallet]
@@ -83,33 +81,13 @@ pub mod pallet {
         OptionQuery,
     >;
 
-    /// Doctor index: `(doctor, file_hash) -> (patient, created_at)`.
-    #[pallet::storage]
-    #[pallet::getter(fn doctor_records)]
-    pub type DoctorRecords<T: Config> = StorageDoubleMap<
-        _,
-        Blake2_128Concat,
-        T::AccountId,
-        Blake2_128Concat,
-        FileHash,
-        (T::AccountId, T::Moment),
-        OptionQuery,
-    >;
-
-    /// Patient index: `(patient, file_hash) -> record`.
+    /// Patient index: `(patient) -> record`.
     ///
     /// Enables patient-scoped lookup for reader pallets and patient self-access.
     #[pallet::storage]
-    #[pallet::getter(fn patient_records)]
-    pub type PatientRecords<T: Config> = StorageDoubleMap<
-        _,
-        Blake2_128Concat,
-        T::AccountId,
-        Blake2_128Concat,
-        FileHash,
-        MedicalRecord<T::AccountId, T::Moment>,
-        OptionQuery,
-    >;
+    #[pallet::getter(fn patient_record)]
+    pub type PatientRecords<T: Config> =
+        StorageMap<_, Blake2_128Concat, T::AccountId, FileHash, OptionQuery>;
 
     #[pallet::event]
     #[pallet::generate_deposit(pub(super) fn deposit_event)]
@@ -150,7 +128,7 @@ pub mod pallet {
         /// Requires `T::Permissions::has_access(patient, doctor) == true`.
         ///
         /// # Storage
-        /// - Writes: [`Records`], [`DoctorRecords`], [`PatientRecords`]
+        /// - Writes: [`Records`], [`PatientRecords`]
         ///
         /// # Emits
         /// - [`Event::RecordCreated`]
@@ -185,13 +163,15 @@ pub mod pallet {
             };
 
             // 1) Global index
-            Records::<T>::insert(&file_hash, record.clone());
+            Records::<T>::insert(&file_hash, record.clone()); //TODO: verificar se esse registro é lido em alguma lógica.
+                                                              //esse registro pode ser usado para dar mais detalhes de
+                                                              //um histórico de paciente, como data de criação e médico responsável.
 
-            // 2) Doctor index
-            DoctorRecords::<T>::insert(&doctor, &file_hash, (patient.clone(), now));
-
-            // 3) Patient index
-            PatientRecords::<T>::insert(&patient, &file_hash, record);
+            // 2) Patient index
+            PatientRecords::<T>::insert(&patient, &file_hash); //aqui não precisamos de chave composta. vamos manter apenas o file_hash mais recente com o paciente.
+                                                               //isso é útlil para a consulta do histórico atual de um paciente.
+                                                               // com o accountID do paciente, podemos buscar o file_hash do seu histórico atual.
+                                                               // e com o file_hash, podemos buscar os detalhes do histórico na storage Records.
 
             Self::deposit_event(Event::RecordCreated {
                 patient,
@@ -205,12 +185,14 @@ pub mod pallet {
 
     /// Implementation of the public accessor interface used by reader pallets.
     impl<T: Config> MedicalHistoryAccessor<T::AccountId, T::Moment> for Pallet<T> {
+        //faltou um teste unitário para isso?
         fn get_patient_record(
             patient: &T::AccountId,
-            file_hash: &FileHash,
         ) -> Option<MedicalRecord<T::AccountId, T::Moment>> {
             // Patient-scoped lookup: if it exists here, it's owned by `patient`.
-            PatientRecords::<T>::get(patient, file_hash)
+            //let file_hash = PatientRecords::<T>::get(patient)?;
+            //Records::<T>::get(file_hash)
+            PatientRecords::<T>::get(patient).and_then(|hash| Records::<T>::get(&hash))
         }
     }
 }

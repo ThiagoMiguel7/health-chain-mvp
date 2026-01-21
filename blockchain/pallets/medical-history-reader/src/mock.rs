@@ -34,12 +34,12 @@ pub struct MockHistoryAccessor;
 
 impl MedicalHistoryAccessor<u64, u64> for MockHistoryAccessor {
     fn get_patient_record(
+        // TODO: esse método impede o teste do método get_medical_record do pallet_medical_history_reader.rs de funcionar durante o teste?
         patient: &u64,
-        file_hash: &BoundedVec<u8, ConstU32<64>>,
     ) -> Option<MedicalRecord<u64, u64>> {
         let target_hash: BoundedVec<u8, ConstU32<64>> = vec![1; 64].try_into().unwrap();
 
-        if *patient == 1 && *file_hash == target_hash {
+        if *patient == 1 {
             return Some(MedicalRecord {
                 created_by: 10,
                 created_at: 100,

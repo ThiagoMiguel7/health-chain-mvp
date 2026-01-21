@@ -57,7 +57,7 @@ pub mod pallet {
         type Permissions: MedicalPermissionsVerifier<Self::AccountId>;
     }
 
-    // REMOVIDO: trait WeightInfo inline e impl for () 
+    // REMOVIDO: trait WeightInfo inline e impl for ()
     // (Agora eles vêm do arquivo weights.rs automaticamente)
 
     /// Events emitted by the Medical History Reader pallet.
@@ -95,7 +95,6 @@ pub mod pallet {
         ///
         /// # Parameters
         /// - `origin`: Must be a signed account (the patient).
-        /// - `file_hash`: Hash identifying the medical record.
         ///
         /// # Emits
         /// - [`Event::OwnDataAccessed`]
@@ -104,16 +103,15 @@ pub mod pallet {
         /// - [`Error::RecordNotFound`] if the record does not exist.
         #[pallet::call_index(0)]
         #[pallet::weight(<T as Config>::WeightInfo::read_own_data())]
-        pub fn read_own_data(origin: OriginFor<T>, file_hash: FileHash) -> DispatchResult {
+        pub fn read_own_data(origin: OriginFor<T>) -> DispatchResult {
             let patient = ensure_signed(origin)?;
 
-            let record = T::HistoryProvider::get_patient_record(&patient, &file_hash)
+            let record = T::HistoryProvider::get_patient_record(&patient)
                 .ok_or(Error::<T>::RecordNotFound)?;
 
-            Self::deposit_event(Event::OwnDataAccessed {
-                patient,
-                file_hash: record.file_hash,
-            });
+            let file_hash = record.file_hash.clone();
+
+            Self::deposit_event(Event::OwnDataAccessed { patient, file_hash });
 
             Ok(())
         }
@@ -126,7 +124,6 @@ pub mod pallet {
         /// # Parameters
         /// - `origin`: Must be a signed account (the doctor).
         /// - `patient_id`: The patient whose data is being accessed.
-        /// - `file_hash`: Hash identifying the medical record.
         ///
         /// # Emits
         /// - [`Event::PatientDataAccessed`]
@@ -136,11 +133,7 @@ pub mod pallet {
         /// - [`Error::RecordNotFound`] if the record does not exist.
         #[pallet::call_index(1)]
         #[pallet::weight(<T as Config>::WeightInfo::read_patient_data())]
-        pub fn read_patient_data(
-            origin: OriginFor<T>,
-            patient_id: T::AccountId,
-            file_hash: FileHash,
-        ) -> DispatchResult {
+        pub fn read_patient_data(origin: OriginFor<T>, patient_id: T::AccountId) -> DispatchResult {
             let doctor = ensure_signed(origin)?;
 
             // Permission check (Issue #12)
@@ -148,13 +141,15 @@ pub mod pallet {
                 return Err(Error::<T>::AccessDenied.into());
             }
 
-            let record = T::HistoryProvider::get_patient_record(&patient_id, &file_hash)
+            let record = T::HistoryProvider::get_patient_record(&patient_id)
                 .ok_or(Error::<T>::RecordNotFound)?;
+
+            let file_hash = record.file_hash.clone();
 
             Self::deposit_event(Event::PatientDataAccessed {
                 doctor,
                 patient: patient_id,
-                file_hash: record.file_hash,
+                file_hash,
             });
 
             Ok(())
