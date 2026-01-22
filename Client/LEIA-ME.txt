@@ -5,9 +5,10 @@ nvm install 20
 nvm use 20
 npm init -y
 npm install polkadot-api@1.17.2
-npx papi add healthchain -ws ws://127.0.0.1:9944
+npx papi add healthchain -w ws://127.0.0.1:9944
 npx papi
 npm install @polkadot/keyring @polkadot/util-crypto
+npm install
 npm i -D ts-node typescript @types/node
 
 Depois disso pode rodar o Typescript para ver os resultados:

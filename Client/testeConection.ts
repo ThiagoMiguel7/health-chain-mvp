@@ -7,7 +7,25 @@ import { getWsProvider } from 'polkadot-api/ws-provider/node';
 import { withPolkadotSdkCompat } from 'polkadot-api/polkadot-sdk-compat';
 
 
+// Signer utilities
+import { cryptoWaitReady } from '@polkadot/util-crypto';
+import { Keyring } from '@polkadot/keyring';
+import { getPolkadotSigner } from 'polkadot-api/signer';
 
+// Helpers for address argument shapes
+import { MultiAddress } from '@polkadot-api/descriptors';
+
+//------------------------------------------------------------
+
+const WS_ENDPOINT = 'ws://127.0.0.1:9944';
+
+// seed/mnemonic da conta que vai pagar a transação.
+const SENDER_MNEMONIC = process.env.SENDER_MNEMONIC || 'INSERT_YOUR_MNEMONIC_HERE';
+
+// Endereço do médico que receberá o acesso (destino).
+const DOCTOR_ADDRESS = process.env.DOCTOR_ADDRESS || '5...'; // substitua
+
+//-------------------------------------------------------------
 
 
 // Establish a connection to the healthchain
