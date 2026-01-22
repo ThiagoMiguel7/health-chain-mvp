@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0" version="29.3.4" pages="4">
+  <diagram name="Permissões" id="Qn-wiPE4IT39O8tP-6SU">
+    <mxGraphModel dx="1364" dy="801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="okeXiQgyKrzLGjg-saaK-2" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Campo para Paciente Account ID" vertex="1">
+          <mxGeometry height="60" width="320" x="80" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="okeXiQgyKrzLGjg-saaK-3" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Campo para Médico Account ID" vertex="1">
+          <mxGeometry height="60" width="320" x="80" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="okeXiQgyKrzLGjg-saaK-4" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Combobox para permitir ou revogar permissão&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="320" x="80" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="okeXiQgyKrzLGjg-saaK-5" parent="1" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.button;dx=10;whiteSpace=wrap;" value="Submeter" vertex="1">
+          <mxGeometry height="60" width="100" x="330" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="okeXiQgyKrzLGjg-saaK-6" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Significado essa página." vertex="1">
+          <mxGeometry height="60" width="700" x="80" y="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="sXSJlQ2S_BQjVz0k_k9H" name="Buscar histórico próprio">
+    <mxGraphModel dx="1364" dy="801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8xBsj5E6gXDcfhGyUREX-1" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Campo para Paciente Account ID" vertex="1">
+          <mxGeometry height="60" width="320" x="80" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="8xBsj5E6gXDcfhGyUREX-2" parent="1" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.button;dx=10;whiteSpace=wrap;" value="Submit" vertex="1">
+          <mxGeometry height="60" width="100" x="330" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="8xBsj5E6gXDcfhGyUREX-4" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Título = Recuperação de histórico próprio" vertex="1">
+          <mxGeometry height="60" width="650" x="80" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="15kWw5Ae4p7SL3zsO4gj-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Buscar hash e depois chamar navegador com o hash para o arquivo buscado." vertex="1">
+          <mxGeometry height="30" width="180" x="440" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="2p4vLxI1nTqiE6Va9wg2-1" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Flle_hash desejado" vertex="1">
+          <mxGeometry height="60" width="320" x="80" y="320" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="dvxmc0dbY48ycuBi5Ufx" name="Buscar histórico do paciente">
+    <mxGraphModel dx="1364" dy="801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1SHeJehPyM1ZDPGcdy8W-1" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Campo para Paciente Account ID" vertex="1">
+          <mxGeometry height="60" width="320" x="120" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="1SHeJehPyM1ZDPGcdy8W-2" parent="1" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.button;dx=10;whiteSpace=wrap;" value="Submit" vertex="1">
+          <mxGeometry height="60" width="100" x="370" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="1SHeJehPyM1ZDPGcdy8W-3" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Título = Recuperação de histórico próprio" vertex="1">
+          <mxGeometry height="60" width="650" x="120" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="1SHeJehPyM1ZDPGcdy8W-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Buscar hash e depois chamar navegador com o hash para o arquivo buscado." vertex="1">
+          <mxGeometry height="30" width="180" x="570" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="1SHeJehPyM1ZDPGcdy8W-5" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Campo para Doctor Account ID" vertex="1">
+          <mxGeometry height="60" width="320" x="120" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="PXoGIKTdnT01nmlHs7B9-1" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Flle_hash desejado" vertex="1">
+          <mxGeometry height="60" width="320" x="120" y="525" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="VH7bMoeqsx0S_nZOQxpq" name="Registrar Histórico de paciente">
+    <mxGraphModel dx="1364" dy="801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2BV0fCQkciIfUZsnDjBr-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Título da página = Edição de hitsórico médico" vertex="1">
+          <mxGeometry height="60" width="660" x="70" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="2BV0fCQkciIfUZsnDjBr-3" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" value="" vertex="1">
+          <mxGeometry height="100" width="80" x="80" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="2BV0fCQkciIfUZsnDjBr-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Botão para abrir janela de escolha de arquivo no sistema operacional. (janela de encontrar e selecionar arquivo)" vertex="1">
+          <mxGeometry height="30" width="380" x="120" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="2BV0fCQkciIfUZsnDjBr-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Campo para mostrar path do arquivo escolhido com o botão acima" vertex="1">
+          <mxGeometry height="60" width="630" x="80" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="Ol7Y02ylqWCM4KSw8vf--1" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Campo para Paciente Account ID" vertex="1">
+          <mxGeometry height="60" width="320" x="100" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="Ol7Y02ylqWCM4KSw8vf--2" parent="1" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.patternFillRect;fillStyle=diag;step=5;fillStrokeWidth=0.2;fillStrokeColor=#dddddd;" value="Campo para Doctor Account ID" vertex="1">
+          <mxGeometry height="60" width="320" x="100" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="Ol7Y02ylqWCM4KSw8vf--3" parent="1" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.button;dx=10;whiteSpace=wrap;" value="Submit" vertex="1">
+          <mxGeometry height="60" width="100" x="360" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="DfKSLbzTtDJ-Wb35hLsh-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="1 - faz o upload do hsitórico&lt;br&gt;2 - recupera o file_hash do IPFS&lt;br&gt;3- executa transaction no node." vertex="1">
+          <mxGeometry height="30" width="260" x="460" y="695" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
