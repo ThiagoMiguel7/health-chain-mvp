@@ -4,20 +4,20 @@
 nvm install 20
 nvm use 20
 npm init -y
-npm install polkadot-api@1.17.2
-npx papi add healthchain -w ws://127.0.0.1:9944
-npx papi
-npm install @polkadot/keyring @polkadot/util-crypto
-npm install
+npm install @polkadot/api
 npm i -D ts-node typescript @types/node
 
-Depois disso pode rodar o Typescript para ver os resultados:
+Depois disso pode rodar o Typescript para ver os resultados. Exemplos:
 
-npx ts-node testeConection.ts
+
+node --loader ts-node/esm helloWord.ts
+npx ts-node frstConnectionTest.ts
+node frstConnectionTest.js
+
 
 Antes de executar todos esses comandos, recomendo iniciar o node substrate no endereço localhost. Porta default = 9944.
 
 
 ----------------------
 
-Rodrigo Pimenta Carvalho , 22/01/2026.
+Rodrigo Pimenta Carvalho , 23/01/2026.
