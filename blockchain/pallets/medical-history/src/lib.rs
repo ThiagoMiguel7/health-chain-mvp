@@ -176,10 +176,6 @@ pub mod pallet {
                 return Err(Error::<T>::NoPermission.into());
             }
 
-            if patient == doctor {
-                return Err(Error::<T>::NoPermission.into());
-            }
-
             ensure!(
                 !Records::<T>::contains_key(&file_hash),
                 Error::<T>::RecordAlreadyExists
