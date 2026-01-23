@@ -17,6 +17,10 @@ node frstConnectionTest.js
 
 Antes de executar todos esses comandos, recomendo iniciar o node substrate no endereço localhost. Porta default = 9944.
 
+Antes de usar o KUBO (vide diretório kubo), rode nesse diretório o seguinte comando:
+
+npm install ipfs-http-client
+
 
 ----------------------
 

@@ -1,0 +1,30 @@
+Kubo é uma versão CLI do node IPFS.
+Ao instalar o Kubo, a máquina pode rodar o node de serviço IPFS.
+Assim fica possível , por exemplo, salvar um arquivo localmente nesse serviço, via IPFS. O serviço tem que estar rodando na maquina então.
+O IPFS retorna um CID (hash code) do arquivo salvo. Esse CID pode ser usado posteriormente para recuperar o mesmo arquivo.
+
+Para instalar o Kubo, siga essa página: https://docs.ipfs.tech/install/command-line/#install-official-binary-distributions
+
+Rodar o kubo como Daemon :
+============================
+
+> ipfs daemon
+
+
+O Kubo se torna um serviço rodando na máquina e sua dashborad pode ser vista aqui: localhost:5001/webui
+
+Os seguinte comandos podem ser usados para checar se está tudo bem com o seu Kubo:
+
+ ipfs cat /ipfs/QmSgvgwxZGaBLqkGyWemEDqikCqU52XxsYLKtdy3vGZ8uq > ./spaceship-launch.jpg
+ ll
+ echo "meow" > meow.txt
+ cat meow.txt
+ ipfs add meow.txt
+ curl "https://ipfs.io/ipfs/QmabZ1pL9npKXJg8JGdMwQMJo2NCVy9yDVYjhiHK4LTJQH"
+
+
+
+
+-------------------
+
+Rodrigo Pimenta Carvalho 23/01/2026.

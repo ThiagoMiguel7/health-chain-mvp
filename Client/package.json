@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@polkadot/api": "^16.5.4"
+    "@polkadot/api": "^16.5.4",
+    "ipfs-http-client": "^60.0.1"
   },
   "devDependencies": {
     "@types/node": "^25.0.10",
