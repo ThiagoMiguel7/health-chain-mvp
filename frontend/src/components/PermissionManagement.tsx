@@ -2,15 +2,8 @@ import React, { useState, JSX } from 'react';
 import { Lock, Loader2 } from 'lucide-react';
 
 import { useToast } from '../contexts/ToastContext';
-import { mockPermissionTransaction } from '../utils/blockchain';
-import { grantAccess } from '../utils/polkadot.api';
-
-type InputProps = {
-  title: string;
-  value: string;
-  placeholder: string;
-  onChange: (value: string) => void;
-};
+import { grantAccess, revokeAccess } from '../utils/polkadot.api';
+import { Input } from './Input';
 
 function Header(): JSX.Element {
   return (
@@ -21,33 +14,6 @@ function Header(): JSX.Element {
       <h2 className='text-2xl font-bold text-gray-800'>
         Conceder e Revogar Acesso
       </h2>
-    </div>
-  );
-}
-
-function Input({
-  title,
-  value,
-  placeholder,
-  onChange,
-}: Readonly<InputProps>): JSX.Element {
-  const handleOnChange = ({
-    target,
-  }: React.ChangeEvent<HTMLInputElement>): void => onChange(target.value);
-
-  return (
-    <div>
-      <label className='block text-sm font-medium text-gray-700 mb-2'>
-        {title}
-      </label>
-
-      <input
-        type='text'
-        value={value}
-        placeholder={placeholder}
-        onChange={handleOnChange}
-        className='w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all'
-      />
     </div>
   );
 }
@@ -66,30 +32,52 @@ export function PermissionManagement(): JSX.Element {
     e.preventDefault();
 
     if (!doctorId || !patientId) {
-      showToast('error', 'Please fill in all fields');
+      showToast('error', 'Por favor, preencha todos os campos');
       return;
     }
 
     setLoading(true);
-    showToast('info', 'Signing transaction...');
+    showToast('info', 'Assinando transação...');
 
     try {
-      await grantAccess({ patientAddress: patientId, doctorAddress: doctorId });
+      let txHash: string = '';
+      let blockNumber: number = 0;
 
-      const { txHash, blockNumber } = await mockPermissionTransaction(
-        doctorId,
-        patientId,
-        action,
-      );
+      if (action === 'grant') {
+        const result = await grantAccess({
+          patientAddress: patientId,
+          doctorAddress: doctorId,
+        });
+
+        if (!result.success) {
+          throw result.error;
+        }
+
+        txHash = result.transactionHash;
+        blockNumber = result.blockNumber;
+      } else {
+        const result = await revokeAccess({
+          patientAddress: patientId,
+          doctorAddress: doctorId,
+        });
+
+        if (!result.success) {
+          throw result.error;
+        }
+
+        txHash = result.transactionHash;
+        blockNumber = result.blockNumber;
+      }
+
       showToast(
         'success',
-        `Permission ${action === 'grant' ? 'granted' : 'revoked'} successfully! TxHash: ${txHash.slice(0, 10)}... | Block: ${blockNumber}`,
+        `Permissão ${action === 'grant' ? 'concedida' : 'revogada'} com sucesso! TxHash: ${txHash.slice(0, 10)}... | Bloco: ${blockNumber}`,
       );
       setDoctorId('');
       setPatientId('');
     } catch (err) {
       console.log('Error signing transaction:', err);
-      showToast('error', 'Transaction failed. Please try again.');
+      showToast('error', 'Transação falhou. Por favor, tente novamente.');
     } finally {
       setLoading(false);
     }
@@ -103,14 +91,12 @@ export function PermissionManagement(): JSX.Element {
         <form onSubmit={handleSubmit} className='space-y-6'>
           <Input
             value={doctorId}
-            placeholder='5Grw...'
             onChange={setDoctorId}
             title='ID da Conta do Médico'
           />
 
           <Input
             value={patientId}
-            placeholder='5Grw...'
             onChange={setPatientId}
             title='ID da Conta do Paciente'
           />

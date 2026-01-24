@@ -32,7 +32,8 @@ export const PatientHistory = () => {
       } else {
         showToast('error', 'Record not found on blockchain');
       }
-    } catch (error) {
+    } catch (err) {
+      console.log('Error verifying record:', err);
       showToast('error', 'Verification failed. Please try again.');
     } finally {
       setLoading(false);
@@ -40,32 +41,34 @@ export const PatientHistory = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-blue-100">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-3 bg-gradient-to-br from-blue-500 to-teal-600 rounded-xl">
-            <FileText className="w-6 h-6 text-white" />
+    <div className='max-w-2xl mx-auto'>
+      <div className='bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-blue-100'>
+        <div className='flex items-center gap-3 mb-6'>
+          <div className='p-3 bg-gradient-to-br from-blue-500 to-teal-600 rounded-xl'>
+            <FileText className='w-6 h-6 text-white' />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Recuperação de Histórico Próprio</h2>
+          <h2 className='text-2xl font-bold text-gray-800'>
+            Recuperação de Histórico Próprio
+          </h2>
         </div>
 
-        <form onSubmit={handleView} className="space-y-6">
+        <form onSubmit={handleView} className='space-y-6'>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className='block text-sm font-medium text-gray-700 mb-2'>
               My Account ID
             </label>
             <input
-              type="text"
+              type='text'
               value={accountId}
-              onChange={(e) => setAccountId(e.target.value)}
-              placeholder={walletAccountId || "5Grw..."}
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              onChange={e => setAccountId(e.target.value)}
+              placeholder={walletAccountId || '5Grw...'}
+              className='w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
             />
             {walletAccountId && (
               <button
-                type="button"
+                type='button'
                 onClick={() => setAccountId(walletAccountId)}
-                className="mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
+                className='mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium'
               >
                 Use connected wallet: {walletAccountId.slice(0, 8)}...
               </button>
@@ -73,31 +76,31 @@ export const PatientHistory = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className='block text-sm font-medium text-gray-700 mb-2'>
               File Hash / CID
             </label>
             <input
-              type="text"
+              type='text'
               value={cid}
-              onChange={(e) => setCid(e.target.value)}
-              placeholder="Qm..."
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              onChange={e => setCid(e.target.value)}
+              placeholder='Qm...'
+              className='w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all'
             />
           </div>
 
           <button
-            type="submit"
+            type='submit'
             disabled={loading}
-            className="w-full bg-gradient-to-r from-blue-500 to-teal-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className='w-full bg-gradient-to-r from-blue-500 to-teal-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2'
           >
             {loading ? (
               <>
-                <Loader2 className="w-5 h-5 animate-spin" />
+                <Loader2 className='w-5 h-5 animate-spin' />
                 Verifying...
               </>
             ) : (
               <>
-                <ExternalLink className="w-5 h-5" />
+                <ExternalLink className='w-5 h-5' />
                 Search & View
               </>
             )}

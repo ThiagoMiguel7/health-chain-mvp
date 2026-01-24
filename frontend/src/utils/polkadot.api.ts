@@ -1,6 +1,8 @@
-import { ApiPromise, WsProvider, SubmittableResult } from '@polkadot/api';
+import { ApiPromise, WsProvider } from '@polkadot/api';
+import { SubmittableExtrinsic } from '@polkadot/api/types';
+
 import { Keyring } from '@polkadot/keyring';
-import { web3Enable, web3FromSource } from '@polkadot/extension-dapp';
+import { KeyringPair } from '@polkadot/keyring/types';
 
 import { WS_URL } from './shared';
 import { withResolvers } from './promises';
@@ -10,19 +12,33 @@ const api = await ApiPromise.create({ provider });
 
 const keyring = new Keyring({ type: 'sr25519', ss58Format: 2 });
 
-type CheckAccess = { patientUri: string; doctorUri: string };
-type GrantAccess = { patientAddress: string; doctorAddress: string };
+type BlockchainActionProps = { patientAddress: string; doctorAddress: string };
+type BlockchainCreateRecordProps = BlockchainActionProps & {
+  fileHashHex: string;
+};
+
+export type BlockchainActionResult =
+  | {
+      success: true;
+      blockNumber: number;
+      transactionHash: string;
+    }
+  | {
+      success: false;
+      error: Error;
+    };
+
+keyring.addFromUri('//Alice');
+keyring.addFromUri('//Bob');
+keyring.addFromUri('//Charlie');
+keyring.addFromUri('//Dave');
+keyring.addFromUri('//Eve');
+keyring.addFromUri('//Ferdie');
 
 export async function checkAccess({
-  patientUri,
-  doctorUri,
-}: Readonly<CheckAccess>): Promise<boolean> {
-  const { address: patientAddress } = keyring.addFromUri(patientUri);
-  const { address: doctorAddress } = keyring.addFromUri(doctorUri);
-
-  console.log('🚀 ~ checkAccess ~ patientAddress:', patientAddress);
-  console.log('🚀 ~ checkAccess ~ doctorAddress:', doctorAddress);
-
+  patientAddress,
+  doctorAddress,
+}: Readonly<BlockchainActionProps>): Promise<boolean> {
   if (patientAddress === doctorAddress) {
     console.log(
       `Resultado: true (patient === doctor — acesso sempre garantido pela política do pallet)`,
@@ -50,98 +66,115 @@ export async function checkAccess({
   }
 }
 
-export async function grantAccess({
-  patientAddress,
-  doctorAddress,
-}: Readonly<GrantAccess>): Promise<boolean | string> {
-  // Keyring e conta originadora (paciente = Alice)
-  const patientKeyringPair = keyring.addFromAddress(patientAddress);
-  const doctorKeyringPair = keyring.addFromAddress(doctorAddress);
+async function submitExtrinsic(
+  extrinsic: SubmittableExtrinsic<'promise'>,
+  signer: KeyringPair,
+): Promise<BlockchainActionResult> {
+  const { promise, resolve, reject } = withResolvers<BlockchainActionResult>();
 
-  const extrinsic = api.tx.medicalPermissions.grantAccess(
-    doctorKeyringPair.address,
-  );
+  let unsubscribe: (() => void) | undefined;
+  let completed = false;
 
-  // this call fires up the authorization popup
-  // await web3Enable('HealthChain POC UI');
-  // const injector = await web3FromSource(patientKeyringPair.meta!.source!);
+  const finish = (result?: BlockchainActionResult, error?: string) => {
+    if (completed) return;
+    completed = true;
+    unsubscribe?.();
 
-  const { promise, reject, resolve } = withResolvers<boolean | string>();
+    if (error) {
+      reject({ success: false, error: new Error(error) });
+    } else if (result) {
+      resolve(result);
+    }
+  };
 
   try {
-    const unsubscribe = await extrinsic.signAndSend(
-      patientKeyringPair.address,
-      // { signer: injector.signer },
-      ({ status, events, dispatchError }: SubmittableResult) => {
-        console.log('Status:', status.type);
+    unsubscribe = await extrinsic.signAndSend(
+      signer,
+      ({ status, events, dispatchError }) => {
+        if (completed) return;
 
-        if (status.isInBlock) {
-          console.log('Incluído no bloco:', status.asInBlock.toHex());
+        // ❌ Dispatch error
+        if (dispatchError) {
+          if (dispatchError.isModule) {
+            const meta = api.registry.findMetaError(dispatchError.asModule);
+            return finish(
+              undefined,
+              `${meta.section}.${meta.name}: ${meta.docs.join(' ')}`,
+            );
+          }
+
+          return finish(undefined, dispatchError.toString());
         }
 
-        resolve(true);
+        const success = events.some(
+          ({ event }) =>
+            event.section === 'system' && event.method === 'ExtrinsicSuccess',
+        );
 
-        // // Erro de dispatch
-        // if (dispatchError) {
-        //   if ((dispatchError as any).isModule) {
-        //     // Decodifica erro do runtime
-        //     try {
-        //       const decoded = api.registry.findMetaError(
-        //         (dispatchError as any).asModule,
-        //       );
-        //       const { section, name, docs } = decoded;
-        //       console.error(
-        //         `Erro do runtime: ${section}.${name} — ${docs.join(' ')}`,
-        //       );
-        //     } catch (e) {
-        //       console.error('Erro ao decodificar dispatchError do módulo:', e);
-        //     }
-        //   } else {
-        //     console.error('Erro:', dispatchError.toString());
-        //   }
-        // }
+        const failed = events.some(
+          ({ event }) =>
+            event.section === 'system' && event.method === 'ExtrinsicFailed',
+        );
 
-        // // Eventos
-        // if (events && events.length) {
-        //   events.forEach(({ event: { section, method, data }, phase }: any) => {
-        //     console.log(
-        //       `Event: ${section}.${method} (phase=${phase.toString()}) ->`,
-        //       data.toString(),
-        //     );
-        //   });
-        // }
+        if (failed && !success) {
+          return finish(undefined, 'Extrinsic finalizada com falha');
+        }
 
-        // if (status.isFinalized) {
-        //   console.log('Finalizado no bloco:', status.asFinalized.toHex());
-        //   // unsub é função de unsubscribe
-        //   try {
-        //     if (typeof unsubscribe === 'function') {
-        //       unsubscribe();
-        //     } else if (
-        //       unsubscribe &&
-        //       typeof (unsubscribe as any).unsubscribe === 'function'
-        //     ) {
-        //       // fallback caso runtime/versão retorne um objeto
-        //       (unsubscribe as any).unsubscribe();
-        //     }
-        //   } catch (e) {
-        //     // ignore
-        //   }
-        //   api.disconnect().catch(() => {});
-        //   process.exit(0);
-        // }
+        if (success) {
+          const blockHash = status.asInBlock;
+          api.rpc.chain.getBlock(blockHash).then(signedBlock => {
+            const blockNumber = signedBlock.block.header.number.toNumber();
+            console.log(`Block number: ${blockNumber}`);
+
+            finish({
+              blockNumber,
+              success: true,
+              transactionHash: extrinsic.hash.toHex(),
+            });
+          });
+        }
       },
     );
-    console.log('🚀 ~ grantAccess ~ unsubscribe:', unsubscribe);
-
-    // Alguns ambientes/versões retornam hash ou objeto; faça uma checagem segura
-    // if (unsubscribe && typeof (unsubscribe as any).toHex === 'function') {
-    //   console.log('Hash da transação:', (unsubscribe as any).toHex());
-    // }
   } catch (err) {
-    console.error('Erro ao enviar extrinsic:', err);
-    reject((err as Error).message);
+    finish(undefined, (err as Error).message);
   }
 
   return promise;
+}
+
+export async function grantAccess({
+  patientAddress,
+  doctorAddress,
+}: Readonly<BlockchainActionProps>): Promise<BlockchainActionResult> {
+  const patient = keyring.getPair(patientAddress);
+
+  const extrinsic = api.tx.medicalPermissions.grantAccess(doctorAddress);
+
+  return submitExtrinsic(extrinsic, patient);
+}
+
+export async function revokeAccess({
+  patientAddress,
+  doctorAddress,
+}: Readonly<BlockchainActionProps>): Promise<BlockchainActionResult> {
+  const patient = keyring.getPair(patientAddress);
+
+  const extrinsic = api.tx.medicalPermissions.revokeAccess(doctorAddress);
+
+  return submitExtrinsic(extrinsic, patient);
+}
+
+export async function createRecord({
+  patientAddress,
+  doctorAddress,
+  fileHashHex,
+}: Readonly<BlockchainCreateRecordProps>): Promise<BlockchainActionResult> {
+  const doctor = keyring.getPair(doctorAddress);
+
+  const extrinsic = api.tx.medicalHistory.createRecord(
+    patientAddress,
+    fileHashHex,
+  );
+
+  return submitExtrinsic(extrinsic, doctor);
 }

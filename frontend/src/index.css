@@ -8,6 +8,7 @@
       transform: translateX(100%);
       opacity: 0;
     }
+
     to {
       transform: translateX(0);
       opacity: 1;
@@ -16,5 +17,19 @@
 
   .animate-slide-in {
     animation: slide-in 0.3s ease-out;
+  }
+
+  @keyframes infinite-progress {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-infinite-progress {
+    animation: infinite-progress 1.5s linear infinite;
   }
 }

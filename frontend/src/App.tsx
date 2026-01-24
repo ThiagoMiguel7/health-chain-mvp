@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, JSX } from 'react';
 import { Activity, Loader2, User } from 'lucide-react';
+
 import { WalletProvider, useWallet } from './contexts/WalletContext';
 import { ToastProvider } from './contexts/ToastContext';
 import { PermissionManagement } from './components/PermissionManagement';
@@ -9,10 +10,18 @@ import { CreateRecord } from './components/CreateRecord';
 
 type Tab = 'permissions' | 'history' | 'doctor' | 'upload';
 
-const AppContent = () => {
-  const [activeTab, setActiveTab] = useState<Tab>('permissions');
+const tabs: { id: Tab; label: string }[] = [
+  { id: 'permissions', label: 'Permissões' },
+  { id: 'history', label: 'Meu Histórico' },
+  { id: 'doctor', label: 'Busca Médica' },
+  { id: 'upload', label: 'Criar Registro' },
+];
+
+function AppContent(): JSX.Element {
   const { isConnected, accountId, connectWallet, disconnectWallet } =
     useWallet();
+
+  const [activeTab, setActiveTab] = useState<Tab>('permissions');
   const [connecting, setConnecting] = useState(false);
 
   const handleConnect = async () => {
@@ -20,13 +29,6 @@ const AppContent = () => {
     connectWallet();
     setTimeout(() => setConnecting(false), 1000);
   };
-
-  const tabs: { id: Tab; label: string }[] = [
-    { id: 'permissions', label: 'Permissões' },
-    { id: 'history', label: 'Meu Histórico' },
-    { id: 'doctor', label: 'Busca Médica' },
-    { id: 'upload', label: 'Criar Registro' },
-  ];
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-teal-50 via-blue-50 to-white'>
@@ -42,7 +44,7 @@ const AppContent = () => {
                   HealthChain
                 </h1>
                 <p className='text-xs text-gray-500'>
-                  Medical Blockchain on Polkadot
+                  Blockchain Médico na Polkadot
                 </p>
               </div>
             </div>
@@ -58,9 +60,9 @@ const AppContent = () => {
                   </div>
                   <button
                     onClick={disconnectWallet}
-                    className='px-4 py-2 text-sm text-gray-600 hover:text-gray-800 transition-colors'
+                    className='px-4 py-2 text-sm text-gray-600 hover:text-gray-800 hover:scale-105 transition-colors'
                   >
-                    Disconnect
+                    Desconectar
                   </button>
                   <div className='w-10 h-10 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full flex items-center justify-center'>
                     <User className='w-5 h-5 text-white' />
@@ -75,10 +77,10 @@ const AppContent = () => {
                   {connecting ? (
                     <>
                       <Loader2 className='w-4 h-4 animate-spin' />
-                      Connecting...
+                      Conectando...
                     </>
                   ) : (
-                    'Connect Wallet'
+                    'Conectar carteira'
                   )}
                 </button>
               )}
@@ -113,13 +115,15 @@ const AppContent = () => {
       </main>
 
       <footer className='container mx-auto px-6 py-8 text-center text-gray-500 text-sm'>
-        <p>HealthChain POC - Secure Medical Records on Polkadot Blockchain</p>
+        <p>
+          HealthChain POC - Registros Médicos Seguros na Blockchain Polkadot
+        </p>
       </footer>
     </div>
   );
-};
+}
 
-function App() {
+export default function App(): JSX.Element {
   return (
     <WalletProvider>
       <ToastProvider>
@@ -128,5 +132,3 @@ function App() {
     </WalletProvider>
   );
 }
-
-export default App;

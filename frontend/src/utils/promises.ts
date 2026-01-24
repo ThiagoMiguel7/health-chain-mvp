@@ -19,3 +19,12 @@ export function withResolvers<T>(): PromiseWithResolversProps<T> {
 
   return promiseWithResolvers;
 }
+
+/**
+ * Awaitable function that waits a certain amount of time before resolving.
+ * Useful for slowing down execution for debugging purposes.
+ *
+ * @param {number} time - time in milliseconds, defaults to 500 (500 milliseconds)
+ */
+export const delay = async (time: number = 500): Promise<void> =>
+  new Promise(resolve => setTimeout(resolve, time));
