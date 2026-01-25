@@ -16,6 +16,11 @@ type BlockchainActionProps = { patientAddress: string; doctorAddress: string };
 type BlockchainCreateRecordProps = BlockchainActionProps & {
   fileHashHex: string;
 };
+type BlockchainReadOwnDataProps = Omit<
+  BlockchainCreateRecordProps,
+  'doctorAddress'
+>;
+type BlockchainDoctorReadDataProps = BlockchainCreateRecordProps;
 
 export type BlockchainActionResult =
   | {
@@ -172,6 +177,32 @@ export async function createRecord({
   const doctor = keyring.getPair(doctorAddress);
 
   const extrinsic = api.tx.medicalHistory.createRecord(
+    patientAddress,
+    fileHashHex,
+  );
+
+  return submitExtrinsic(extrinsic, doctor);
+}
+
+export async function readOwnData({
+  fileHashHex,
+  patientAddress,
+}: Readonly<BlockchainReadOwnDataProps>): Promise<BlockchainActionResult> {
+  const patient = keyring.getPair(patientAddress);
+
+  const extrinsic = api.tx.medicalHistoryReader.readOwnData(fileHashHex);
+
+  return submitExtrinsic(extrinsic, patient);
+}
+
+export async function readPatientData({
+  patientAddress,
+  doctorAddress,
+  fileHashHex,
+}: Readonly<BlockchainDoctorReadDataProps>): Promise<BlockchainActionResult> {
+  const doctor = keyring.getPair(doctorAddress);
+
+  const extrinsic = api.tx.medicalHistoryReader.readPatientData(
     patientAddress,
     fileHashHex,
   );
