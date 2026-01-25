@@ -43,9 +43,9 @@ use sp_version::RuntimeVersion;
 // Local module imports
 // ATENÇÃO: Adicionei AllPalletsWithSystem aqui
 use super::{
-    AccountId, AllPalletsWithSystem, Aura, Balance, Balances, Block, Executive, Grandpa, 
-    InherentDataExt, MedicalHistory, Nonce, Runtime, RuntimeCall, RuntimeGenesisConfig, 
-    SessionKeys, Sudo, System, Timestamp, TransactionPayment, VERSION,
+    AccountId, Aura, Balance, Block, Executive, Grandpa, 
+    InherentDataExt, Nonce, Runtime, RuntimeCall, RuntimeGenesisConfig, 
+    SessionKeys, System, TransactionPayment, VERSION,
 };
 
 // ==========================================================================
