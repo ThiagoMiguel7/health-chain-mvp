@@ -1,7 +1,5 @@
 import { create } from 'ipfs-http-client';
 
-import { delay } from './promises';
-
 const IPFS_URL = 'http://localhost:5001';
 
 export const ipfs = create({ url: IPFS_URL });
@@ -16,6 +14,5 @@ export async function uploadFileToIpfs(file: File): Promise<string> {
 
 export async function openFile(cid: string): Promise<void> {
   const ipfsUrl = `http://localhost:8080/ipfs/${cid}`;
-  await delay(1_000);
   window.open(ipfsUrl, '_blank');
 }

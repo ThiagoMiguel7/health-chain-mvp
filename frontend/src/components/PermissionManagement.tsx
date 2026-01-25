@@ -127,7 +127,7 @@ export function PermissionManagement(): JSX.Element {
                 Processando...
               </>
             ) : (
-              'Submit Transaction'
+              'Enviar Transação'
             )}
           </button>
         </form>
