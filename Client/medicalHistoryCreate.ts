@@ -56,7 +56,8 @@ async function main(): Promise<void> {
 
   // Cria file_hash aleatório de 15 caracteres e converte para hex
   const random15 = randomString(15);
-  const fileHashHex = stringToHexAscii(random15);
+  //const fileHashHex = stringToHexAscii(random15);
+  const fileHashHex = "0x4933794f6a39737159443031596959";
   console.log('Usando file_hash (15 chars):', random15);
   console.log('file_hash em hex:', fileHashHex);
 
