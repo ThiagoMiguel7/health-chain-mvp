@@ -1,3 +1,5 @@
+[![Vídeo Explicativo no YouTube](https://img.shields.io/badge/YouTube-Assistir-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=TaGYoAOJ1yw)
+
 # 🏥 HealthChain MVP ⛓️
 
 ## Prontuário Médico Descentralizado
