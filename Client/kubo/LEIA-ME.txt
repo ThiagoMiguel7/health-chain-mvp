@@ -10,6 +10,10 @@ Rodar o kubo como Daemon :
 
 > ipfs daemon
 
+se quiser rodar sem conexão com outros peers , fazer :
+
+> ipfs daemon --offline
+
 
 O Kubo se torna um serviço rodando na máquina e sua dashborad pode ser vista aqui: localhost:5001/webui
 
