@@ -12,7 +12,11 @@ export async function uploadFileToIpfs(file: File): Promise<string> {
   return cid.toString();
 }
 
+export function getIpfsUrl(cid: string): string {
+  return `http://localhost:8080/ipfs/${cid}`;
+}
+
 export async function openFile(cid: string): Promise<void> {
-  const ipfsUrl = `http://localhost:8080/ipfs/${cid}`;
+  const ipfsUrl = getIpfsUrl(cid);
   window.open(ipfsUrl, '_blank');
 }

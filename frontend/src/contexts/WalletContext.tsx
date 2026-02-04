@@ -1,4 +1,11 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useMemo,
+  useCallback,
+} from 'react';
 
 interface WalletContextType {
   isConnected: boolean;
@@ -7,9 +14,10 @@ interface WalletContextType {
   disconnectWallet: () => void;
 }
 
-const WalletContext = createContext<WalletContextType | undefined>(undefined);
+const WalletContext = createContext<WalletContextType>({} as WalletContextType);
 
-export const useWallet = () => {
+// eslint-disable-next-line react-refresh/only-export-components
+export const useWallet = (): WalletContextType => {
   const context = useContext(WalletContext);
   if (!context) {
     throw new Error('useWallet must be used within WalletProvider');
@@ -21,21 +29,29 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [accountId, setAccountId] = useState<string | null>(null);
 
-  const connectWallet = () => {
+  const connectWallet = useCallback(() => {
     setTimeout(() => {
       setIsConnected(true);
       setAccountId('5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY');
     }, 1000);
-  };
+  }, []);
 
-  const disconnectWallet = () => {
+  const disconnectWallet = useCallback(() => {
     setIsConnected(false);
     setAccountId(null);
-  };
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      isConnected,
+      accountId,
+      connectWallet,
+      disconnectWallet,
+    }),
+    [isConnected, accountId, connectWallet, disconnectWallet],
+  );
 
   return (
-    <WalletContext.Provider value={{ isConnected, accountId, connectWallet, disconnectWallet }}>
-      {children}
-    </WalletContext.Provider>
+    <WalletContext.Provider value={value}>{children}</WalletContext.Provider>
   );
 };
