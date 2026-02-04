@@ -97,6 +97,12 @@ mod runtime {
 
     #[runtime::pallet_index(2)]
     pub type MedicalHistoryReader = pallet_medical_history_reader::Pallet<Test>;
+
+    #[runtime::pallet_index(3)]
+    pub type MedicalHistory = pallet_medical_history::Pallet<Test>;
+
+    #[runtime::pallet_index(4)]
+    pub type MedicalPermissions = pallet_medical_permissions::Pallet<Test>;
 }
 
 #[derive_impl(frame_system::config_preludes::TestDefaultConfig)]
@@ -113,9 +119,24 @@ impl pallet_timestamp::Config for Test {
 
 impl pallet_medical_history_reader::Config for Test {
     type RuntimeEvent = RuntimeEvent;
-    type WeightInfo = ();
+    // Use a implementação gerada em weights.rs para o Test runtime.
+    type WeightInfo = crate::weights::WeightInfo<Test>;
     type HistoryProvider = MockHistoryAccessor;
     type Permissions = MockPermissions;
+}
+
+impl pallet_medical_permissions::Config for Test {
+    type RuntimeEvent = RuntimeEvent;
+    type WeightInfo = ();
+}
+
+// Implementação para o pallet_medical_history (mock)
+impl pallet_medical_history::Config for Test {
+    type WeightInfo = ();
+    // Este tipo Permissions espera um implementador de MedicalPermissionsVerifier.
+    // A implementação pública do pallet_medical_permissions (o `Pallet`) implementa esse trait,
+    // então é seguro apontar para ele aqui.
+    type Permissions = pallet_medical_permissions::Pallet<Test>;
 }
 
 /// Builds genesis storage according to the mock runtime configuration.
