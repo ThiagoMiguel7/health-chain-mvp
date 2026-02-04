@@ -208,6 +208,21 @@ pub mod pallet {
         }
     }
 
+    //Método auxiliar para benchmarks. Usado na medição real de peso de uma extrinsic.----------  start ----------------
+    #[cfg(feature = "runtime-benchmarks")]
+    impl<T: Config> Pallet<T> {
+        pub fn bench_insert_record(patient: &T::AccountId, file_hash: &FileHash) {
+            let now = pallet_timestamp::Now::<T>::get();
+            let record = MedicalRecord {
+                created_by: patient.clone(),
+                created_at: now,
+                file_hash: file_hash.clone(),
+            };
+            PatientRecords::<T>::insert(patient, file_hash, record);
+        }
+    }
+    //Método auxiliar para benchmarks. Usado na medição real de peso de uma extrinsic.----------  end ----------------
+
     /// Implementation of the public accessor interface used by reader pallets.
     impl<T: Config> MedicalHistoryAccessor<T::AccountId, T::Moment> for Pallet<T> {
         fn get_patient_record(

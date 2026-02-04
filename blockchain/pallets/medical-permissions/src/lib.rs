@@ -152,6 +152,16 @@ pub mod pallet {
             Ok(())
         }
     }
+
+    //Para calibrar pesos nos benchmarks ----------------  START ------------------
+    #[cfg(feature = "runtime-benchmarks")]
+    impl<T: Config> Pallet<T> {
+        /// Concede permissão (somente para benchmarking).
+        pub fn bench_grant_permission(patient: &T::AccountId, doctor: &T::AccountId) {
+            Permissions::<T>::insert(patient, doctor, true);
+        }
+    }
+    //Para calibrar pesos nos benchmarks ----------------  END ------------------
 }
 
 // -------------------------------------------------------------------------

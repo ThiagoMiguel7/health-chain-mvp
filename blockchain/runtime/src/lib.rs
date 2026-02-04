@@ -31,6 +31,9 @@ pub use frame_system::Call as SystemCall;
 pub use pallet_balances::Call as BalancesCall;
 pub use pallet_timestamp::Call as TimestampCall;
 
+use pallet_medical_history_reader::weights::WeightInfo as MedicalHistoryReaderWeightInfo; //Para calcular pesos corretamente
+
+
 #[cfg(any(feature = "std", test))]
 pub use sp_runtime::BuildStorage;
 
@@ -237,7 +240,7 @@ impl pallet_medical_permissions::Config for Runtime {
 
 impl pallet_medical_history_reader::Config for Runtime {
     type RuntimeEvent = RuntimeEvent;
-    type WeightInfo = ();
+    type WeightInfo = MedicalHistoryReaderWeightInfo<Runtime>; //Para o cálculo de pesos funcionar corretamente
     type HistoryProvider = MedicalHistory;
     type Permissions = MedicalPermissions;
 }

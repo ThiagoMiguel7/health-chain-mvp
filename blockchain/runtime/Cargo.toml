@@ -18,12 +18,14 @@ workspace = true
 [dependencies]
 codec = { workspace = true, features = ["derive"] }
 scale-info = { workspace = true, features = ["derive", "serde"] }
-serde_json = { workspace = true, default-features = false, features = ["alloc"] }
+serde_json = { workspace = true, default-features = false, features = [
+	"alloc",
+] }
 
 # HealthChain pallets
-pallet-medical-history = { path = "../pallets/medical-history", default-features = false }
-pallet-medical-permissions = { path = "../pallets/medical-permissions", default-features = false }
-pallet-medical-history-reader = { path = "../pallets/medical-history-reader", default-features = false }
+pallet-medical-history = { workspace = true }
+pallet-medical-permissions = { workspace = true }
+pallet-medical-history-reader = { workspace = true }
 
 # frame
 frame-executive = { workspace = true }
@@ -119,6 +121,7 @@ runtime-benchmarks = [
 	"pallet-sudo/runtime-benchmarks",
 	"pallet-medical-history/runtime-benchmarks",
 	"pallet-medical-permissions/runtime-benchmarks",
+	"pallet-medical-history-reader/runtime-benchmarks", #Para possibilitar ativar os benchmarks e calcular na real qual é o peso de cada extrínseco
 	"pallet-timestamp/runtime-benchmarks",
 	"pallet-transaction-payment/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
