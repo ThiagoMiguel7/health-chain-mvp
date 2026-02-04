@@ -1,4 +1,11 @@
-import { createContext, useContext, useState, ReactNode, useCallback } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useCallback,
+  useMemo,
+} from 'react';
 import { CheckCircle, XCircle, Info, X } from 'lucide-react';
 
 export type ToastType = 'success' | 'error' | 'info';
@@ -13,9 +20,10 @@ interface ToastContextType {
   showToast: (type: ToastType, message: string) => void;
 }
 
-const ToastContext = createContext<ToastContextType | undefined>(undefined);
+const ToastContext = createContext<ToastContextType>({} as ToastContextType);
 
-export const useToast = () => {
+// eslint-disable-next-line react-refresh/only-export-components
+export const useToast = (): ToastContextType => {
   const context = useContext(ToastContext);
   if (!context) {
     throw new Error('useToast must be used within ToastProvider');
@@ -42,11 +50,11 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
   const getIcon = (type: ToastType) => {
     switch (type) {
       case 'success':
-        return <CheckCircle className="w-5 h-5 text-green-500" />;
+        return <CheckCircle className='w-5 h-5 text-green-500' />;
       case 'error':
-        return <XCircle className="w-5 h-5 text-red-500" />;
+        return <XCircle className='w-5 h-5 text-red-500' />;
       case 'info':
-        return <Info className="w-5 h-5 text-blue-500" />;
+        return <Info className='w-5 h-5 text-blue-500' />;
     }
   };
 
@@ -61,22 +69,24 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const value = useMemo(() => ({ showToast }), [showToast]);
+
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={value}>
       {children}
-      <div className="fixed top-4 right-4 z-50 space-y-2 max-w-md">
+      <div className='fixed top-4 right-4 z-50 space-y-2 max-w-md'>
         {toasts.map(toast => (
           <div
             key={toast.id}
             className={`${getBgColor(toast.type)} border rounded-xl px-4 py-3 shadow-lg backdrop-blur-sm flex items-start gap-3 animate-slide-in`}
           >
             {getIcon(toast.type)}
-            <p className="flex-1 text-sm text-gray-800">{toast.message}</p>
+            <p className='flex-1 text-sm text-gray-800'>{toast.message}</p>
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className='text-gray-400 hover:text-gray-600 transition-colors'
             >
-              <X className="w-4 h-4" />
+              <X className='w-4 h-4' />
             </button>
           </div>
         ))}

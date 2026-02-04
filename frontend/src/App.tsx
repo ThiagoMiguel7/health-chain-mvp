@@ -1,4 +1,4 @@
-import { useState, JSX } from 'react';
+import { useState, JSX, useEffect } from 'react';
 import { Activity, Loader2, User } from 'lucide-react';
 
 import { WalletProvider, useWallet } from './contexts/WalletContext';
@@ -7,28 +7,41 @@ import { PermissionManagement } from './components/PermissionManagement';
 import { PatientHistory } from './components/PatientHistory';
 import { DoctorPatientView } from './components/DoctorPatientView';
 import { CreateRecord } from './components/CreateRecord';
+import { AllHistory } from './components/AllHistory';
 
-type Tab = 'permissions' | 'history' | 'doctor' | 'upload';
+type Tab = 'permissions' | 'history' | 'doctor' | 'upload' | 'allHistory';
 
 const tabs: { id: Tab; label: string }[] = [
   { id: 'permissions', label: 'Permissões' },
   { id: 'history', label: 'Meu Histórico' },
   { id: 'doctor', label: 'Busca Médica' },
   { id: 'upload', label: 'Criar Registro' },
+  { id: 'allHistory', label: 'Histórico Completo' },
 ];
 
 function AppContent(): JSX.Element {
   const { isConnected, accountId, connectWallet, disconnectWallet } =
     useWallet();
 
-  const [activeTab, setActiveTab] = useState<Tab>('permissions');
   const [connecting, setConnecting] = useState(false);
+  const [activeTab, setActiveTab] = useState<Tab>('permissions');
 
   const handleConnect = async () => {
     setConnecting(true);
     connectWallet();
     setTimeout(() => setConnecting(false), 1000);
   };
+
+  const handleTabChange = (tab: Tab) => {
+    setActiveTab(tab);
+    window.history.replaceState({}, '', tab);
+  };
+
+  useEffect(() => {
+    const currentTab =
+      (window.location.pathname.replace('/', '') as Tab) || 'permissions';
+    handleTabChange(currentTab);
+  }, []);
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-teal-50 via-blue-50 to-white'>
@@ -41,7 +54,7 @@ function AppContent(): JSX.Element {
               </div>
               <div>
                 <h1 className='text-2xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent'>
-                  HealthChain
+                  InfoChain
                 </h1>
                 <p className='text-xs text-gray-500'>
                   Blockchain Médico na Polkadot
@@ -94,7 +107,9 @@ function AppContent(): JSX.Element {
           {tabs.map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                handleTabChange(tab.id);
+              }}
               className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-teal-500 to-blue-600 text-white shadow-md'
@@ -112,12 +127,11 @@ function AppContent(): JSX.Element {
         {activeTab === 'history' && <PatientHistory />}
         {activeTab === 'doctor' && <DoctorPatientView />}
         {activeTab === 'upload' && <CreateRecord />}
+        {activeTab === 'allHistory' && <AllHistory />}
       </main>
 
       <footer className='container mx-auto px-6 py-8 text-center text-gray-500 text-sm'>
-        <p>
-          HealthChain POC - Registros Médicos Seguros na Blockchain Polkadot
-        </p>
+        <p>InfoChain POC - Registros Médicos Seguros na Blockchain Polkadot</p>
       </footer>
     </div>
   );
