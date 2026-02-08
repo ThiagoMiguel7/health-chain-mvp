@@ -62,7 +62,7 @@ export function DoctorPatientView(): JSX.Element {
       if (!result.success) {
         showToast(
           'error',
-          'Acesso negado pela HealthChain - Não tem permissão para visualizar os registros desse paciente',
+          'Acesso negado pela InfoChain - Não tem permissão para visualizar os registros desse paciente',
         );
         setLoading(false);
         return;

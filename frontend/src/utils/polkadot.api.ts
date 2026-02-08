@@ -1,11 +1,13 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { SubmittableExtrinsic } from '@polkadot/api/types';
 
-import { Keyring } from '@polkadot/keyring';
+import { decodeAddress, encodeAddress, Keyring } from '@polkadot/keyring';
 import { KeyringPair } from '@polkadot/keyring/types';
 
 import { WS_URL } from './shared';
 import { withResolvers } from './promises';
+import { Codec } from '@polkadot/types/types';
+import { getIpfsUrl } from './ipfs-functions';
 
 const provider = new WsProvider(WS_URL);
 const api = await ApiPromise.create({ provider });
@@ -21,6 +23,18 @@ type BlockchainReadOwnDataProps = Omit<
   'doctorAddress'
 >;
 type BlockchainDoctorReadDataProps = BlockchainCreateRecordProps;
+type ReadPatientHistoryProps = Omit<BlockchainActionProps, 'doctorAddress'>;
+type PatientHistory = {
+  createdBy: string;
+  createdAt: string;
+  fileHash: string;
+};
+export type PatientHistoryConverted = {
+  createdBy: string;
+  createdAt: string;
+  fileHash: string;
+  url: string;
+};
 
 export type BlockchainActionResult =
   | {
@@ -208,4 +222,35 @@ export async function readPatientData({
   );
 
   return submitExtrinsic(extrinsic, doctor);
+}
+
+export async function readPatientHistory({
+  patientAddress,
+}: Readonly<ReadPatientHistoryProps>): Promise<PatientHistoryConverted[]> {
+  const entries =
+    await api.query.medicalHistory.patientRecords.entries(patientAddress);
+
+  if (!entries.length) {
+    console.log('No records found for this patient');
+    return [];
+  }
+
+  const convertToHuman = (value: Codec): PatientHistoryConverted => {
+    const { fileHash, ...data } = value.toHuman() as PatientHistory;
+
+    // decodifica para public key (Uint8Array)
+    const publicKey = decodeAddress(data.createdBy);
+
+    // re-encoda usando SS58 = 42 (Substrate generic)
+    const createdBy = encodeAddress(publicKey, 42);
+
+    const timestamp = Number(data.createdAt.replace(/,/g, ''));
+    const date = new Date(timestamp);
+
+    const createdAt = date.toLocaleString('pt-BR');
+
+    return { createdBy, createdAt, fileHash, url: getIpfsUrl(fileHash) };
+  };
+
+  return entries.map(([, value]) => convertToHuman(value));
 }
