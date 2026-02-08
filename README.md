@@ -35,7 +35,26 @@ O **InfoHealth MVP** é um projeto acadêmico da formação **Polkadot SDK / Sub
 
 A ideia central é preservar auditabilidade sem expor dados sensíveis diretamente on-chain.
 
----
+### Project Rename Notice
+
+Este repositório foi originalmente criado com o nome **HealthChain MVP** durante a fase inicial da formação Polkadot SDK.
+
+Durante a evolução do projeto e definição de posicionamento do produto, o nome da solução passou a ser:
+
+> **InfoHealth MVP**
+
+O repositório mantém o nome histórico (`health-chain-mvp`) apenas por questões de versionamento e rastreabilidade do desenvolvimento.
+
+### Importante
+
+Alguns scripts, comandos e caminhos ainda podem conter o nome **health-chain**.  
+Isso **não afeta o funcionamento do projeto** e será ajustado gradualmente nas próximas versões.
+
+Sempre que houver divergência:
+
+| Antigo | Atual |
+|---|---|
+| HealthChain | InfoHealth |
 
 ## 2. Status do MVP (escopo atual)
 
