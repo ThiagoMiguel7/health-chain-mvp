@@ -1,171 +1,351 @@
 [![Vídeo Explicativo no YouTube](https://img.shields.io/badge/YouTube-Assistir-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=TaGYoAOJ1yw)
 
-# 🏥 HealthChain MVP ⛓️
+# 🏥 InfoHealth MVP ⛓️
 
-## Prontuário Médico Descentralizado
-
-O **HealthChain MVP** é um *Produto Mínimo Viável* de um sistema de gestão de prontuários médicos descentralizados, focado na soberania do paciente. O projeto foi desenvolvido como **Projeto Final da Formação Polkadot SDK / Substrate (2025/2026)** e adota uma arquitetura Híbrida para garantir privacidade, segurança, integridade e imutabilidade dos dados médicos.
-
-O grande diferencial da solução é o uso de **WebAssembly (Wasm)** para executar criptografia pesada diretamente no navegador do cliente, garantindo que dados sensíveis nunca trafeguem ou sejam armazenados em texto plano, nem mesmo na camada de armazenamento *off-chain*.
+> *Prontuário médico descentralizado com controle de acesso paciente→médico, trilha auditável on-chain e arquivos clínicos referenciados por hash.*
 
 ---
 
-## Funcionalidades
+## 📑 Sumário
 
-* **Identidade Soberana (SSI)**
-  Autenticação baseada em carteira (*wallet-based authentication*), eliminando a necessidade de e-mail e senha.
-
-* **Criptografia Client-Side**
-  Módulo **Rust/Wasm** responsável por cifrar os dados **antes do upload**, garantindo confidencialidade ponta a ponta.
-
-* **Arquitetura Híbrida (On-Chain + Off-Chain)**
-
-  * **On-Chain (Substrate)**: armazenamento de *hashes* de integridade e controle de permissões (ACL).
-  * **Off-Chain (Firebase)**: armazenamento apenas de blobs criptografados.
-
-* **Gestão de Acesso**
-  O paciente concede e revoga permissões de leitura para médicos diretamente pela Blockchain.
-
-* **Interoperabilidade**
-  Arquitetura baseada em padrões Web3, facilitando integração futura com outros sistemas.
+- [1. Visão geral](#1-visão-geral)
+- [2. Status do MVP (escopo atual)](#2-status-do-mvp-escopo-atual)
+- [3. Problema que o projeto resolve](#3-problema-que-o-projeto-resolve)
+- [4. Arquitetura e separação de responsabilidades](#4-arquitetura-e-separação-de-responsabilidades)
+- [5. Estrutura real do monorepo](#5-estrutura-real-do-monorepo)
+- [6. Pallets, storage e extrinsics](#6-pallets-storage-e-extrinsics)
+- [7. Front-end: componentes e integrações](#7-front-end-componentes-e-integrações)
+- [8. Fluxos funcionais (passo a passo)](#8-fluxos-funcionais-passo-a-passo)
+- [9. Pré-requisitos e execução local completa](#9-pré-requisitos-e-execução-local-completa)
+- [10. Testes e validações](#10-testes-e-validações)
+- [11. Troubleshooting (erros comuns)](#11-troubleshooting-erros-comuns)
+- [12. Documentação complementar](#12-documentação-complementar)
+- [13. Autores](#13-autores)
+- [14. Licença](#14-licença)
 
 ---
 
-## Segurança e Privacidade (Arquitetura Híbrida)
+## 1. Visão geral
 
-O projeto segue rigorosamente os princípios da **LGPD**, adotando um modelo onde **dados sensíveis (PII) nunca tocam a camada pública da Blockchain**.
+O **InfoHealth MVP** é um projeto acadêmico da formação **Polkadot SDK / Substrate (2025/2026)** com foco em prontuário médico descentralizado. O sistema demonstra, de forma prática, como combinar:
 
-### Fluxo de Segurança
+- **governança de acesso em blockchain** (quem pode acessar dados);
+- **registro auditável e imutável de operações**;
+- **arquivos médicos fora da blockchain** (IPFS), vinculados por hash.
 
-1. **Navegador (Client)**
-   O arquivo é criptografado localmente utilizando uma **chave simétrica gerada em tempo de execução**.
-
-2. **Firebase (Off-Chain)**
-   Recebe apenas o **"lixo criptográfico"** (blob cifrado), sem capacidade de leitura.
-
-3. **Substrate (On-Chain)**
-   Armazena o **hash do arquivo** e gerencia **quem possui permissão para descriptografar**.
-
-### Zero Knowledge Storage
-
-Mesmo o administrador do banco de dados não consegue acessar ou ler os exames dos pacientes.
+A ideia central é preservar auditabilidade sem expor dados sensíveis diretamente on-chain.
 
 ---
 
-## Estrutura do Projeto
+## 2. Status do MVP (escopo atual)
 
-O projeto é organizado como um **monorepo**, contendo as três camadas principais da aplicação:
+Este repositório atualmente contém:
 
-```bash
+- `blockchain/` (node + runtime + pallets customizados)
+- `frontend/` (React + Vite + Polkadot.js + IPFS client)
+- `docs/` (requisitos e material acadêmico)
+
+---
+
+## 3. Problema que o projeto resolve
+
+No modelo tradicional, dados clínicos ficam isolados por instituição, com pouca portabilidade e trilha de auditoria limitada para o paciente. O InfoHealth MVP demonstra um desenho onde:
+
+- o **paciente controla** quem pode acessar;
+- as ações ficam **auditáveis** na cadeia;
+- os arquivos ficam off-chain, referenciados por identificador verificável.
+
+---
+
+## 4. Arquitetura e separação de responsabilidades
+
+### 4.1 Camada On-chain (Substrate)
+
+Responsável por:
+
+- regras de autorização paciente→médico;
+- criação de referências de registros médicos;
+- leitura autorizada de registros;
+- emissão de eventos auditáveis.
+
+### 4.2 Camada Off-chain (IPFS)
+
+Responsável por:
+
+- armazenamento/distribuição de arquivos clínicos;
+- retorno de CID para referência no fluxo da aplicação.
+
+### 4.3 Camada de Apresentação (Frontend)
+
+Responsável por:
+
+- conectar ao nó Substrate via WebSocket (`ws://127.0.0.1:9944`);
+- enviar extrinsics e consultar histórico;
+- enviar/abrir arquivos no IPFS local (`localhost:5001` / `localhost:8080`).
+
+---
+
+## 5. Estrutura real do monorepo
+
+```text
 health-chain-mvp/
-├── blockchain/                # ⛓️ Camada On-Chain
+├── blockchain/
+│   ├── node/                            # binário do nó (InfoHealth-node)
+│   ├── runtime/                         # composição dos pallets no runtime
 │   ├── pallets/
-│   │   └── medical-record/    # Lógica de registro e permissões
-│   ├── runtime/               # Configuração do Runtime Substrate
-│   └── node/                  # Configuração do Nó (P2P, RPC)
-│
-├── wasm-crypto/               # 🔐 Camada de Segurança (Client-side)
-│   ├── src/
-│   │   └── lib.rs             # Funções Rust de criptografia/hash
-│   ├── Cargo.toml
-│   └── pkg/                   # Binário compilado para JS (Wasm)
-│
-├── frontend/                  # 🖥️ Interface do Usuário
-│   ├── src/
-│   │   ├── components/        # Upload, lista de exames
-│   │   ├── services/          # Conexão Firebase e Polkadot.js
-│   │   └── wasm/              # Integração com wasm-crypto
-│   └── public/
-│
-└── docs/                      # 📚 Documentação e Atas
+│   │   ├── medical-permissions/         # grant/revoke de acesso
+│   │   ├── medical-history/             # criação e indexação de registros
+│   │   ├── medical-history-reader/      # leitura própria e leitura autorizada
+│   │   └── history/                     # legado/experimentos
+│   ├── scripts/
+│   ├── docs/
+│   └── env-setup/
+├── frontend/
+│   ├── src/components/                  # telas do MVP
+│   ├── src/contexts/                    # wallet/toast context
+│   └── src/utils/                       # integração Polkadot/IPFS
+└── docs/                                # requisitos e documentação acadêmica
 ```
 
 ---
 
-## Explicação dos Módulos
+## 6. Pallets, storage e extrinsics
 
-* **`blockchain/`**
-  Baseado no *Substrate Node Template*. Contém o *pallet* customizado responsável por armazenar o mapeamento `Hash → Owner` e a lógica de permissões (`grant_access`, `revoke_access`).
+## 6.1 `pallet-medical-permissions`
 
-* **`wasm-crypto/`**
-  Biblioteca Rust compilada para WebAssembly utilizando `wasm-pack`. É o **núcleo de segurança** do projeto, executado diretamente no navegador.
+Gerencia concessão e revogação de acesso do médico aos dados do paciente.
 
-* **`frontend/`**
-  Aplicação React responsável por orquestrar a chamada ao módulo Wasm, realizar o upload no Firebase e assinar transações na carteira do usuário.
+| Extrinsic | Assina | Parâmetros | Finalidade |
+|---|---|---|---|
+| `grant_access` | Paciente | `doctor: AccountId` | concede acesso ao médico |
+| `revoke_access` | Paciente | `doctor: AccountId` | revoga acesso do médico |
 
----
+Regras:
 
-##  Extrinsics e Estruturas de Dados
-
-### Blockchain – Pallet `medical-record`
-
-| Extrinsic       | Parâmetros                           | Descrição                                | Quem Assina |
-| --------------- | ------------------------------------ | ---------------------------------------- | ----------- |
-| `create_record` | `hash: Vec<u8>`, `cid: Vec<u8>`      | Registra um novo exame e vincula ao dono | Paciente    |
-| `grant_access`  | `target: AccountId`, `hash: Vec<u8>` | Concede permissão de leitura a um médico | Paciente    |
-| `revoke_access` | `target: AccountId`, `hash: Vec<u8>` | Revoga permissão de leitura              | Paciente    |
+- paciente não pode conceder permissão para si mesmo;
+- permissões ficam mapeadas por `(patient, doctor)`.
 
 ---
 
-## Execução Local
+## 6.2 `pallet-medical-history`
 
-### Pré-requisitos
+Cria e indexa registros médicos do paciente a partir de hash de arquivo.
 
-* Rust & Cargo (Stable ou Nightly)
-* Node.js + Yarn ou NPM
-* Docker (opcional, para testes)
+| Extrinsic | Assina | Parâmetros | Finalidade |
+|---|---|---|---|
+| `create_record` | Médico | `patient: AccountId`, `file_hash: [u8; 64]` | registra referência médica do paciente |
 
-### 1. Compilar o Wasm (Segurança)
+Regras principais:
+
+- médico precisa de permissão válida do paciente;
+- médico não pode criar registro para si mesmo nesse fluxo;
+- hash duplicado no índice global é rejeitado.
+
+Índices relevantes no pallet:
+
+- índice global por hash;
+- índice por médico;
+- índice por paciente.
+
+---
+
+## 6.3 `pallet-medical-history-reader`
+
+Fornece leitura controlada dos registros médicos.
+
+| Extrinsic | Assina | Parâmetros | Finalidade |
+|---|---|---|---|
+| `read_own_data` | Paciente | `file_hash` | lê próprio registro |
+| `read_patient_data` | Médico | `patient`, `file_hash` | lê registro de paciente autorizado |
+
+---
+
+## 7. Front-end: componentes e integrações
+
+### 7.1 Telas principais
+
+- **Permissões:** concede/revoga acesso de médicos.
+- **Meu Histórico:** lista histórico próprio.
+- **Busca Médica:** médico consulta histórico de paciente autorizado.
+- **Criar Registro:** upload + registro on-chain.
+- **Histórico Completo:** visão consolidada disponível no app.
+
+### 7.2 Conectividade
+
+- Chain WS padrão: `ws://127.0.0.1:9944`
+- IPFS API: `http://localhost:5001`
+- IPFS Gateway: `http://localhost:8080/ipfs/<cid>`
+
+### 7.3 Observação importante sobre autenticação no MVP
+
+O contexto de wallet da UI é simplificado para UX do protótipo, enquanto utilitários de integração usam contas de desenvolvimento do keyring (`//Alice`, `//Bob`, `//Charlie`, etc.) para assinatura no ambiente local.
+
+---
+
+## 8. Fluxos funcionais (passo a passo)
+
+## 8.1 Conceder acesso médico
+
+1. Paciente conecta a aplicação.
+2. Paciente informa/seleciona conta do médico.
+3. Front-end envia `grant_access`.
+4. Permissão `(patient, doctor)` passa a valer on-chain.
+
+## 8.2 Criar registro médico
+
+1. Médico realiza upload do arquivo para IPFS.
+2. Aplicação obtém CID/hash do artefato.
+3. Front-end envia `create_record(patient, file_hash)`.
+4. Registro passa a ficar indexado na cadeia.
+
+## 8.3 Ler histórico
+
+- Paciente chama leitura própria.
+- Médico chama leitura do paciente (se autorizado).
+
+## 8.4 Revogar acesso
+
+1. Paciente envia `revoke_access`.
+2. Novas operações que dependem de permissão devem ser bloqueadas pela regra de acesso.
+
+---
+
+## 9. Pré-requisitos e execução local completa
+
+## 9.1 Pré-requisitos
+
+- Rust + Cargo
+- Dependências nativas para compilação Substrate
+- Node.js 18+
+- npm (ou yarn/pnpm)
+- IPFS (daemon local)
+
+---
+
+## 9.2 Subir a blockchain
 
 ```bash
-
+cd blockchain
+cargo build --release
+./target/release/healthchain-node --dev
 ```
 
-### 2. Rodar a Blockchain (Substrate)
+Endpoint esperado: `ws://127.0.0.1:9944`
+
+Opcional (reset de estado local):
 
 ```bash
-
+./target/release/healthchain-node purge-chain --dev
 ```
 
-> O nó será iniciado na porta **9944 (WebSocket)**.
+---
 
-### 3. Rodar o Frontend
+## 9.3 Subir IPFS local
 
 ```bash
-
+ipfs daemon
 ```
+
+Portas esperadas pelo front-end:
+
+- API: `5001`
+- Gateway: `8080`
 
 ---
 
-## Testes
+## 9.4 Subir o front-end
+
+Em novo terminal:
 
 ```bash
-
+cd frontend
+npm install
+npm run dev
 ```
 
+Scripts úteis:
+
+```bash
+npm run dev
+npm run build
+npm run lint
+npm run typecheck
+npm run preview
+```
 ---
 
-## Stack Utilizada
+## 10. Testes e validações
 
-* **Linguagem Core:** Rust 🦀
-* **Blockchain Framework:** Substrate / Polkadot SDK
-* **WebAssembly:** wasm-pack (Rust → Wasm)
-* **Frontend:** React + Polkadot.js API
-* **Banco de Dados:** Firebase Firestore (Google Cloud)
-* **Containerização:** Docker
+### 10.1 Blockchain
+
+```bash
+cd blockchain
+cargo test
+```
+
+### 10.2 Front-end (qualidade estática)
+
+```bash
+cd frontend
+npm run lint
+npm run typecheck
+npm run build
+```
+
+### 10.3 Teste funcional manual recomendado
+
+1. Conceder acesso paciente→médico.
+2. Criar registro com arquivo no IPFS.
+3. Validar leitura por paciente.
+4. Validar leitura por médico autorizado.
+5. Revogar acesso e repetir tentativa de operação protegida.
 
 ---
 
-## Autores
+## 11. Troubleshooting (erros comuns)
 
-Projeto desenvolvido para a **Formação Polkadot SDK (2025)**:
+### Erro de conexão com chain
 
-* **André Luiz Oneti Carvalho** 
-* **Rodrigo Pimenta Carvalho** 
-* **Thiago da Rocha Miguel** 
+- Verifique se o nó está rodando em `ws://127.0.0.1:9944`.
+- Confira firewall/portas locais.
+
+### Upload IPFS falha
+
+- Garanta `ipfs daemon` ativo.
+- Confirme API em `http://localhost:5001`.
+
+### Link de arquivo não abre
+
+- Verifique gateway local em `http://localhost:8080`.
+- Confira se o CID foi publicado corretamente.
+
+### Extrinsic falha por permissão
+
+- Certifique-se que o paciente executou `grant_access` antes da operação do médico.
+- Revalide o par paciente/médico usado na transação.
 
 ---
 
-## 📜 Licença
+## 12. Documentação complementar
 
-Este projeto é acadêmico e experimental, desenvolvido para fins educacionais e de pesquisa.
+Arquivos relevantes em `docs/`:
+
+- requisitos funcionais e regras de negócio;
+- modelagens e documentos de apoio acadêmico;
+- materiais de apresentação/relatórios do projeto.
+
+---
+
+## 13. Autores
+
+Projeto desenvolvido para a **Formação Polkadot SDK (2025/2026)**:
+
+- André Luiz Oneti Carvalho
+- Rodrigo Pimenta Carvalho
+- Thiago da Rocha Miguel
+
+---
+
+## 14. Licença
+
+Projeto acadêmico e experimental, desenvolvido para fins educacionais e de pesquisa.
