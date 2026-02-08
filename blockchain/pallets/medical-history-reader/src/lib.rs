@@ -19,14 +19,34 @@ mod mock;
 #[cfg(test)]
 mod tests;
 
+// Habilita o módulo de benchmarking apenas quando a feature estiver ativa - Usado para calcular pesos dos extrínsecos
+pub mod benchmarking;
+
+
+// --- WeightInfo trait (pallet-level) -------------------------------------------------
+// O `weights.rs` gerado implementa essa trait. Ela precisa existir no crate root.
+// Mantemos a assinatura com as duas funções que os benchmarks geram.
+use frame_support::weights::Weight;
+
+pub trait WeightInfo {
+    fn read_own_data() -> Weight;
+    fn read_patient_data() -> Weight;
+}
+// -------------------------------------------------------------------------------------
+
+
+
 // MÓDULO DE PESOS: Importa o arquivo weights.rs que acabamos de corrigir
 pub mod weights;
 pub use weights::*;
+
+extern crate alloc; //Para possibilitar ativar os benchmarks e calcular na real qual é o peso de cada extrínseco
 
 #[frame_support::pallet]
 pub mod pallet {
     use frame_support::pallet_prelude::*;
     use frame_system::pallet_prelude::*;
+    use crate::WeightInfo;
 
     /// Interface to access medical history records.
     use pallet_medical_history::{FileHash, MedicalHistoryAccessor};
@@ -34,21 +54,21 @@ pub mod pallet {
     /// Interface to verify patient ↔ doctor permissions.
     use pallet_medical_permissions::MedicalPermissionsVerifier;
 
-    // Importa o WeightInfo que veio do 'super' (do arquivo weights.rs)
-    use super::WeightInfo;
-
     /// The pallet type.
     #[pallet::pallet]
     pub struct Pallet<T>(_);
 
     /// Configuration trait for the Medical History Reader pallet.
     #[pallet::config]
-    pub trait Config: frame_system::Config + pallet_timestamp::Config {
+    pub trait Config:
+        frame_system::Config + pallet_timestamp::Config + pallet_medical_history::Config + pallet_medical_permissions::Config
+    // Para o cálculo de pesos funcionar corretamente
+    {
         /// The overarching runtime event type.
         type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
 
         /// Weight information for extrinsics.
-        type WeightInfo: WeightInfo;
+        type WeightInfo: crate::WeightInfo; //Para o cálculo de pesos funcionar corretamente
 
         /// Provider used to read medical history data.
         type HistoryProvider: MedicalHistoryAccessor<Self::AccountId, Self::Moment>;
@@ -57,7 +77,7 @@ pub mod pallet {
         type Permissions: MedicalPermissionsVerifier<Self::AccountId>;
     }
 
-    // REMOVIDO: trait WeightInfo inline e impl for () 
+    // REMOVIDO: trait WeightInfo inline e impl for ()
     // (Agora eles vêm do arquivo weights.rs automaticamente)
 
     /// Events emitted by the Medical History Reader pallet.
@@ -144,7 +164,9 @@ pub mod pallet {
             let doctor = ensure_signed(origin)?;
 
             // Permission check (Issue #12)
-            if !T::Permissions::has_access(&patient_id, &doctor) {
+            if !<T as Config>::Permissions::has_access(&patient_id, &doctor) {
+
+                //Para calcular pesos corretamente.
                 return Err(Error::<T>::AccessDenied.into());
             }
 

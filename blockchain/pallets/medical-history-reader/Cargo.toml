@@ -19,6 +19,7 @@ codec = { workspace = true, features = ["derive"] }
 scale-info = { workspace = true, features = ["derive"] }
 frame-support = { workspace = true }
 frame-system = { workspace = true }
+frame-benchmarking = { workspace = true, optional = true } # Para possibilitar ativar os benchmarks e calcular na real qual é o peso de cada extrínseco
 
 # HealthChain dependencies
 pallet-medical-history = { path = "../medical-history", default-features = false }
@@ -34,6 +35,15 @@ sp-runtime = { workspace = true }
 
 [features]
 default = ["std"]
+
+
+# Habilita itens usados por benchmarking (padronizado) -- Usado para o cálculo de pesos dos extrínsecos ----- START -----
+runtime-benchmarks = [
+    "frame-benchmarking/runtime-benchmarks",
+    "frame-support/runtime-benchmarks",
+    "frame-system/runtime-benchmarks",
+]
+# Habilita itens usados por benchmarking (padronizado) -- Usado para o cálculo de pesos dos extrínsecos ----- END -------
 
 std = [
     "codec/std",

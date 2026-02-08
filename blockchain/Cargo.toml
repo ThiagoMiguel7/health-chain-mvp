@@ -10,6 +10,7 @@ members = [
 	"node",
 	"pallets/medical-history",
 	"pallets/medical-permissions",
+	"pallets/medical-history-reader",
 	"runtime",
 ]
 resolver = "2"
@@ -19,7 +20,10 @@ resolver = "2"
 pallet-template = { path = "./pallets/template", default-features = false }
 healthchain-node = { path = "./node", default-features = false }
 healthchain-runtime = { path = "./runtime", default-features = false }
-pallet-history = { path = "./pallets/history", default-features = false }
+#pallet-history = { path = "./pallets/history", default-features = false }
+pallet-medical-history = { path = "./pallets/medical-history", default-features = false }
+pallet-medical-permissions = { path = "./pallets/medical-permissions", default-features = false }
+pallet-medical-history-reader = { path = "./pallets/medical-history-reader", default-features = false }
 
 # third-party
 clap = { version = "4.5.13" }

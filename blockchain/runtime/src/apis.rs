@@ -43,10 +43,17 @@ use sp_version::RuntimeVersion;
 // Local module imports
 // ATENÇÃO: Adicionei AllPalletsWithSystem aqui
 use super::{
-    AccountId, Aura, Balance, Block, Executive, Grandpa, 
-    InherentDataExt, Nonce, Runtime, RuntimeCall, RuntimeGenesisConfig, 
-    SessionKeys, System, TransactionPayment, VERSION,
+    AccountId, Aura, Balance, Block, Executive, Grandpa, InherentDataExt, Nonce, Runtime,
+    RuntimeCall, RuntimeGenesisConfig, SessionKeys, System, TransactionPayment, VERSION,
 };
+
+// Para possibilitar ativar os benchmarks e calcular na real qual é o peso de cada extrínseco  ----- START ---------
+#[cfg(feature = "runtime-benchmarks")]
+use crate::{
+    AllPalletsWithSystem, Balances, MedicalHistory, MedicalHistoryReader, MedicalPermissions, Sudo,
+    Timestamp,
+};
+// Para possibilitar ativar os benchmarks e calcular na real qual é o peso de cada extrínseco  ----- END ---------
 
 // ==========================================================================
 // DEFINIÇÃO DOS BENCHMARKS
@@ -61,6 +68,8 @@ frame_benchmarking::define_benchmarks! {
     [pallet_sudo, Sudo]
     // Nosso Pallet Customizado:
     [pallet_medical_history, MedicalHistory]
+    [pallet_medical_history_reader, MedicalHistoryReader] // Para possibilitar ativar os benchmarks e calcular na real qual é o peso de cada extrínseco
+
 }
 
 impl_runtime_apis! {
@@ -251,7 +260,7 @@ impl_runtime_apis! {
             use baseline::Pallet as BaselineBench;
 
             let mut list = Vec::<BenchmarkList>::new();
-            
+
             // Agora a macro está no escopo correto
             list_benchmarks!(list, extra);
 
@@ -278,7 +287,7 @@ impl_runtime_apis! {
 
             let mut batches = Vec::<BenchmarkBatch>::new();
             let params = (&config, &whitelist);
-            
+
             // Agora a macro está no escopo correto
             add_benchmarks!(params, batches);
 
