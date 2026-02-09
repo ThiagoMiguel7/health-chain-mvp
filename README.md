@@ -99,7 +99,7 @@ Responsável por:
 Responsável por:
 
 - conectar ao nó Substrate via WebSocket (`ws://127.0.0.1:9944`);
-- enviar extrinsics e consultar histórico;
+- enviar/executar transações;
 - enviar/abrir arquivos no IPFS local (`localhost:5001` / `localhost:8080`).
 
 ---
