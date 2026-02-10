@@ -1,5 +1,19 @@
 [![Vídeo Explicativo no YouTube](https://img.shields.io/badge/YouTube-Assistir-FF0000?logo=youtube&logoColor=white)](https://youtu.be/oi6qrWERVR0)
 
+[![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![Cargo](https://img.shields.io/badge/Cargo-000000?style=for-the-badge&logo=rust&logoColor=white)](https://doc.rust-lang.org/cargo/)
+[![Rust Book](https://img.shields.io/badge/Rust%20Book-000000?style=for-the-badge&logo=rust&logoColor=white)](https://doc.rust-lang.org/book/)
+[![Substrate](https://img.shields.io/badge/Substrate-282828?style=for-the-badge&logo=parity-substrate&logoColor=white)](https://docs.substrate.io/)
+[![Polkadot](https://img.shields.io/badge/Polkadot-E6007A?style=for-the-badge&logo=polkadot&logoColor=white)](https://docs.polkadot.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/docs)
+[![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://docs.npmjs.com/)
+[![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white)](https://yarnpkg.com/getting-started)
+[![pnpm](https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io/)
+[![IPFS](https://img.shields.io/badge/IPFS-65C2CB?style=for-the-badge&logo=ipfs&logoColor=white)](https://docs.ipfs.tech/)
+[![Kubo](https://img.shields.io/badge/Kubo-IPFS%20Implementation-65C2CB?style=for-the-badge&logo=ipfs&logoColor=white)](https://github.com/ipfs/kubo)
+[![IPFS CLI](https://img.shields.io/badge/IPFS%20CLI-65C2CB?style=for-the-badge&logo=ipfs&logoColor=white)](https://docs.ipfs.tech/reference/kubo/cli/)
+[![IPFS HTTP API](https://img.shields.io/badge/IPFS%20HTTP%20API-65C2CB?style=for-the-badge&logo=ipfs&logoColor=white)](https://docs.ipfs.tech/reference/kubo/rpc/)
+
 # 🏥 InfoHealth MVP ⛓️
 
 > *Prontuário médico descentralizado com controle de acesso paciente→médico, trilha auditável on-chain e arquivos clínicos referenciados por hash.*
@@ -87,12 +101,14 @@ Responsável por:
 - leitura autorizada de registros;
 - emissão de eventos auditáveis.
 
-### 4.2 Camada Off-chain (IPFS)
+### 4.2 Camada Off-chain (IPFS / Kubo)
 
 Responsável por:
 
 - armazenamento/distribuição de arquivos clínicos;
 - retorno de CID para referência no fluxo da aplicação.
+
+> **Nota Técnica:** Utilizamos a implementação **Kubo (go-ipfs)** para instanciar o nó IPFS local e expor o Gateway HTTP necessário para a aplicação React.
 
 ### 4.3 Camada de Apresentação (Frontend)
 
@@ -237,7 +253,7 @@ O contexto de wallet da UI é simplificado para UX do protótipo, enquanto utili
 - Dependências nativas para compilação Substrate
 - Node.js 18+
 - npm (ou yarn/pnpm)
-- IPFS (daemon local)
+- **IPFS (Kubo)** - *Implementação oficial (binário `ipfs`)*
 
 ---
 
@@ -259,7 +275,9 @@ Opcional (reset de estado local):
 
 ---
 
-## 9.3 Subir IPFS local
+## 9.3 Subir IPFS local (Kubo Daemon)
+
+Certifique-se de que o binário do Kubo está no seu PATH.
 
 ```bash
 ipfs daemon
